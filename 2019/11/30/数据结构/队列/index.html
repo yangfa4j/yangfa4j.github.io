@@ -87,11 +87,11 @@
 <meta property="og:site_name" content="个人技术博客">
 <meta property="og:description" content="栈与队列栈是限定仅在表尾进行插入和删除操作的线性表。队列是只允许在一端进行插入操作，在另一端进行删除操作的线性表。   栈栈的操作顺序类似idea等软件的撤销按钮，后来的先返回。把允许插入和删除的一端称为栈顶（top），另一端称为栈底（bottom）。栈是后进先出，LAST IN FIRST OUT，叫LIFO结构。   栈的顺序存储结构可以把栈想成线性表顺序存储结构的简化，简称顺序栈。把栈顶看成">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="f:&#x2F;StudyPic&#x2F;%E9%93%BE%E6%A0%88%E5%85%A5%E6%A0%88.png">
-<meta property="og:image" content="f:&#x2F;StudyPic&#x2F;%E6%96%90%E6%B3%A2%E9%82%A3%E5%88%87%E6%95%B0%E5%88%97.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;30&#x2F;%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84&#x2F;%E9%98%9F%E5%88%97&#x2F;StudyPic&#x2F;%E9%93%BE%E6%A0%88%E5%85%A5%E6%A0%88.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;30&#x2F;%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84&#x2F;%E9%98%9F%E5%88%97&#x2F;StudyPic&#x2F;%E6%96%90%E6%B3%A2%E9%82%A3%E5%88%87%E6%95%B0%E5%88%97.png">
 <meta property="og:updated_time" content="2019-11-30T08:37:21.767Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="f:&#x2F;StudyPic&#x2F;%E9%93%BE%E6%A0%88%E5%85%A5%E6%A0%88.png">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;30&#x2F;%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84&#x2F;%E9%98%9F%E5%88%97&#x2F;StudyPic&#x2F;%E9%93%BE%E6%A0%88%E5%85%A5%E6%A0%88.png">
 
 
 
@@ -353,7 +353,7 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Status <span class="title">Push</span><span class="params">(LinkStack *S,SElemType e)</span> </span>&#123;</span><br><span class="line"><span class="comment">//先创建一个需要插入的结点</span></span><br><span class="line">	LinkStackPtr s = (LinkStackPtr)<span class="built_in">malloc</span>(sizeOf(StackNode));</span><br><span class="line">	<span class="comment">//对s结点进行赋值和指向操作</span></span><br><span class="line">	s-&gt;data=e;</span><br><span class="line">    <span class="comment">//因为栈中的元素是从栈顶往栈底传递的，栈顶元素保存的下一结点的地址就是它下面一位元素</span></span><br><span class="line">	s-&gt;next=S-&gt;top;</span><br><span class="line">	<span class="comment">//对栈操作</span></span><br><span class="line">	S-&gt;top=s;</span><br><span class="line">	S-&gt;count++;</span><br><span class="line">	<span class="keyword">return</span> ok;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>如图所示：</p>
-<p><img src="F:/StudyPic/%E9%93%BE%E6%A0%88%E5%85%A5%E6%A0%88.png" alt=""></p>
+<p><img src="/2019/11/30/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%98%9F%E5%88%97/StudyPic/%E9%93%BE%E6%A0%88%E5%85%A5%E6%A0%88.png" alt></p>
 <p><strong>出栈操作</strong>：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Status Pop(LinkStack *S,SElemType *e)</span><br><span class="line">&#123;</span><br><span class="line">	LinkStackPtr p;</span><br><span class="line">	if(StackEmpty(*S))</span><br><span class="line">		return ERROR;</span><br><span class="line">    //拿到栈顶的数据</span><br><span class="line">	*e=S-&gt;top-&gt;data;</span><br><span class="line">	p=S-&gt;top;</span><br><span class="line">	//将栈顶指针下移</span><br><span class="line">	S-&gt;top=S-&gt;top-&gt;next;</span><br><span class="line">	//释放删除的结点</span><br><span class="line">	free(p);</span><br><span class="line">	S-&gt;count--;</span><br><span class="line">	return OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -361,7 +361,7 @@
 <h2 id="栈的作用"><a href="#栈的作用" class="headerlink" title="栈的作用"></a>栈的作用</h2><p>为何我们不用数组或者链表直接实现功能？因为栈的引入简化了程序设计的问题，使得思考范围缩小，更加聚焦于我们要解决的问题核心。反之，像数组，会需要分散精力去考虑数组的下标增减等细节问题，反而有掩盖了问题的本质。</p>
 <h2 id="栈的应用-递归"><a href="#栈的应用-递归" class="headerlink" title="栈的应用-递归"></a>栈的应用-递归</h2><p><strong>关键词</strong>：斐波那契数列(Fibonacci) 迭代 递归</p>
 <p>现在假设有一个数学函数：</p>
-<p><img src="F:/StudyPic/%E6%96%90%E6%B3%A2%E9%82%A3%E5%88%87%E6%95%B0%E5%88%97.png" alt=""></p>
+<p><img src="/2019/11/30/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%98%9F%E5%88%97/StudyPic/%E6%96%90%E6%B3%A2%E9%82%A3%E5%88%87%E6%95%B0%E5%88%97.png" alt></p>
 <p>打印前40位的斐波那契数列数，使用迭代，代码如下：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	<span class="keyword">int</span> a[<span class="number">40</span>];</span><br><span class="line">	a[<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">	a[<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d"</span>,a[<span class="number">0</span>]);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d"</span>,a[<span class="number">1</span>]);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">2</span>;i&lt;<span class="number">40</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		a[i]=a[i<span class="number">-1</span>]+a[i<span class="number">-2</span>];</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d"</span>,a[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -428,8 +428,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/11/30/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%BA%BF%E6%80%A7%E8%A1%A8/" rel="prev" title="线性表">
-                线性表 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/11/30/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%91/" rel="prev" title="树">
+                树 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

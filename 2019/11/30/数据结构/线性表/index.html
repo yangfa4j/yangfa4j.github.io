@@ -87,10 +87,10 @@
 <meta property="og:site_name" content="个人技术博客">
 <meta property="og:description" content="概念筑基 数据 数据对象 有相同数量和类型数据项的数据元素的集合 数据元素 组成数据的基本单位 数据项 数据结构 包含相互关系数据元素的集合  逻辑结构与物理结构逻辑针对数据元素之间的关系，物理针对计算机存储单元之间的关系 逻辑关系：元素之间无关联、一对一、一对多、多对多；分别对应集合结构、线性结构、树形结构、图形结构。 物理结构：数据存储单元之间顺序存储、链式存储。 算法求解特定问题的求解步骤的">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="f:&#x2F;StudyPic&#x2F;%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E9%9D%99%E6%80%81%E9%93%BE%E8%A1%A8.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;30&#x2F;%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84&#x2F;%E7%BA%BF%E6%80%A7%E8%A1%A8&#x2F;StudyPic&#x2F;%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E9%9D%99%E6%80%81%E9%93%BE%E8%A1%A8.png">
 <meta property="og:updated_time" content="2019-11-30T08:38:27.587Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="f:&#x2F;StudyPic&#x2F;%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E9%9D%99%E6%80%81%E9%93%BE%E8%A1%A8.png">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;30&#x2F;%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84&#x2F;%E7%BA%BF%E6%80%A7%E8%A1%A8&#x2F;StudyPic&#x2F;%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E9%9D%99%E6%80%81%E9%93%BE%E8%A1%A8.png">
 
 
 
@@ -387,7 +387,7 @@
 <p>例如：1.在游戏开发中，对于用户注册的个人信息，除了注册时插入数据外，绝大多数情况下都是读取，所以应该考虑使用顺序存储结构。而游戏中的玩家的武器或者装备列表，随着玩家游戏的过程中，可能随时增加或删除，此时再用顺序存储就太不合适了。2.当线性表中的元素个数变化较大或者根本不知道多大时，为了空间考虑还是使用单链表结构。如果事先知道线性表的大致长度，比如一年12个月，一周共7天，这种用顺序存储结构效率高很多。</p>
 <h2 id="静态链表"><a href="#静态链表" class="headerlink" title="静态链表"></a>静态链表</h2><p>当最初期的编程高级语言Basic、Fortran，由于没有指针，链表结构如何实现呢？和我在Java中定义链表差不多，我用一个包装类里面放数据和它指向的下个元素的地址。那这些没有指针的语言，它们可以使用数组来代替指针。首先是数组中的每个元素都是由两个数据域组成，data和cur；这个cur放的就是该元素的后继在数组中的下标。这种用数组描述的链表就是静态链表，还有叫游标实现法的。</p>
 <p>光这样放元素还是不够完善，我们需要对数组第一个和最后一个元素作为特殊元素处理，不存数据。通常把未被使用数组元素（剩余空闲的数组元素连在一起的）称为备用链表。而数组第一个元素，下标为0的数组元素的cur就存放备用链表的第一个结点的下标；而数组的最后一个元素的cur则存放第一个有数组的元素的下标，相当于头结点。如下图：第一个节点中cur为7，庚元素的cur为0，数组的末尾的cur为1，这三个表示的意思，我们都应该要知道。7是备用链表的起始位置，0是表示当前数组元素为不为空的元素最后一个，1是表示数组中不为空的第一个位置的下标。7、0、1都是下标。</p>
-<p><img src="F:/StudyPic/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E9%9D%99%E6%80%81%E9%93%BE%E8%A1%A8.png" alt="a">  </p>
+<p><img src="/2019/11/30/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%BA%BF%E6%80%A7%E8%A1%A8/StudyPic/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E9%9D%99%E6%80%81%E9%93%BE%E8%A1%A8.png" alt="a">  </p>
 <h3 id="静态链表的插入与删除"><a href="#静态链表的插入与删除" class="headerlink" title="静态链表的插入与删除"></a>静态链表的插入与删除</h3><p>静态链表要解决的是：如何用静态模拟动态链表结构的存储空间的分配，需要时申请，无用时释放。</p>
 <h4 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h4><p>那么如何模拟结点创建呢？我们将数组中未被使用过的及已经被删除的分量用游标链成一个备用的链表，每当进行插入时，就从备用链表中取得一个结点作为待插入的新结点。  </p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*备用链表非空，就返回要分配出去的结点的下标，否则返回0*/</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Malloc_SLL</span><span class="params">(StaticLinkList space)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//静态链表的第一个位置放的就是备用链表</span></span><br><span class="line">	<span class="comment">//第一个元素的下标，现在我们先拿到</span></span><br><span class="line">	<span class="comment">//备用链表的第一个元素</span></span><br><span class="line">	<span class="keyword">int</span> i = space[<span class="number">0</span>].cur;</span><br><span class="line">	<span class="comment">//如果能拿到备用链表的第一个结点，那就把它下一个</span></span><br><span class="line">	<span class="comment">//结点作为新一个第一结点。因为需要人能顶起下次被取出的任务</span></span><br><span class="line">	<span class="keyword">if</span> (space[<span class="number">0</span>].cur) &#123;</span><br><span class="line">		space[<span class="number">0</span>].cur = space[i].cur;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -438,8 +438,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/11/30/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%98%9F%E5%88%97/" rel="next" title="栈与队列">
-                <i class="fa fa-chevron-left"></i> 栈与队列
+              <a href="/2019/11/30/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%91/" rel="next" title="树">
+                <i class="fa fa-chevron-left"></i> 树
               </a>
             
           </div>
@@ -447,10 +447,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/11/30/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%91/" rel="prev" title="树">
-                树 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
