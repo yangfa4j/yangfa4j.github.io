@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="概念筑基 数据 数据对象 有相同数量和类型数据项的数据元素的集合 数据元素 组成数据的基本单位 数据项 数据结构 包含相互关系数据元素的集合  逻辑结构与物理结构逻辑针对数据元素之间的关系，物理针对计算机存储单元之间的关系 逻辑关系：元素之间无关联、一对一、一对多、多对多；分别对应集合结构、线性结构、树形结构、图形结构。 物理结构：数据存储单元之间顺序存储、链式存储。 算法求解特定问题的求解步骤的">
+<meta name="keywords" content="JAVA">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构&#x2F;线性表">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;30&#x2F;%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84&#x2F;%E7%BA%BF%E6%80%A7%E8%A1%A8&#x2F;index.html">
+<meta property="og:site_name" content="个人技术博客">
+<meta property="og:description" content="概念筑基 数据 数据对象 有相同数量和类型数据项的数据元素的集合 数据元素 组成数据的基本单位 数据项 数据结构 包含相互关系数据元素的集合  逻辑结构与物理结构逻辑针对数据元素之间的关系，物理针对计算机存储单元之间的关系 逻辑关系：元素之间无关联、一对一、一对多、多对多；分别对应集合结构、线性结构、树形结构、图形结构。 物理结构：数据存储单元之间顺序存储、链式存储。 算法求解特定问题的求解步骤的">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="f:&#x2F;StudyPic&#x2F;%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E9%9D%99%E6%80%81%E9%93%BE%E8%A1%A8.png">
+<meta property="og:updated_time" content="2019-11-30T07:27:43.406Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="f:&#x2F;StudyPic&#x2F;%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E9%9D%99%E6%80%81%E9%93%BE%E8%A1%A8.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/11/30/数据结构/线性表/"/>
+
+
+
+
+
+  <title>数据结构/线性表 | 个人技术博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">个人技术博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">记录了一些与JAVA相关的技术文章</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/30/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%BA%BF%E6%80%A7%E8%A1%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="杨发">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/tx.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="个人技术博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">数据结构/线性表</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-30T15:27:41+08:00">
+                2019-11-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="概念筑基"><a href="#概念筑基" class="headerlink" title="概念筑基"></a>概念筑基</h1><ul>
+<li>数据</li>
+<li>数据对象 有相同数量和类型数据项的数据元素的集合</li>
+<li>数据元素 组成数据的基本单位</li>
+<li>数据项</li>
+<li>数据结构 包含相互关系数据元素的集合</li>
+</ul>
+<h2 id="逻辑结构与物理结构"><a href="#逻辑结构与物理结构" class="headerlink" title="逻辑结构与物理结构"></a>逻辑结构与物理结构</h2><p>逻辑针对数据元素之间的关系，物理针对计算机存储单元之间的关系</p>
+<p>逻辑关系：元素之间无关联、一对一、一对多、多对多；分别对应集合结构、线性结构、树形结构、图形结构。</p>
+<p>物理结构：数据存储单元之间顺序存储、链式存储。</p>
+<h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><p>求解特定问题的求解步骤的描述，在计算机中表现为指令的有限序列，并且每条指令表示一个或多个操作</p>
+<p>算法的特性：</p>
+<ul>
+<li>输入</li>
+<li>输出</li>
+<li>有穷性</li>
+<li>确定性</li>
+<li>可行性</li>
+</ul>
+<p>算法设计的特性：</p>
+<ul>
+<li>正确性</li>
+<li>可读性</li>
+<li>健壮性 对输入不合法的情况做出合适的处理</li>
+<li>时间效率高，存储量低‘</li>
+</ul>
+<p>算法效率的度量：</p>
+<p>测定运行时间最可靠的方法就是计算对运行时间有消耗的基本操作的执行次数。运行时间与这个计数成正比。</p>
+<p>判断一个算法的效率，函数中常数和其他次要项常常可以忽略，更应该关注主项（最高阶项）的阶数。</p>
+<p>推导时间复杂度的方法：</p>
+<ol>
+<li>用常数1取代运行时间中的所有加法常数</li>
+<li>在修改后的运行次数函数中，只保留最高阶项</li>
+<li>如果最高阶项存在且不是1，则去除与整个项相乘的常数。</li>
+<li>得到的结果就是大O阶</li>
+</ol>
+<p>对于循环体来说，时间复杂度就是内循环的复杂度乘循环的次数。</p>
+<h1 id="线性表"><a href="#线性表" class="headerlink" title="线性表"></a>线性表</h1><p>有顺序结构和链式结构。单链表数据结构在插入和删除操作上，与线性表的顺序存储结构是没有太大优势的。但是如果我们希望从第i个位置，插入10个元素，对于顺序存储结构意味着，每一次插入都要移动n-i个元素，每次都是O(n)。而单链表，我们只需要第一次找到第i个位置的指针，此时为O(n)，接下来只是简单地通过赋值移动指针，事件复杂度为O(1)。显然，对于插入和删除数据越频繁的操作，单链表的效率优势就越明显。</p>
+<h2 id="单链表的整表创建"><a href="#单链表的整表创建" class="headerlink" title="单链表的整表创建"></a>单链表的整表创建</h2><p>1.头插法：让不断生成的结点始终位于第一的位置。新结点指向上一次的新结点，头指针指向新结点。</p>
+<p>2.尾插法：把每次新结点都插在终端结点后面。上一次的新结点指向新结点。</p>
+<h2 id="单链表的整表删除"><a href="#单链表的整表删除" class="headerlink" title="单链表的整表删除"></a>单链表的整表删除</h2><p>链表中每个元素只有数据域和指向下一个元素的指针；要删除的话，只能从第一个开始删除，然后不断往后循环。</p>
+<h2 id="单链表结构与顺序存储结构优缺点"><a href="#单链表结构与顺序存储结构优缺点" class="headerlink" title="单链表结构与顺序存储结构优缺点"></a>单链表结构与顺序存储结构优缺点</h2><p>时间性能上，单链表查找弱于顺序存储结构，插入和删除在多元素时优于顺序存储结构。空间性能上，顺序存储需要预先分配空间，这就直接导致会有浪费或者上溢。</p>
+<p>例如：1.在游戏开发中，对于用户注册的个人信息，除了注册时插入数据外，绝大多数情况下都是读取，所以应该考虑使用顺序存储结构。而游戏中的玩家的武器或者装备列表，随着玩家游戏的过程中，可能随时增加或删除，此时再用顺序存储就太不合适了。2.当线性表中的元素个数变化较大或者根本不知道多大时，为了空间考虑还是使用单链表结构。如果事先知道线性表的大致长度，比如一年12个月，一周共7天，这种用顺序存储结构效率高很多。</p>
+<h2 id="静态链表"><a href="#静态链表" class="headerlink" title="静态链表"></a>静态链表</h2><p>当最初期的编程高级语言Basic、Fortran，由于没有指针，链表结构如何实现呢？和我在Java中定义链表差不多，我用一个包装类里面放数据和它指向的下个元素的地址。那这些没有指针的语言，它们可以使用数组来代替指针。首先是数组中的每个元素都是由两个数据域组成，data和cur；这个cur放的就是该元素的后继在数组中的下标。这种用数组描述的链表就是静态链表，还有叫游标实现法的。</p>
+<p>光这样放元素还是不够完善，我们需要对数组第一个和最后一个元素作为特殊元素处理，不存数据。通常把未被使用数组元素（剩余空闲的数组元素连在一起的）称为备用链表。而数组第一个元素，下标为0的数组元素的cur就存放备用链表的第一个结点的下标；而数组的最后一个元素的cur则存放第一个有数组的元素的下标，相当于头结点。如下图：第一个节点中cur为7，庚元素的cur为0，数组的末尾的cur为1，这三个表示的意思，我们都应该要知道。7是备用链表的起始位置，0是表示当前数组元素为不为空的元素最后一个，1是表示数组中不为空的第一个位置的下标。7、0、1都是下标。</p>
+<p><img src="F:/StudyPic/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E9%9D%99%E6%80%81%E9%93%BE%E8%A1%A8.png" alt="a">  </p>
+<h3 id="静态链表的插入与删除"><a href="#静态链表的插入与删除" class="headerlink" title="静态链表的插入与删除"></a>静态链表的插入与删除</h3><p>静态链表要解决的是：如何用静态模拟动态链表结构的存储空间的分配，需要时申请，无用时释放。</p>
+<h4 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h4><p>那么如何模拟结点创建呢？我们将数组中未被使用过的及已经被删除的分量用游标链成一个备用的链表，每当进行插入时，就从备用链表中取得一个结点作为待插入的新结点。  </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*备用链表非空，就返回要分配出去的结点的下标，否则返回0*/</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Malloc_SLL</span><span class="params">(StaticLinkList space)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//静态链表的第一个位置放的就是备用链表</span></span><br><span class="line">	<span class="comment">//第一个元素的下标，现在我们先拿到</span></span><br><span class="line">	<span class="comment">//备用链表的第一个元素</span></span><br><span class="line">	<span class="keyword">int</span> i = space[<span class="number">0</span>].cur;</span><br><span class="line">	<span class="comment">//如果能拿到备用链表的第一个结点，那就把它下一个</span></span><br><span class="line">	<span class="comment">//结点作为新一个第一结点。因为需要人能顶起下次被取出的任务</span></span><br><span class="line">	<span class="keyword">if</span> (space[<span class="number">0</span>].cur) &#123;</span><br><span class="line">		space[<span class="number">0</span>].cur = space[i].cur;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>现在能从备用链表中拿到新的空间作为放新结点的位置了。那我们就来实现如何给静态链表插入一个元素。大致思路还是：先判断插入位置是否合理；再拿到插入位置的前一个结点，让它把它的后继结点的游标给我们新插入的结点来继承；然后新结点再作为前面结点的后继。很好理解，每个元素只有下一个元素的游标，我们要插入某个位置，那就要把这个位置的上游指向新结点且新结点指向上游的后继结点；那就先把上游的后继结点游标拿到，不然赋值就覆盖了。  </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Status <span class="title">ListInsert</span><span class="params">(StaticLinkList L,<span class="keyword">int</span> i,ElemTyp e)</span> </span>&#123;</span><br><span class="line">	<span class="comment">//j用来接收分配位置,k用来接收静态链表的最后一位元素的下标，</span></span><br><span class="line">	<span class="comment">//位于该k位置元素的游标指向第一个放元素的下标；l用来计数。</span></span><br><span class="line">	<span class="keyword">int</span> j,k,l;</span><br><span class="line">	k = MAX_SIZE - <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span> (i&lt;<span class="number">1</span> ||i&gt;ListLength(L) +<span class="number">1</span>)</span><br><span class="line">		<span class="keyword">return</span> ERROR;</span><br><span class="line">	j = Malloc_SSL(L); <span class="comment">/*获得空闲分量的下标*/</span></span><br><span class="line">	<span class="keyword">if</span> (j) &#123;</span><br><span class="line">		L[j].data = e; <span class="comment">/*插入位置数据域赋值*/</span></span><br><span class="line">		<span class="keyword">for</span> (l=<span class="number">1</span>; l&lt;i; l++) &#123; <span class="comment">/*l是相对于长度来说，l=1下面第一次循环就拿到开头元素的下标，那么他要循环到插入位置前一个元素，那对应的下标就是i-1，就循环i-1次*/</span></span><br><span class="line">			k = L[k].cur;</span><br><span class="line">		&#125;</span><br><span class="line">		L[j].cur = L[k].cur;</span><br><span class="line">		L[k].cur = j;</span><br><span class="line">		<span class="keyword">return</span> OK;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ERROR;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里面比较难理解的就是找到插入位置的前一个元素。一个循环，它的结束条件还是要看它循环体什么时候符合条件；符合条件了就要结束循环。  </p>
+<h4 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h4><p>要删除i位置的结点，很简单，就是把i上游的游标不再指向i了，指向i的下游；然后将i位置结点释放。<br>直接上代码：  </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Status <span class="title">ListDelete</span><span class="params">(StaticLinkList L,<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> j,k;</span><br><span class="line">	<span class="keyword">if</span> (i &lt;<span class="number">1</span> || i&gt;ListLength(L)) &#123;</span><br><span class="line">		<span class="keyword">return</span> ERROR;</span><br><span class="line">	&#125;</span><br><span class="line">	k = MAX_SIZE - <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (j = <span class="number">1</span>;j&lt;=i<span class="number">-1</span>;j++) &#123;</span><br><span class="line">		k = L[k].cur;</span><br><span class="line">	&#125;</span><br><span class="line">	j = L[k],cur;</span><br><span class="line">	L[k].cur = L[j].cur;</span><br><span class="line">	Free_SSL(L,j);</span><br><span class="line">	<span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其中的Free_SSL(L,j)是释放元素：  </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*将下标为k的空闲结点回收到备用链表*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Free_SSL</span><span class="params">(StaticLinkList space,<span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">	<span class="comment">/*用了头插法，把新产生的空闲结点放到备用链表第一个元素之前*/</span></span><br><span class="line">	space[k].cur = space[<span class="number">0</span>].cur;</span><br><span class="line">	space[<span class="number">0</span>].cur = k;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>为啥这里不用尾插法？理论上是可行，反正都是把空闲结点放进备用链表。不过尾插就得找到备用链表的最后一个结点，在静态链表中只能不断遍历才能拿到。这就过于麻烦了吧！静态链表有三个特殊位置，第一个是第一位指向了备用链表的位置，第二个是最后一位指向了有元素的第一个位置，第三个是备用链表的起始位置，它指向备用链表的后继。<br>头插法是，我们只要把插入的结点指向之前的第一个结点就行；在静态链表中，除了要这样做之外，还要把第一个结点指向的位置换成新结点。  </p>
+<h3 id="静态链表的优缺点"><a href="#静态链表的优缺点" class="headerlink" title="静态链表的优缺点"></a>静态链表的优缺点</h3><p>优点是继承了单链表的优点，缺点是没有解决表长难确定的问题，失去了顺序存储结构随机存取的特性。<br>静态链表理解它的思想就ok了。   </p>
+<h2 id="循环链表"><a href="#循环链表" class="headerlink" title="循环链表"></a>循环链表</h2><p>第一个特点，从任一结点都能完整遍历链表。我们把单链表的尾结点的指针从空指针改为指向头结点。这样就把整个单链表形成一个环，这种头尾相连的单链表就是单循环链表。简称循环链表（circular linked list）。<br>通常为了让空链表和非空链表处理一致，通常设置一个头结点。<br>循环链表和单链表的主要差异就在于循环的判断条件，原来是判断p-&gt;next是否为空，现在是p-&gt;next不等于头结点，则循环未结束。<br>循环链表就是为了解决从任一结点都能遍历链表，我们都知道链表的头和尾是两个特殊位置，如果我们想要不遍历整个链表就拿到头和尾，那该咋整呢？我们用一个尾指针来指向尾结点，不就解决了。  </p>
+<p>现在咋们有两个循环链表A和B，我们要让B接在A后面，如果只有头指针的情况下，怎么办？<br>那就得遍历A，指导尾结点结束，然后让尾结点不再指向A的头结点；让它指向B的头结点，然后遍历B，让B的尾结点不指向B的头结点，去指向A的头结点。这里用到了两个遍历时间复杂度O(n)。<br>如果现在有尾指针的情况下呢？<br>A的尾指针去指向B的尾指针的next-&gt;next也就是B的头，让B的next指向A的尾指针的next-&gt;next也就是A的头。这里的时间复杂度是多少？也就两步吧？这不就很简单了。这就是尾指针的爽点。<br>文字看起来不爽，来用代码表示一下：  </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">p = rearA-&gt;next; <span class="comment">/*拿到A的头结点*/</span></span><br><span class="line">rearA-&gt;next=rearB-&gt;next-&gt;next; <span class="comment">/*A的尾结点指向B的头结点*/</span></span><br><span class="line">rearB-&gt;next=p; <span class="comment">/*B的尾结点指向A的头结点*/</span></span><br><span class="line"><span class="built_in">free</span>(p);</span><br></pre></td></tr></table></figure>
+
+<h2 id="双向链表"><a href="#双向链表" class="headerlink" title="双向链表"></a>双向链表</h2><p>在一个循环链表的情况下，我们现在需要从尾结点开始，遍历整个链表，并且最后要回到头结点。遍历一次咋们还是在尾结点，还得多走一步才能回到头结点。<br>现在我们整一个双向链表，啥是双向链表？先不管，反正能反着访问就行，那我们就可以从尾结点逆序访问到头结点，还不用多走一步。<br>我们在单链表中，有了next指针，使得我们要查找下一结点的时间复杂度为O(1)。可是如果我们要找的是上一个结点，就得是O(n)了。因为我们每次都得从头开始查找。<br>为了克服单向性这一个访问缺点，我们的科学家设计出了双向链表。double linked list是在单链表的每一个节点中，再设置一个指向其前驱结点的指针域。那么现在双向链表的每一个结点都有两个指针域，一个指向直接后继，另一个指向直接前驱。  </p>
+<p>双向链表的插入与删除思路：<br>在a1（p结点）与a2之间插入一个s结点，现在能知道的就是p结点和e结点。进行指针操作必须要注意p-&gt;next只能最后被赋值，因为它表示的就是a1与a2之间的联系，如果他改变了就表示联系断了。  </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*先给插入的s结点的两个指针域赋值，完成s结点的指向*/</span></span><br><span class="line">s-&gt;next = p-&gt;next;   </span><br><span class="line">s-&gt;prior = p;</span><br><span class="line"><span class="comment">/*对a2结点的priod指针（指向前一结点的指针域）赋值*/</span></span><br><span class="line">p-&gt;next-&gt;prior = s;</span><br><span class="line"><span class="comment">/*对a1结点的next指针赋值*/</span></span><br><span class="line">p-&gt;next = s;</span><br></pre></td></tr></table></figure>
+
+<p>双向链表插入得修改三个结点，首先是插入结点的前后指针，再是插入位置的后一结点的前指针，最后是插入结点位置的前一结点的后指针。  </p>
+<p>删除：假如删除的就是p结点，它的前后结点的指针都与他无关了，之前和它有关的都得改变。  </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">p-&gt;next-&gt;prior=p-&gt;prior;</span><br><span class="line">p-&gt;prior-&gt;next=p-&gt;next;</span><br><span class="line"><span class="built_in">free</span>(p);</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/11/30/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%91/" rel="prev" title="数据结构/树">
+                数据结构/树 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/tx.jpg"
+                alt="杨发" />
+            
+              <p class="site-author-name" itemprop="name">杨发</p>
+              <p class="site-description motion-element" itemprop="description">学习与工作总结</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/yangfa4j" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概念筑基"><span class="nav-number">1.</span> <span class="nav-text">概念筑基</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#逻辑结构与物理结构"><span class="nav-number">1.1.</span> <span class="nav-text">逻辑结构与物理结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法"><span class="nav-number">1.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线性表"><span class="nav-number">2.</span> <span class="nav-text">线性表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#单链表的整表创建"><span class="nav-number">2.1.</span> <span class="nav-text">单链表的整表创建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单链表的整表删除"><span class="nav-number">2.2.</span> <span class="nav-text">单链表的整表删除</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单链表结构与顺序存储结构优缺点"><span class="nav-number">2.3.</span> <span class="nav-text">单链表结构与顺序存储结构优缺点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#静态链表"><span class="nav-number">2.4.</span> <span class="nav-text">静态链表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#静态链表的插入与删除"><span class="nav-number">2.4.1.</span> <span class="nav-text">静态链表的插入与删除</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#插入"><span class="nav-number">2.4.1.1.</span> <span class="nav-text">插入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除"><span class="nav-number">2.4.1.2.</span> <span class="nav-text">删除</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#静态链表的优缺点"><span class="nav-number">2.4.2.</span> <span class="nav-text">静态链表的优缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#循环链表"><span class="nav-number">2.5.</span> <span class="nav-text">循环链表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#双向链表"><span class="nav-number">2.6.</span> <span class="nav-text">双向链表</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">杨发</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
