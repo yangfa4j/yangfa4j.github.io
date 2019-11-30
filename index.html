@@ -251,7 +251,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/30/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%98%9F%E5%88%97/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/30/JAVA/Lambda%20/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="杨发">
@@ -270,7 +270,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/11/30/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%98%9F%E5%88%97/" itemprop="url">栈与队列</a></h1>
+                <a class="post-title-link" href="/2019/11/30/JAVA/Lambda%20/" itemprop="url">JAVA/Lambda </a></h1>
         
 
         <div class="post-meta">
@@ -282,7 +282,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-30T17:01:24+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-30T22:26:04+08:00">
                 2019-11-30
               </time>
             
@@ -292,28 +292,6 @@
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index">
-                    <span itemprop="name">数据结构</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -344,61 +322,311 @@
       
         
           
-            <h1 id="栈与队列"><a href="#栈与队列" class="headerlink" title="栈与队列"></a>栈与队列</h1><p>栈是限定仅在表尾进行插入和删除操作的线性表。<br>队列是只允许在一端进行插入操作，在另一端进行删除操作的线性表。  </p>
-<h1 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h1><p>栈的操作顺序类似idea等软件的撤销按钮，后来的先返回。把允许插入和删除的一端称为栈顶（top），另一端称为栈底（bottom）。栈是后进先出，LAST IN FIRST OUT，叫LIFO结构。  </p>
-<h2 id="栈的顺序存储结构"><a href="#栈的顺序存储结构" class="headerlink" title="栈的顺序存储结构"></a>栈的顺序存储结构</h2><p>可以把栈想成线性表顺序存储结构的简化，简称顺序栈。把栈顶看成游标卡尺的游标，栈底固定位置，栈顶来回移动。 也可以看成子弹上膛。  </p>
-<h2 id="两栈共享空间"><a href="#两栈共享空间" class="headerlink" title="两栈共享空间"></a>两栈共享空间</h2><p>栈的存库空间必须事先定好，所以一般都会设计出合适的大小数组来处理。但是对于两个同类型的栈，我们可以做到最大限度利用他们的存储空间。</p>
-<p>让第一个满了的栈的栈顶接上另一个未满栈的栈顶。使用这样的数据结构，通常是两个栈的空间需求有相反关系时，也就是一个栈增长时另一个栈在缩短的情况。如果不是两个具有相同数据类型的栈的，使用这个办法反而会使问题变复杂。</p>
-<h2 id="栈的的链式存储结构"><a href="#栈的的链式存储结构" class="headerlink" title="栈的的链式存储结构"></a>栈的的链式存储结构</h2><p>简称链栈。栈顶放在链表的头部，头指针和栈顶指针合二为一。对于链栈来说，基本不存在栈满的情况。  </p>
-<p><strong>入栈操作</strong>：  </p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Status <span class="title">Push</span><span class="params">(LinkStack *S,SElemType e)</span> </span>&#123;</span><br><span class="line"><span class="comment">//先创建一个需要插入的结点</span></span><br><span class="line">	LinkStackPtr s = (LinkStackPtr)<span class="built_in">malloc</span>(sizeOf(StackNode));</span><br><span class="line">	<span class="comment">//对s结点进行赋值和指向操作</span></span><br><span class="line">	s-&gt;data=e;</span><br><span class="line">    <span class="comment">//因为栈中的元素是从栈顶往栈底传递的，栈顶元素保存的下一结点的地址就是它下面一位元素</span></span><br><span class="line">	s-&gt;next=S-&gt;top;</span><br><span class="line">	<span class="comment">//对栈操作</span></span><br><span class="line">	S-&gt;top=s;</span><br><span class="line">	S-&gt;count++;</span><br><span class="line">	<span class="keyword">return</span> ok;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <h1 id="Lambda-表达式"><a href="#Lambda-表达式" class="headerlink" title="Lambda 表达式"></a>Lambda 表达式</h1><p><strong>复制小括号，写死右箭头，落地大括号。</strong></p>
+<h2 id="函数式接口"><a href="#函数式接口" class="headerlink" title="函数式接口"></a>函数式接口</h2><p>函数式接口就是只显式声明一个<strong>抽象方法</strong>的接口。为保证方法数量不多不少，java8提供了一个专用注解 @FunctionalInterface，这样，当接口中声明的<strong>抽象方法</strong>多于或少于一个时就会报错。如下图所示：</p>
+<p><img src="/2019/11/30/JAVA/Lambda%20/1.png" alt="img"></p>
+<p><img src="/2019/11/30/JAVA/Lambda%20/2.png" alt="img"></p>
+<h2 id="Java内置的四大核心函数式接口"><a href="#Java内置的四大核心函数式接口" class="headerlink" title="Java内置的四大核心函数式接口"></a>Java内置的四大核心函数式接口</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Consumer&lt;T&gt;  消费型接口 消费对象</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">accept</span><span class="params">(T t)</span></span>;</span><br><span class="line">Supplier&lt;T&gt;  供给型接口 生成对象</span><br><span class="line">    <span class="function">T <span class="title">get</span><span class="params">()</span></span>;</span><br><span class="line">Function&lt;R,T&gt;  函数型接口 指定特定功能</span><br><span class="line">    <span class="function">R <span class="title">apply</span><span class="params">(T t)</span></span>;</span><br><span class="line">Predicate&lt;T&gt;  断言型接口 进行条件判断</span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">test</span><span class="params">(T t)</span></span>;</span><br></pre></td></tr></table></figure>
 
-<p>如图所示：</p>
-<p><img src="/2019/11/30/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%98%9F%E5%88%97/StudyPic/%E9%93%BE%E6%A0%88%E5%85%A5%E6%A0%88.png" alt></p>
-<p><strong>出栈操作</strong>：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Status Pop(LinkStack *S,SElemType *e)</span><br><span class="line">&#123;</span><br><span class="line">	LinkStackPtr p;</span><br><span class="line">	if(StackEmpty(*S))</span><br><span class="line">		return ERROR;</span><br><span class="line">    //拿到栈顶的数据</span><br><span class="line">	*e=S-&gt;top-&gt;data;</span><br><span class="line">	p=S-&gt;top;</span><br><span class="line">	//将栈顶指针下移</span><br><span class="line">	S-&gt;top=S-&gt;top-&gt;next;</span><br><span class="line">	//释放删除的结点</span><br><span class="line">	free(p);</span><br><span class="line">	S-&gt;count--;</span><br><span class="line">	return OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Lambda表达式"><a href="#Lambda表达式" class="headerlink" title="Lambda表达式"></a>Lambda表达式</h2><p>Lambda表达式本质上是一个匿名方法。让我们来看下面这个例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;    </span><br><span class="line">	<span class="keyword">return</span> x + y; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="顺序栈和链栈的区别"><a href="#顺序栈和链栈的区别" class="headerlink" title="顺序栈和链栈的区别"></a>顺序栈和链栈的区别</h2><p>它们的时间复杂度是一样的，均为O(1)。对于空间性能，顺序栈需要事先确定一个固定长度，可能会存在内存空间浪费问题，但是它存取时定位很方便，而链栈则要求每个元素都有指针域，这同时增加了内存开销，但对于栈的长度无限制。<strong>如果栈使用过程中元素变化不可预料，有时很小，有时非常大，那么最好用链栈，反之，如果它的变化在可控范围内，建议使用顺序栈会更好一些。</strong></p>
-<h2 id="栈的作用"><a href="#栈的作用" class="headerlink" title="栈的作用"></a>栈的作用</h2><p>为何我们不用数组或者链表直接实现功能？因为栈的引入简化了程序设计的问题，使得思考范围缩小，更加聚焦于我们要解决的问题核心。反之，像数组，会需要分散精力去考虑数组的下标增减等细节问题，反而有掩盖了问题的本质。</p>
-<h2 id="栈的应用-递归"><a href="#栈的应用-递归" class="headerlink" title="栈的应用-递归"></a>栈的应用-递归</h2><p><strong>关键词</strong>：斐波那契数列(Fibonacci) 迭代 递归</p>
-<p>现在假设有一个数学函数：</p>
-<p><img src="/2019/11/30/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%98%9F%E5%88%97/StudyPic/%E6%96%90%E6%B3%A2%E9%82%A3%E5%88%87%E6%95%B0%E5%88%97.png" alt></p>
-<p>打印前40位的斐波那契数列数，使用迭代，代码如下：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	<span class="keyword">int</span> a[<span class="number">40</span>];</span><br><span class="line">	a[<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">	a[<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d"</span>,a[<span class="number">0</span>]);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d"</span>,a[<span class="number">1</span>]);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">2</span>;i&lt;<span class="number">40</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		a[i]=a[i<span class="number">-1</span>]+a[i<span class="number">-2</span>];</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d"</span>,a[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>转成Lambda表达式后是这个样子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">int</span> x, <span class="keyword">int</span> y) -&gt; x + y;</span><br></pre></td></tr></table></figure>
 
-<p>使用迭代代码简单，容易理解，但是过于冗长。</p>
-<p>使用递归：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Fbi</span><span class="params">(<span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(i&lt;<span class="number">2</span>)</span><br><span class="line">		<span class="keyword">return</span> i== <span class="number">0</span>?<span class="number">0</span>:<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">return</span> Fbi(i<span class="number">-1</span>)+Fbi(i<span class="number">-2</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">40</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d"</span>,Fbi(i));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>参数类型也可以省略，Java编译器会根据上下文推断出来：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(x, y) -&gt; x + y; <span class="comment">// 隐式的自动返回</span></span><br></pre></td></tr></table></figure>
 
-<p>递归是自己调用自己，我们可以把它看做是调用另一个函数；只不过，这个函数和自己长得一样。</p>
-<p><strong>每个递归定义必须至少有一个条件，满足时递归不在进行，即不再引用自身而是返回值退出。</strong>避免陷入永不结束的无穷递归中。</p>
-<p>递归和迭代的区别是：迭代使用的是循环结构，递归使用的是选择结构。递归能使程序的结构更清晰，更简洁，更容易让人理解，从而减少读懂代码的时间。但大量的递归调用会建立函数的副本，会耗费大量的时间和内存。迭代不需要反复调用函数和占用额外的内存。</p>
-<p>这种存储某些数据，并在后面又以存储的逆序恢复这些数据，以提供之后使用的需求，显然很符合这样的数据结构，因此，编译器使用栈实现递归。</p>
-<h2 id="后缀表达式"><a href="#后缀表达式" class="headerlink" title="后缀表达式"></a>后缀表达式</h2><p>这是波兰逻辑学家提出的，它将传统的四则运算表达式，改造成去掉括号，运算符在运算数字之后出现的形式。</p>
-<p>例如：<code>9+(3-1)*3+10/2</code>改造为<code>9 3 1 - 3 * + 10 2 / +</code></p>
-<p>如何看这个改造结果呢？理解起来就是：从左到右写数字，原则是运算符在计算的两个数字之后，但是要考虑括号和乘除优先写运算符。所以看成三块<code>9 |+| (3-1)*3 |+| 10/2</code>每一块又按这个原则来分。</p>
-<p><code>9 3 1 - 3 * + 10 2 / +</code>这个表达式计算机如何处理呢？计算机的做法是遇到数字就入栈，遇到运算符就将栈顶的两个数出栈进行运算(注意顺序)，将运算结果再入栈，这样直到最后的运算符。</p>
-<h1 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h1><p>queue是只允许在一端进行插入操作，而在另一端进行删除操作的线性表。是一种先进先出的线性表，简称FIFO。允许插入的叫队尾，允许删除的一端称为队头。</p>
-<p>键盘输入到屏幕输出用的就是队列。</p>
-<h2 id="循环队列"><a href="#循环队列" class="headerlink" title="循环队列"></a>循环队列</h2><p>当队列是顺序结构时，假设这个队列能放n个元素，那么它的长度必须是大于n的，并且要把队列的所有元素存储在数组的前n个单元，数组下标为0的一端就是队头。入队，就是在队尾加入一个元素，不用移动任何元素。出队，需要将除第一个元素的所有元素前移。所以入队的时间复杂度为o(1)，出队是o(n)。</p>
-<p>如果我们不去限制队列的元素必须放在数组的前n个单元，出队的下标就不需要一定在下标为0的位置。</p>
-<p>我们把队列这种头尾相接的顺序存储结构称为循环队列。</p>
-<h3 id="如何判断是否为空或者满呢？"><a href="#如何判断是否为空或者满呢？" class="headerlink" title="如何判断是否为空或者满呢？"></a>如何判断是否为空或者满呢？</h3><ol>
-<li>设置一个标识flag，当front==rear，且flag=0时为队列空；当front==rear，且flag=1时为队列满</li>
-<li>当队列空时，条件就是front==rear。当队列满，数组中会有一个空闲位置，不让rear==front。</li>
+<p>或者</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(x, y) -&gt; &#123; <span class="keyword">return</span> x + y; &#125; <span class="comment">// 显式指明返回值</span></span><br></pre></td></tr></table></figure>
+
+<p>可见Lambda表达式有三部分组成：参数列表，箭头（-&gt;），以及一个表达式或语句块。</p>
+<h2 id="Lambda表达式几种类型"><a href="#Lambda表达式几种类型" class="headerlink" title="Lambda表达式几种类型"></a>Lambda表达式几种类型</h2><h3 id="有参无返回值"><a href="#有参无返回值" class="headerlink" title="有参无返回值"></a>有参无返回值</h3><p><strong>接口</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">InterfaceWithParams</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">run</span><span class="params">(String s)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>实现</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">InterfaceWithParams params = <span class="keyword">new</span> InterfaceWithParams() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"通过"</span> + s + <span class="string">"实现run(String)"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">InterfaceWithParams params1 = (String s) -&gt; System.out.println(<span class="string">"通过"</span> + s + <span class="string">"实现run(String)"</span>);</span><br></pre></td></tr></table></figure>
+
+<p><strong>测试</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.params.run(<span class="string">"匿名类"</span>);</span><br><span class="line"><span class="keyword">this</span>.params1.run(<span class="string">"Lambda"</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="无参有返回值"><a href="#无参有返回值" class="headerlink" title="无参有返回值"></a>无参有返回值</h3><p><strong>接口</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">InterfaceUnVoidWithNoParam</span> </span>&#123;</span><br><span class="line">    <span class="function">String <span class="title">run</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>实现</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">InterfaceUnVoidWithNoParam interfaceUnVoidWithNoParam = <span class="keyword">new</span> InterfaceUnVoidWithNoParam() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Hello World!"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//省略掉了return</span></span><br><span class="line">InterfaceUnVoidWithNoParam interfaceUnVoidWithNoParam1 = () -&gt; <span class="string">"Hello Lambda!"</span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>测试</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String s = <span class="keyword">this</span>.interfaceUnVoidWithNoParam.run();</span><br><span class="line">System.out.println(<span class="string">"返回结果是："</span>+s);</span><br><span class="line">String s0 = <span class="keyword">this</span>.interfaceUnVoidWithNoParam1.run();</span><br><span class="line">System.out.println(<span class="string">"返回结果是："</span>+s0);</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="有参有返回值"><a href="#有参有返回值" class="headerlink" title="有参有返回值"></a>有参有返回值</h3><p><strong>接口</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">InterfaceUnVoidWithParams</span> </span>&#123;</span><br><span class="line">    <span class="function">String <span class="title">run</span><span class="params">(Integer integer)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>实现</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">InterfaceUnVoidWithParams interfaceWithParams = <span class="keyword">new</span> InterfaceUnVoidWithParams() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">run</span><span class="params">(Integer integer)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> String.valueOf(integer);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">InterfaceUnVoidWithParams interfaceWithParams1 = (Integer integer) -&gt; String.valueOf(integer);</span><br></pre></td></tr></table></figure>
+
+<p><strong>测试</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String s1 = <span class="keyword">this</span>.interfaceWithParams.run(<span class="number">1</span>);</span><br><span class="line">System.out.println(<span class="string">"您输入的是："</span>+s1);</span><br><span class="line">String s2 = <span class="keyword">this</span>.interfaceWithParams1.run(<span class="number">2</span>);</span><br><span class="line">System.out.println(<span class="string">"您输入的是："</span>+s2);</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="Stream"><a href="#Stream" class="headerlink" title="Stream"></a>Stream</h1><p>Java 8 中的 Stream 是对集合（Collection）对象功能的增强，它专注于对集合对象进行各种非常便利、高效的<strong>聚合操作（aggregate operation）</strong>，或者大批量数据操作 (bulk data operation)。Stream API 借助于同样新出现的Lambda表达式，极大的提高编程效率和程序可读性。同时它提供<strong>串行</strong>和<strong>并行</strong>两种模式进行汇聚操作，并发模式能够充分利用多核处理器的优势，使用fork/join并行方式来拆分任务和加速处理过程。</p>
+<p><img src="/2019/11/30/JAVA/Lambda%20/3.png" alt="img"></p>
+<h2 id="中间操作"><a href="#中间操作" class="headerlink" title="中间操作"></a>中间操作</h2><h3 id="筛选与切片"><a href="#筛选与切片" class="headerlink" title="筛选与切片"></a>筛选与切片</h3><h4 id="filter"><a href="#filter" class="headerlink" title="filter"></a><strong>filter</strong></h4><p>接收 Lambda，从流中过滤某些数据</p>
+<p>list.stream()       .filter( (student -&gt; student.getNo() &gt; 3) ) //中间操作过滤编号小于4       .forEach( (student -&gt; System.out.println(student.toString()))); </p>
+<p><strong>limit</strong></p>
+<p>截断流，使其元素不超过指定数量</p>
+<p>list.stream()      .limit(2) //截断流，只取两个      .forEach((student -&gt; System.out.println(student))); </p>
+<p><strong>skip</strong></p>
+<p>跳过元素，返回一个扔掉了前n个元素的流，与limit相反</p>
+<p>list.stream()      .skip(2) //跳过流的前两个      .forEach((System.out::println)); </p>
+<p><strong>distinct</strong> </p>
+<p>通过 equals() 和 hashCode() 去除 </p>
+<p>list.stream()      .distinct()      .forEach((System.out::println)); </p>
+<p><strong>映射</strong></p>
+<p><strong>map</strong> </p>
+<p>接收 Lambda，将元素转换成其他形式，接受一个函数，会作用到每一个元素上。</p>
+<p>list.stream()        .map((String::toUpperCase))  // 映射函数        .forEach((System.out::println)); </p>
+<p><strong>flatMap</strong></p>
+<p>接收一个函数作为参数，将流中的每个值都转换成另一个流，然后把所有流合并为一个流</p>
+<p><strong>排序</strong></p>
+<p><strong>sorted()</strong> </p>
+<p>list.stream()        .sorted()  // 自然排序        .forEach((System.out::println)); </p>
+<p><strong>sorted（Comparator com） 定制排序</strong></p>
+<p>list.stream()        .sorted(Comparator.comparingInt(String::length)) // 定制排序        .forEach((System.out::println)); </p>
+<p><strong>终止操作</strong></p>
+<p><strong>查找与匹配</strong></p>
+<p><strong>allMatch</strong></p>
+<p>是否全部匹配，返回Boolean值</p>
+<p>boolean g = list.stream()        .allMatch((student -&gt; student.getSex().equals(“G”))); System.out.println(g); </p>
+<p><strong>anyMatch</strong></p>
+<p>至少匹配一个，返回Boolean值</p>
+<p>boolean g = list.stream()        .anyMatch((student -&gt; student.getSex().equals(“G”))); System.out.println(g); </p>
+<p><strong>noneMatch</strong></p>
+<p>没有匹配元素，返回Boolean值</p>
+<p>boolean g = list.stream()        .noneMatch((student -&gt; student.getSex().equals(“G”))); System.out.println(g); </p>
+<p><strong>findFirst</strong></p>
+<p>返回第一个元素，封装为一个Optional，避免了空指针</p>
+<p>Optional<Student> first = list.stream()        .findFirst(); System.out.println(first.get()); </Student></p>
+<p><strong>findAny</strong></p>
+<p>返回当前流中任意的元素</p>
+<p>Optional<Student> any = list.stream()        .findAny(); System.out.println(any.get()); </Student></p>
+<p><strong>count</strong></p>
+<p>返回流中元素总个数</p>
+<p>long count = list.stream()        .count(); System.out.println(count); </p>
+<p><strong>max</strong></p>
+<p>返回流中最大值，找出最高学生的信息</p>
+<p>Optional<Student> max = list.stream()        .max((x, y) -&gt; Float.compare(x.getHeight(), y.getHeight())); System.out.println(max.get()); </Student></p>
+<p><strong>min</strong></p>
+<p>返回流中最小值，找出学生中最矮的学生身高</p>
+<p>Optional<Float> min = list.stream()        .map((Student::getHeight))        .min(Float::compare); System.out.println(min.get()); </Float></p>
+<p><strong>归约</strong></p>
+<p><strong>map - reduce</strong> <strong>模式</strong></p>
+<p>是将流中元素反复结合起来，得到一个值，有两种表现形式</p>
+<p><strong>1. 一个参数的Reduce</strong></p>
+<p>Optional<Float> reduce = list.stream()        .map((Student::getHeight)) // 获得每个学生的身高        .reduce(Float::sum); // 将身高总和加起来 System.out.println(reduce.get()); </Float></p>
+<p>假设Stream中的元素a[0]、a[1]、a[2]…a[n - 1]，表示将a[0]与a[1]进行二合运算，结果与a[2]做二合运算，一直到最后与a[n-1]做二合运算。</p>
+<p><strong>1.2 两个参数的Reduce</strong></p>
+<p>Float reduce = list.stream()        .map((Student::getHeight)) // 获得每个学生的身高        .reduce(0f, Float::sum); // 定义一个初始化的值为0 System.out.println(reduce); </p>
+<p>它多了一个初始化的值，因此计算的顺序是identity与a[0]进行二合运算，结果与a[1]再进行二合运算，最终与a[n-1]进行二合运算，identity一般设为不影响结果的值。</p>
+<p><strong>1.3 三个参数的Reduce</strong></p>
+<p><strong>收集</strong></p>
+<p><strong>collect</strong> </p>
+<p>是将流转换为其他形式。接收一个 Collector 接口的实现，用于给Stream中元素做汇总的方法。</p>
+<p><img src="/2019/11/30/JAVA/Lambda%20/C:%5CUsers%5Ca%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5C2168a1305a514c0894a1b48bfab7d909%5Cclipboard.png" alt="img"></p>
+<p>Set<String> collect = list.stream()        .map((Student::getName)) // 获取所有学生的身高        .collect(Collectors.toSet());  // 把学生的名字收集到 set 集合中去 System.out.println(collect);  // 去重结果 </String></p>
+<p>HashSet<String> collect = list.stream()        .map((Student::getName)) //什么集合，就是 集合名字::new        .collect(Collectors.toCollection(HashSet::new));  System.out.println(collect); </String></p>
+<p><strong>3、Optional容器类</strong></p>
+<p>Optional 类主要解决的问题是臭名昭著的空指针异常（NullPointerException）</p>
+<p><img src="/2019/11/30/JAVA/Lambda%20/C:%5CUsers%5Ca%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5C1fb54e85f1ee4283a9d6ea3049651302%5Cclipboard.png" alt="img"></p>
+<p>orElse(T other)     与    orElseGet(Supplier&lt;? extends T&gt; other) </p>
+<p>@Test public void test2() {    Student student = new Student(1, “A”, “M”, 184);    Student student1 = Optional.ofNullable(student).orElse(createStudent());    Student student2 = Optional.ofNullable(student).orElseGet(this::createStudent);     } public Student createStudent(){    Student student = new Student();    student.setName(“新增的学生”);    System.out.println(“新增的学生的方法执行了”);    return student; } </p>
+<p>这两个函数的区别：</p>
+<p>当user值不为null时，orElse函数依然会执行 createStudent() 方法</p>
+<p>而orElseGet函数并不会执行 createStudent() 方法，大家可自行测试。</p>
+<p><a href="https://www.cnblogs.com/rjzheng/p/9163246.html" target="_blank" rel="noopener">https://www.cnblogs.com/rjzheng/p/9163246.html</a></p>
+<p><strong>4、线程安全的时间API，java.time</strong></p>
+<p>Java 8 在 java.time 包下提供了很多新的 API。以下为两个比较重要的 API：</p>
+<p><strong>Local(本地)</strong> − 简化了日期时间的处理，没有时区的问题。</p>
+<p><strong>Zoned(时区)</strong> − 通过制定的时区处理日期时间。</p>
+<p>新的java.time包涵盖了所有处理日期，时间，日期/时间，时区，时刻（instants），过程（during）与时钟（clock）的操作。</p>
+<p><strong>1、DateTimeFormatter</strong> </p>
+<p><img src="/2019/11/30/JAVA/Lambda%20/C:%5CUsers%5Ca%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5C00dccebe132c4efab849901071e264f6%5Cclipboard.png" alt="img"></p>
+<p>DateTimeFormatter[] formatters = new DateTimeFormatter[]{        // 直接使用常量创建DateTimeFormatter格式器        DateTimeFormatter.ISO_LOCAL_DATE,        DateTimeFormatter.ISO_LOCAL_TIME,        DateTimeFormatter.ISO_LOCAL_DATE_TIME,        // 使用本地化的不同风格来创建DateTimeFormatter格式器        DateTimeFormatter.ofLocalizedDateTime(FormatStyle.FULL, FormatStyle.MEDIUM),        DateTimeFormatter.ofLocalizedTime(FormatStyle.LONG),        // 根据模式字符串来创建DateTimeFormatter格式器        DateTimeFormatter.ofPattern(“Gyyyy%%MMM%%dd HH:mm:ss”) }; LocalDateTime date = LocalDateTime.now(); //获取当前本地时间 // 依次使用不同的格式器对LocalDateTime进行格式化 for(int i = 0 ; i &lt; formatters.length ; i++) {    // 下面两行代码的作用相同    System.out.println(date.format(formatters[i]));    System.out.println(formatters[i].format(date)); // 一般用这个 } </p>
+<p><strong>2、LocalDate、LocalTime、LocalDateTime</strong></p>
+<p><img src="/2019/11/30/JAVA/Lambda%20/C:%5CUsers%5Ca%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5C7ec41ea599bb459b9c648b31e343ac91%5Cclipboard.png" alt="img"></p>
+<p>LocalDateTime localDateTime = LocalDateTime.now(); // 获取当前时间 // 对时间的增减 LocalDateTime localDateTime1 = localDateTime.minusYears(1); // 加一年 LocalDateTime localDateTime2 = localDateTime.plusYears(1); // 减一年 // 获取时间的部分信息，get操作 DayOfWeek dayOfWeek = localDateTime.getDayOfWeek(); // 获取星期几 </p>
+<p><strong>3、Instant 时间戳</strong></p>
+<p>Instant instant = Instant.now(); // 获取以 UTC 时区的时间 System.out.println(instant); </p>
+<p><strong>4、Duration、Period</strong></p>
+<p>两个类表示时间量或两个日期之间的差</p>
+<p>两者之间的差异为：Period基于日期值，而Duration基于时间值。</p>
+<p><strong>Duration 类  计算两个</strong> <strong>时间</strong> <strong>之间的间隔</strong></p>
+<p>Duration类表示秒或纳秒时间间隔，适合处理较短的时间，需要更高的精确性。我们能使用between()方法比较两个瞬间的差：</p>
+<p>LocalTime startTime = LocalTime.now(); Thread.sleep(20000); LocalTime endTime = LocalTime.now(); Duration between = Duration.between(startTime, endTime); System.out.println(between.getSeconds()); // 使用get to等方法获取所需数据 </p>
+<p><strong>Period 类  计算两个</strong> <strong>日期</strong> <strong>之间的间隔</strong></p>
+<p>Period 类表示一段时间的年、月、日，使用between()方法获取两个日期之间的差作为Period 对象返回：</p>
+<p>LocalDate startDate = LocalDate.of(2015, 2, 20); LocalDate endDate = LocalDate.of(2017, 1, 15);  Period period = Period.between(startDate, endDate); //用 Period 类方法获取日期单元 System.out.println(period.getYears()); // 获取两个日期之间差几年 System.out.println(period.getMonths());// 获取两个日期之间差几月 System.out.println(period.getDays()); // 获取两个日期之间差几天 </p>
+<p><strong>5、TemporalAdjuster  时间矫正器</strong></p>
+<p>使用 TemporalAdjuster 可以对当前时间进行处理，如下个周一，下个周日等等需求。 方法通常以 With 开头。</p>
+<p><img src="/2019/11/30/JAVA/Lambda%20/C:%5CUsers%5Ca%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5Cac51f6d754354063b5a6e0c8a54578c9%5Cclipboard.png" alt="img"></p>
+<p>LocalDate today = LocalDate.now(); System.out.println(“今天: “ + today); // 使用DateAdjuster将今天的日期调整到下周一 LocalDate nextMonday = today.with(TemporalAdjusters.next(DayOfWeek.MONDAY)); System.out.println(“下周一: “ + nextMonday); // 使用 TemporalAdjuster 将今天的日期调整为月的最后一天 LocalDate lastDayOfMonth = today.with(TemporalAdjusters.lastDayOfMonth()); System.out.println(“这个月最后一天: “ + lastDayOfMonth); // 创建一个在3个月2天后日期的 TemporalAdjuster TemporalAdjuster adjuster = TemporalAdjusters.ofDateAdjuster((LocalDate date) -&gt; date.plusMonths(3).plusDays(2)); LocalDate dayAfter3Mon2Day = today.with(adjuster); System.out.println(“三月零两天后的日期: “ + dayAfter3Mon2Day); </p>
+<p><strong>6、ZoneDate、ZoneTime、ZoneDateTime</strong></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/30/JAVA/Swagger/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="杨发">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/tx.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="个人技术博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/30/JAVA/Swagger/" itemprop="url">JAVA/Swagger</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-30T22:18:32+08:00">
+                2019-11-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Swagger"><a href="#Swagger" class="headerlink" title="Swagger"></a>Swagger</h1><p>我们提供Restful接口的时候，API文档是尤为的重要，它承载着对接口的定义，描述等。它还是和API消费方沟通的重要工具。在实际情况中由于接口和文档存放的位置不同，我们很难及时的去维护文档。个人在实际的工作中就遇到过很多接口更新了很久，但是文档却还是老版本的情况，其实在这个时候这份文档就已经失去了它存在的意义。而Swagger是目前我见过的最好的API文档生成工具，使用起来也很方便，还可以直接调试我们的API。我们今天就来看下Swagger2与SpringBoot的结合。</p>
+<h2 id="导入依赖"><a href="#导入依赖" class="headerlink" title="导入依赖"></a>导入依赖</h2><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&lt;!--</span> <span class="string">swagger2</span> <span class="string">--&gt;</span></span><br><span class="line"><span class="string">&lt;dependency&gt;</span></span><br><span class="line">    <span class="string">&lt;groupId&gt;io.springfox&lt;/groupId&gt;</span></span><br><span class="line">    <span class="string">&lt;artifactId&gt;springfox-swagger2&lt;/artifactId&gt;</span></span><br><span class="line">    <span class="string">&lt;version&gt;2.9.2&lt;/version&gt;</span></span><br><span class="line"><span class="string">&lt;/dependency&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="string">&lt;!--</span> <span class="string">swagger-ui</span> <span class="string">--&gt;</span></span><br><span class="line"><span class="string">&lt;dependency&gt;</span></span><br><span class="line">    <span class="string">&lt;groupId&gt;io.springfox&lt;/groupId&gt;</span></span><br><span class="line">    <span class="string">&lt;artifactId&gt;springfox-swagger-ui&lt;/artifactId&gt;</span></span><br><span class="line">    <span class="string">&lt;version&gt;2.9.2&lt;/version&gt;</span></span><br><span class="line"><span class="string">&lt;/dependency&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Swagger-的配置类"><a href="#Swagger-的配置类" class="headerlink" title="Swagger 的配置类"></a>Swagger 的配置类</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableSwagger</span>2</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SwaggerConfig</span> <span class="keyword">extends</span> <span class="title">WebMvcConfigurationSupport</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Docket <span class="title">productApi</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Docket(DocumentationType.SWAGGER_2).select()</span><br><span class="line">                <span class="comment">// 扫描的包路径</span></span><br><span class="line">                .apis(RequestHandlerSelectors.basePackage(<span class="string">"com.yf.controller"</span>))</span><br><span class="line">                <span class="comment">// 定义要生成文档的Api的url路径规则</span></span><br><span class="line">                .paths(PathSelectors.any())</span><br><span class="line">                .build()</span><br><span class="line">                <span class="comment">// 设置swagger-ui.html页面上的一些元素信息。</span></span><br><span class="line">                .apiInfo(metaData());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> ApiInfo <span class="title">metaData</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ApiInfoBuilder()</span><br><span class="line">                <span class="comment">// 标题</span></span><br><span class="line">                .title(<span class="string">"SpringBoot集成Swagger2测试"</span>)</span><br><span class="line">                <span class="comment">// 描述</span></span><br><span class="line">                .description(<span class="string">"这是一篇博客演示"</span>)</span><br><span class="line">                <span class="comment">// 文档版本</span></span><br><span class="line">                .version(<span class="string">"1.0.0"</span>)</span><br><span class="line">                .license(<span class="string">"Apache License Version 2.0"</span>)</span><br><span class="line">                .licenseUrl(<span class="string">"https://www.apache.org/licenses/LICENSE-2.0"</span>)</span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">addResourceHandlers</span><span class="params">(ResourceHandlerRegistry registry)</span> </span>&#123;</span><br><span class="line">        registry.addResourceHandler(<span class="string">"swagger-ui.html"</span>)</span><br><span class="line">                .addResourceLocations(<span class="string">"classpath:/META-INF/resources/"</span>);</span><br><span class="line"></span><br><span class="line">        registry.addResourceHandler(<span class="string">"/webjars/**"</span>)</span><br><span class="line">                .addResourceLocations(<span class="string">"classpath:/META-INF/resources/webjars/"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2019/11/30/JAVA/Swagger/clipboard.png" alt="img"></p>
+<h2 id="Swagger-常用注解"><a href="#Swagger-常用注解" class="headerlink" title="Swagger 常用注解"></a>Swagger 常用注解</h2><p><img src="/2019/11/30/JAVA/Swagger/clipboard1.png" alt="img"></p>
+<h3 id="Api"><a href="#Api" class="headerlink" title="@Api()"></a>@Api()</h3><ol>
+<li>用于类：表示标识这个类是swagger的资源</li>
+<li>tags——表示说明</li>
+<li>value——也是说明，可以使用tags替代</li>
+<li>但是tags 如果有多个值，会生成多个list</li>
 </ol>
-<h3 id="循环队列入队操作-顺序结构"><a href="#循环队列入队操作-顺序结构" class="headerlink" title="循环队列入队操作(顺序结构)"></a>循环队列入队操作(顺序结构)</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Status <span class="title">EnQueue</span><span class="params">(SqQueue *Q,QElemType e)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//判断队列是否满</span></span><br><span class="line">	<span class="keyword">if</span>((Q-&gt;rear+<span class="number">1</span>)%MAXSIZE == Q-&gt;front)</span><br><span class="line">		<span class="keyword">return</span> ERROR;</span><br><span class="line">	<span class="comment">//将元素e赋值给队尾，数组</span></span><br><span class="line">	Q-&gt;data[Q-&gt;rear]=e;</span><br><span class="line">	<span class="comment">//rear指针后移	</span></span><br><span class="line">	Q-&gt;rear=(Q-&gt;rear+<span class="number">1</span>)%MAXSIZE;</span><br><span class="line">	<span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ApiOperation</span>(value = <span class="string">"获取用户列表"</span>,notes = <span class="string">"获取所有用户的信息"</span>)</span><br><span class="line"><span class="meta">@GetMapping</span>(<span class="string">"/users"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> Object <span class="title">index</span><span class="params">()</span> </span>&#123;</span><br><span class="line">   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="循环队列出队操作-顺序结构"><a href="#循环队列出队操作-顺序结构" class="headerlink" title="循环队列出队操作(顺序结构)"></a>循环队列出队操作(顺序结构)</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Status <span class="title">DeQueue</span><span class="params">(SqQueue *Q,QElemType *e)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//队列为空的判断</span></span><br><span class="line">	<span class="keyword">if</span>(Q-&gt;front == Q-&gt;rear)</span><br><span class="line">		<span class="keyword">return</span> ERROR;</span><br><span class="line">	<span class="comment">//取出要删除的数据</span></span><br><span class="line">	*e=Q-&gt;data[Q-&gt;front];</span><br><span class="line">	<span class="comment">//队头后移</span></span><br><span class="line">	Q-&gt;front=(Q-&gt;front+<span class="number">1</span>)%MAXSIZE;</span><br><span class="line">	<span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="入队-链式结构"><a href="#入队-链式结构" class="headerlink" title="入队(链式结构)"></a>入队(链式结构)</h3><p>将队头指针指向链对列的头结点，而队尾指针指向终端结点</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Status EnQueue(LinkQueue *Q,QElemType e)</span><br><span class="line">&#123;</span><br><span class="line">	QueuePtr s = (QueuePtr)malloc(sizeof(QNode));</span><br><span class="line">	if(!s)</span><br><span class="line">		exit(OVERFLOW);</span><br><span class="line">	//对入队结点赋值</span><br><span class="line">	s-&gt;data=e;</span><br><span class="line">	s-&gt;next=NULL;</span><br><span class="line">	//将结点加入队列</span><br><span class="line">	Q-&gt;rear-&gt;next=s;</span><br><span class="line">	//移动队尾指针</span><br><span class="line">	Q-&gt;rear=s;</span><br><span class="line">	return OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="出队-链式结构"><a href="#出队-链式结构" class="headerlink" title="出队(链式结构)"></a>出队(链式结构)</h3><p>出队操作时，就是头结点的后继结点出队，将头结点的后继改为它后面的结点。如果链表除了头结点外只有一个元素，则需要将rear指向头结点。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Status <span class="title">DeQueue</span><span class="params">(LinkQueue *Q,QElemType *e)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//新结点来保存信息</span></span><br><span class="line">	QueuePtr p;</span><br><span class="line">	<span class="keyword">if</span>(Q-&gt;front == Q-&gt;rear)</span><br><span class="line">		<span class="keyword">return</span> ERROR;</span><br><span class="line">	<span class="comment">//头结点的后继(被删除的结点)信息保存在p结点中</span></span><br><span class="line">	p=Q-&gt;front-&gt;next;</span><br><span class="line">	*e=p-&gt;data;</span><br><span class="line">	Q-&gt;front-&gt;next=p-&gt;next;</span><br><span class="line">	<span class="comment">//如果删除的结点是唯一结点</span></span><br><span class="line">	<span class="keyword">if</span>(Q-&gt;rear==p)</span><br><span class="line">		q-&gt;rear=Q-&gt;front;</span><br><span class="line">	<span class="built_in">free</span>(p);</span><br><span class="line">	<span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
+<p><img src="/2019/11/30/JAVA/Swagger/clipboard4.png" alt="img"></p>
+<h3 id="ApiOperation"><a href="#ApiOperation" class="headerlink" title="@ApiOperation()"></a>@ApiOperation()</h3><ol>
+<li>用于方法：表示一个 http 请求的操作</li>
+<li>value——用于方法描述</li>
+<li>notes——用于提示内容</li>
+<li>tags可以重新分组（视情况而用）</li>
+</ol>
+<p>@ApiOperation(value = “获取用户列表”,notes = “获取所有用户的信息”) @GetMapping(“/users”) public Object index() {    } </p>
+<p><img src="/2019/11/30/JAVA/Swagger/clipboard2.png" alt="img"></p>
+<h3 id="ApiParam"><a href="#ApiParam" class="headerlink" title="@ApiParam()"></a>@ApiParam()</h3><ol>
+<li>用于参数：对方法参数的补充说明</li>
+<li>name——参数名</li>
+<li>value——参数的描述</li>
+<li>required——是否必填</li>
+</ol>
+<p>@ApiOperation(value = “根据用户ID查询用户”,notes = “查询单个用户的信息”) @ApiParam(name =”id”,value = “用户id”,required = true) @GetMapping(“/users/{id}”) public Object getUserById(@PathVariable(“id”) String id) {    } </p>
+<p><img src="/2019/11/30/JAVA/Swagger/clipboard3.png" alt="img"></p>
 
           
         
@@ -641,6 +869,202 @@
 <p>举个例子，假设磁盘中的一个盘块容纳16bytes，而一个关键字2bytes，一个关键字具体信息指针2bytes。一棵9阶B-tree(<strong>一个结点最多8个关键字</strong>)的内部结点需要2个盘快。而B+树内部结点只需要1个盘快。当需要把内部结点读入内存中的时候，B 树就比B+树多一次盘块查找时间(在磁盘中就是盘片旋转的时间)。</p>
 <h3 id="2、B-树的的查询效率更加稳定"><a href="#2、B-树的的查询效率更加稳定" class="headerlink" title="2、B+树的的查询效率更加稳定"></a>2、B+树的<strong>的查询效率更加稳定</strong></h3><p>由于非叶子结点并不是最终指向文件内容的结点，而只是叶子结点中关键字的索引。所以任何关键字的查找必须走一条从根结点到叶子结点的路。所有关键字查询的路径长度相同，导致每一个数据的查询效率相当。</p>
 <p>而B树的查找并不稳定（最好的情况是查询根节点，最坏查询叶子节点）。而B树每一次查找都是稳定的。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/30/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%98%9F%E5%88%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="杨发">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/tx.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="个人技术博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/30/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%98%9F%E5%88%97/" itemprop="url">栈与队列</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-30T17:01:24+08:00">
+                2019-11-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="栈与队列"><a href="#栈与队列" class="headerlink" title="栈与队列"></a>栈与队列</h1><p>栈是限定仅在表尾进行插入和删除操作的线性表。<br>队列是只允许在一端进行插入操作，在另一端进行删除操作的线性表。  </p>
+<h1 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h1><p>栈的操作顺序类似idea等软件的撤销按钮，后来的先返回。把允许插入和删除的一端称为栈顶（top），另一端称为栈底（bottom）。栈是后进先出，LAST IN FIRST OUT，叫LIFO结构。  </p>
+<h2 id="栈的顺序存储结构"><a href="#栈的顺序存储结构" class="headerlink" title="栈的顺序存储结构"></a>栈的顺序存储结构</h2><p>可以把栈想成线性表顺序存储结构的简化，简称顺序栈。把栈顶看成游标卡尺的游标，栈底固定位置，栈顶来回移动。 也可以看成子弹上膛。  </p>
+<h2 id="两栈共享空间"><a href="#两栈共享空间" class="headerlink" title="两栈共享空间"></a>两栈共享空间</h2><p>栈的存库空间必须事先定好，所以一般都会设计出合适的大小数组来处理。但是对于两个同类型的栈，我们可以做到最大限度利用他们的存储空间。</p>
+<p>让第一个满了的栈的栈顶接上另一个未满栈的栈顶。使用这样的数据结构，通常是两个栈的空间需求有相反关系时，也就是一个栈增长时另一个栈在缩短的情况。如果不是两个具有相同数据类型的栈的，使用这个办法反而会使问题变复杂。</p>
+<h2 id="栈的的链式存储结构"><a href="#栈的的链式存储结构" class="headerlink" title="栈的的链式存储结构"></a>栈的的链式存储结构</h2><p>简称链栈。栈顶放在链表的头部，头指针和栈顶指针合二为一。对于链栈来说，基本不存在栈满的情况。  </p>
+<p><strong>入栈操作</strong>：  </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Status <span class="title">Push</span><span class="params">(LinkStack *S,SElemType e)</span> </span>&#123;</span><br><span class="line"><span class="comment">//先创建一个需要插入的结点</span></span><br><span class="line">	LinkStackPtr s = (LinkStackPtr)<span class="built_in">malloc</span>(sizeOf(StackNode));</span><br><span class="line">	<span class="comment">//对s结点进行赋值和指向操作</span></span><br><span class="line">	s-&gt;data=e;</span><br><span class="line">    <span class="comment">//因为栈中的元素是从栈顶往栈底传递的，栈顶元素保存的下一结点的地址就是它下面一位元素</span></span><br><span class="line">	s-&gt;next=S-&gt;top;</span><br><span class="line">	<span class="comment">//对栈操作</span></span><br><span class="line">	S-&gt;top=s;</span><br><span class="line">	S-&gt;count++;</span><br><span class="line">	<span class="keyword">return</span> ok;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如图所示：</p>
+<p><img src="/2019/11/30/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%98%9F%E5%88%97/StudyPic/%E9%93%BE%E6%A0%88%E5%85%A5%E6%A0%88.png" alt></p>
+<p><strong>出栈操作</strong>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Status Pop(LinkStack *S,SElemType *e)</span><br><span class="line">&#123;</span><br><span class="line">	LinkStackPtr p;</span><br><span class="line">	if(StackEmpty(*S))</span><br><span class="line">		return ERROR;</span><br><span class="line">    //拿到栈顶的数据</span><br><span class="line">	*e=S-&gt;top-&gt;data;</span><br><span class="line">	p=S-&gt;top;</span><br><span class="line">	//将栈顶指针下移</span><br><span class="line">	S-&gt;top=S-&gt;top-&gt;next;</span><br><span class="line">	//释放删除的结点</span><br><span class="line">	free(p);</span><br><span class="line">	S-&gt;count--;</span><br><span class="line">	return OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="顺序栈和链栈的区别"><a href="#顺序栈和链栈的区别" class="headerlink" title="顺序栈和链栈的区别"></a>顺序栈和链栈的区别</h2><p>它们的时间复杂度是一样的，均为O(1)。对于空间性能，顺序栈需要事先确定一个固定长度，可能会存在内存空间浪费问题，但是它存取时定位很方便，而链栈则要求每个元素都有指针域，这同时增加了内存开销，但对于栈的长度无限制。<strong>如果栈使用过程中元素变化不可预料，有时很小，有时非常大，那么最好用链栈，反之，如果它的变化在可控范围内，建议使用顺序栈会更好一些。</strong></p>
+<h2 id="栈的作用"><a href="#栈的作用" class="headerlink" title="栈的作用"></a>栈的作用</h2><p>为何我们不用数组或者链表直接实现功能？因为栈的引入简化了程序设计的问题，使得思考范围缩小，更加聚焦于我们要解决的问题核心。反之，像数组，会需要分散精力去考虑数组的下标增减等细节问题，反而有掩盖了问题的本质。</p>
+<h2 id="栈的应用-递归"><a href="#栈的应用-递归" class="headerlink" title="栈的应用-递归"></a>栈的应用-递归</h2><p><strong>关键词</strong>：斐波那契数列(Fibonacci) 迭代 递归</p>
+<p>现在假设有一个数学函数：</p>
+<p><img src="/2019/11/30/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%98%9F%E5%88%97/StudyPic/%E6%96%90%E6%B3%A2%E9%82%A3%E5%88%87%E6%95%B0%E5%88%97.png" alt></p>
+<p>打印前40位的斐波那契数列数，使用迭代，代码如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	<span class="keyword">int</span> a[<span class="number">40</span>];</span><br><span class="line">	a[<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">	a[<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d"</span>,a[<span class="number">0</span>]);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d"</span>,a[<span class="number">1</span>]);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">2</span>;i&lt;<span class="number">40</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		a[i]=a[i<span class="number">-1</span>]+a[i<span class="number">-2</span>];</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d"</span>,a[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用迭代代码简单，容易理解，但是过于冗长。</p>
+<p>使用递归：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Fbi</span><span class="params">(<span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(i&lt;<span class="number">2</span>)</span><br><span class="line">		<span class="keyword">return</span> i== <span class="number">0</span>?<span class="number">0</span>:<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">return</span> Fbi(i<span class="number">-1</span>)+Fbi(i<span class="number">-2</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">40</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d"</span>,Fbi(i));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>递归是自己调用自己，我们可以把它看做是调用另一个函数；只不过，这个函数和自己长得一样。</p>
+<p><strong>每个递归定义必须至少有一个条件，满足时递归不在进行，即不再引用自身而是返回值退出。</strong>避免陷入永不结束的无穷递归中。</p>
+<p>递归和迭代的区别是：迭代使用的是循环结构，递归使用的是选择结构。递归能使程序的结构更清晰，更简洁，更容易让人理解，从而减少读懂代码的时间。但大量的递归调用会建立函数的副本，会耗费大量的时间和内存。迭代不需要反复调用函数和占用额外的内存。</p>
+<p>这种存储某些数据，并在后面又以存储的逆序恢复这些数据，以提供之后使用的需求，显然很符合这样的数据结构，因此，编译器使用栈实现递归。</p>
+<h2 id="后缀表达式"><a href="#后缀表达式" class="headerlink" title="后缀表达式"></a>后缀表达式</h2><p>这是波兰逻辑学家提出的，它将传统的四则运算表达式，改造成去掉括号，运算符在运算数字之后出现的形式。</p>
+<p>例如：<code>9+(3-1)*3+10/2</code>改造为<code>9 3 1 - 3 * + 10 2 / +</code></p>
+<p>如何看这个改造结果呢？理解起来就是：从左到右写数字，原则是运算符在计算的两个数字之后，但是要考虑括号和乘除优先写运算符。所以看成三块<code>9 |+| (3-1)*3 |+| 10/2</code>每一块又按这个原则来分。</p>
+<p><code>9 3 1 - 3 * + 10 2 / +</code>这个表达式计算机如何处理呢？计算机的做法是遇到数字就入栈，遇到运算符就将栈顶的两个数出栈进行运算(注意顺序)，将运算结果再入栈，这样直到最后的运算符。</p>
+<h1 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h1><p>queue是只允许在一端进行插入操作，而在另一端进行删除操作的线性表。是一种先进先出的线性表，简称FIFO。允许插入的叫队尾，允许删除的一端称为队头。</p>
+<p>键盘输入到屏幕输出用的就是队列。</p>
+<h2 id="循环队列"><a href="#循环队列" class="headerlink" title="循环队列"></a>循环队列</h2><p>当队列是顺序结构时，假设这个队列能放n个元素，那么它的长度必须是大于n的，并且要把队列的所有元素存储在数组的前n个单元，数组下标为0的一端就是队头。入队，就是在队尾加入一个元素，不用移动任何元素。出队，需要将除第一个元素的所有元素前移。所以入队的时间复杂度为o(1)，出队是o(n)。</p>
+<p>如果我们不去限制队列的元素必须放在数组的前n个单元，出队的下标就不需要一定在下标为0的位置。</p>
+<p>我们把队列这种头尾相接的顺序存储结构称为循环队列。</p>
+<h3 id="如何判断是否为空或者满呢？"><a href="#如何判断是否为空或者满呢？" class="headerlink" title="如何判断是否为空或者满呢？"></a>如何判断是否为空或者满呢？</h3><ol>
+<li>设置一个标识flag，当front==rear，且flag=0时为队列空；当front==rear，且flag=1时为队列满</li>
+<li>当队列空时，条件就是front==rear。当队列满，数组中会有一个空闲位置，不让rear==front。</li>
+</ol>
+<h3 id="循环队列入队操作-顺序结构"><a href="#循环队列入队操作-顺序结构" class="headerlink" title="循环队列入队操作(顺序结构)"></a>循环队列入队操作(顺序结构)</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Status <span class="title">EnQueue</span><span class="params">(SqQueue *Q,QElemType e)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//判断队列是否满</span></span><br><span class="line">	<span class="keyword">if</span>((Q-&gt;rear+<span class="number">1</span>)%MAXSIZE == Q-&gt;front)</span><br><span class="line">		<span class="keyword">return</span> ERROR;</span><br><span class="line">	<span class="comment">//将元素e赋值给队尾，数组</span></span><br><span class="line">	Q-&gt;data[Q-&gt;rear]=e;</span><br><span class="line">	<span class="comment">//rear指针后移	</span></span><br><span class="line">	Q-&gt;rear=(Q-&gt;rear+<span class="number">1</span>)%MAXSIZE;</span><br><span class="line">	<span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="循环队列出队操作-顺序结构"><a href="#循环队列出队操作-顺序结构" class="headerlink" title="循环队列出队操作(顺序结构)"></a>循环队列出队操作(顺序结构)</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Status <span class="title">DeQueue</span><span class="params">(SqQueue *Q,QElemType *e)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//队列为空的判断</span></span><br><span class="line">	<span class="keyword">if</span>(Q-&gt;front == Q-&gt;rear)</span><br><span class="line">		<span class="keyword">return</span> ERROR;</span><br><span class="line">	<span class="comment">//取出要删除的数据</span></span><br><span class="line">	*e=Q-&gt;data[Q-&gt;front];</span><br><span class="line">	<span class="comment">//队头后移</span></span><br><span class="line">	Q-&gt;front=(Q-&gt;front+<span class="number">1</span>)%MAXSIZE;</span><br><span class="line">	<span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="入队-链式结构"><a href="#入队-链式结构" class="headerlink" title="入队(链式结构)"></a>入队(链式结构)</h3><p>将队头指针指向链对列的头结点，而队尾指针指向终端结点</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Status EnQueue(LinkQueue *Q,QElemType e)</span><br><span class="line">&#123;</span><br><span class="line">	QueuePtr s = (QueuePtr)malloc(sizeof(QNode));</span><br><span class="line">	if(!s)</span><br><span class="line">		exit(OVERFLOW);</span><br><span class="line">	//对入队结点赋值</span><br><span class="line">	s-&gt;data=e;</span><br><span class="line">	s-&gt;next=NULL;</span><br><span class="line">	//将结点加入队列</span><br><span class="line">	Q-&gt;rear-&gt;next=s;</span><br><span class="line">	//移动队尾指针</span><br><span class="line">	Q-&gt;rear=s;</span><br><span class="line">	return OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="出队-链式结构"><a href="#出队-链式结构" class="headerlink" title="出队(链式结构)"></a>出队(链式结构)</h3><p>出队操作时，就是头结点的后继结点出队，将头结点的后继改为它后面的结点。如果链表除了头结点外只有一个元素，则需要将rear指向头结点。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Status <span class="title">DeQueue</span><span class="params">(LinkQueue *Q,QElemType *e)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//新结点来保存信息</span></span><br><span class="line">	QueuePtr p;</span><br><span class="line">	<span class="keyword">if</span>(Q-&gt;front == Q-&gt;rear)</span><br><span class="line">		<span class="keyword">return</span> ERROR;</span><br><span class="line">	<span class="comment">//头结点的后继(被删除的结点)信息保存在p结点中</span></span><br><span class="line">	p=Q-&gt;front-&gt;next;</span><br><span class="line">	*e=p-&gt;data;</span><br><span class="line">	Q-&gt;front-&gt;next=p-&gt;next;</span><br><span class="line">	<span class="comment">//如果删除的结点是唯一结点</span></span><br><span class="line">	<span class="keyword">if</span>(Q-&gt;rear==p)</span><br><span class="line">		q-&gt;rear=Q-&gt;front;</span><br><span class="line">	<span class="built_in">free</span>(p);</span><br><span class="line">	<span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
 
           
         
@@ -939,7 +1363,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
