@@ -251,7 +251,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/30/JAVA/Lambda%20/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/30/JAVA/javaTime/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="杨发">
@@ -270,7 +270,521 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/11/30/JAVA/Lambda%20/" itemprop="url">Lambda</a></h1>
+                <a class="post-title-link" href="/2019/11/30/JAVA/javaTime/" itemprop="url">JavaTime</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-30T21:53:29+08:00">
+                2019-11-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JAVA/" itemprop="url" rel="index">
+                    <span itemprop="name">JAVA</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="线程安全的时间API，java-time"><a href="#线程安全的时间API，java-time" class="headerlink" title="线程安全的时间API，java.time"></a>线程安全的时间API，java.time</h1><p>Java 8 在 java.time 包下提供了很多新的 API。以下为两个比较重要的 API：</p>
+<p><strong>Local(本地)</strong> − 简化了日期时间的处理，没有时区的问题。</p>
+<p><strong>Zoned(时区)</strong> − 通过制定的时区处理日期时间。</p>
+<p>新的java.time包涵盖了所有处理日期，时间，日期/时间，时区，时刻（instants），过程（during）与时钟（clock）的操作。</p>
+<h2 id="DateTimeFormatter"><a href="#DateTimeFormatter" class="headerlink" title="DateTimeFormatter"></a>DateTimeFormatter</h2><p><img src="/2019/11/30/JAVA/javaTime/clipboard5.png" alt="clipboard5.png"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">DateTimeFormatter[] formatters = <span class="keyword">new</span> DateTimeFormatter[]&#123;</span><br><span class="line">        <span class="comment">// 直接使用常量创建DateTimeFormatter格式器</span></span><br><span class="line">        DateTimeFormatter.ISO_LOCAL_DATE,</span><br><span class="line">        DateTimeFormatter.ISO_LOCAL_TIME,</span><br><span class="line">        DateTimeFormatter.ISO_LOCAL_DATE_TIME,</span><br><span class="line">        <span class="comment">// 使用本地化的不同风格来创建DateTimeFormatter格式器</span></span><br><span class="line">        DateTimeFormatter.ofLocalizedDateTime(FormatStyle.FULL, FormatStyle.MEDIUM),</span><br><span class="line">        DateTimeFormatter.ofLocalizedTime(FormatStyle.LONG),</span><br><span class="line">        <span class="comment">// 根据模式字符串来创建DateTimeFormatter格式器</span></span><br><span class="line">        DateTimeFormatter.ofPattern(<span class="string">"Gyyyy%%MMM%%dd HH:mm:ss"</span>)</span><br><span class="line">&#125;;</span><br><span class="line">LocalDateTime date = LocalDateTime.now(); <span class="comment">//获取当前本地时间</span></span><br><span class="line"><span class="comment">// 依次使用不同的格式器对LocalDateTime进行格式化</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; formatters.length ; i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 下面两行代码的作用相同</span></span><br><span class="line">    System.out.println(date.format(formatters[i]));</span><br><span class="line">    System.out.println(formatters[i].format(date)); <span class="comment">// 一般用这个</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="LocalDate、LocalTime、LocalDateTime"><a href="#LocalDate、LocalTime、LocalDateTime" class="headerlink" title="LocalDate、LocalTime、LocalDateTime"></a>LocalDate、LocalTime、LocalDateTime</h2><p><img src="/2019/11/30/JAVA/javaTime/clipboard6.png" alt="clipboard6.png"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">LocalDateTime localDateTime = LocalDateTime.now(); <span class="comment">// 获取当前时间</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 对时间的增减</span></span><br><span class="line">LocalDateTime localDateTime1 = localDateTime.minusYears(<span class="number">1</span>); <span class="comment">// 加一年</span></span><br><span class="line">LocalDateTime localDateTime2 = localDateTime.plusYears(<span class="number">1</span>); <span class="comment">// 减一年</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取时间的部分信息，get操作</span></span><br><span class="line">DayOfWeek dayOfWeek = localDateTime.getDayOfWeek(); <span class="comment">// 获取星期几</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Instant-时间戳"><a href="#Instant-时间戳" class="headerlink" title="Instant 时间戳"></a>Instant 时间戳</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Instant instant = Instant.now(); <span class="comment">// 获取以 UTC 时区的时间 </span></span><br><span class="line">System.out.println(instant);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Duration、Period"><a href="#Duration、Period" class="headerlink" title="Duration、Period"></a>Duration、Period</h2><p>两个类表示时间量或两个日期之间的差</p>
+<p>两者之间的差异为：Period基于日期值，而Duration基于时间值。</p>
+<h3 id="Duration-类-计算两个-时间-time-之间的间隔"><a href="#Duration-类-计算两个-时间-time-之间的间隔" class="headerlink" title="Duration 类  计算两个 时间(time) 之间的间隔"></a>Duration 类  计算两个 时间(time) 之间的间隔</h3><p>Duration类表示秒或纳秒时间间隔，适合处理较短的时间，需要更高的精确性。我们能使用between()方法比较两个瞬间的差：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">LocalTime startTime = LocalTime.now();</span><br><span class="line">Thread.sleep(<span class="number">20000</span>);</span><br><span class="line">LocalTime endTime = LocalTime.now();</span><br><span class="line"></span><br><span class="line">Duration between = Duration.between(startTime, endTime);</span><br><span class="line">System.out.println(between.getSeconds()); <span class="comment">// 使用get to等方法获取所需数据</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Period-类-计算两个-日期-date-之间的间隔"><a href="#Period-类-计算两个-日期-date-之间的间隔" class="headerlink" title="Period 类  计算两个 日期(date) 之间的间隔"></a>Period 类  计算两个 日期(date) 之间的间隔</h3><p>Period 类表示一段时间的年、月、日，使用between()方法获取两个日期之间的差作为Period 对象返回：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">LocalDate startDate = LocalDate.of(<span class="number">2015</span>, <span class="number">2</span>, <span class="number">20</span>);</span><br><span class="line">LocalDate endDate = LocalDate.of(<span class="number">2017</span>, <span class="number">1</span>, <span class="number">15</span>);</span><br><span class="line"> </span><br><span class="line">Period period = Period.between(startDate, endDate);</span><br><span class="line"></span><br><span class="line"><span class="comment">//用 Period 类方法获取日期单元</span></span><br><span class="line">System.out.println(period.getYears()); <span class="comment">// 获取两个日期之间差几年</span></span><br><span class="line">System.out.println(period.getMonths());<span class="comment">// 获取两个日期之间差几月</span></span><br><span class="line">System.out.println(period.getDays()); <span class="comment">// 获取两个日期之间差几天</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="TemporalAdjuster-时间矫正器"><a href="#TemporalAdjuster-时间矫正器" class="headerlink" title="TemporalAdjuster  时间矫正器"></a>TemporalAdjuster  时间矫正器</h2><p>使用 TemporalAdjuster 可以对当前时间进行处理，如下个周一，下个周日等等需求。 方法通常以 With 开头。</p>
+<p><img src="/2019/11/30/JAVA/javaTime/clipboard7.png" alt="clipboard7.png"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">LocalDate today = LocalDate.now();</span><br><span class="line">System.out.println(<span class="string">"今天: "</span> + today);</span><br><span class="line"><span class="comment">// 使用DateAdjuster将今天的日期调整到下周一</span></span><br><span class="line">LocalDate nextMonday = today.with(TemporalAdjusters.next(DayOfWeek.MONDAY));</span><br><span class="line">System.out.println(<span class="string">"下周一: "</span> + nextMonday);</span><br><span class="line"><span class="comment">// 使用 TemporalAdjuster 将今天的日期调整为月的最后一天</span></span><br><span class="line">LocalDate lastDayOfMonth = today.with(TemporalAdjusters.lastDayOfMonth());</span><br><span class="line">System.out.println(<span class="string">"这个月最后一天: "</span> + lastDayOfMonth);</span><br><span class="line"><span class="comment">// 创建一个在3个月2天后日期的 TemporalAdjuster</span></span><br><span class="line">TemporalAdjuster adjuster = TemporalAdjusters.ofDateAdjuster((LocalDate date) -&gt; date.plusMonths(<span class="number">3</span>).plusDays(<span class="number">2</span>));</span><br><span class="line">LocalDate dayAfter3Mon2Day = today.with(adjuster);</span><br><span class="line">System.out.println(<span class="string">"三月零两天后的日期: "</span> + dayAfter3Mon2Day);</span><br></pre></td></tr></table></figure>
+
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/30/JAVA/Optional/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="杨发">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/tx.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="个人技术博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/30/JAVA/Optional/" itemprop="url">Optional</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-30T21:40:54+08:00">
+                2019-11-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JAVA/" itemprop="url" rel="index">
+                    <span itemprop="name">JAVA</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Optional容器类"><a href="#Optional容器类" class="headerlink" title="Optional容器类"></a>Optional容器类</h1><p>Optional 类主要解决的问题是臭名昭著的空指针异常（NullPointerException）</p>
+<p><img src="/2019/11/30/JAVA/Optional/clipboard4.png" alt="clipboard4.png"></p>
+<p>orElse(T other)     与    orElseGet(Supplier&lt;? extends T&gt; other) </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Student student = <span class="keyword">new</span> Student(<span class="number">1</span>, <span class="string">"A"</span>, <span class="string">"M"</span>, <span class="number">184</span>);</span><br><span class="line">    Student student1 = Optional.ofNullable(student).orElse(createStudent());</span><br><span class="line">    Student student2 = Optional.ofNullable(student).orElseGet(<span class="keyword">this</span>::createStudent);</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> Student <span class="title">createStudent</span><span class="params">()</span></span>&#123;</span><br><span class="line">    Student student = <span class="keyword">new</span> Student();</span><br><span class="line">    student.setName(<span class="string">"新增的学生"</span>);</span><br><span class="line">    System.out.println(<span class="string">"新增的学生的方法执行了"</span>);</span><br><span class="line">    <span class="keyword">return</span> student;</span><br><span class="line">&#125;  System.out.println(<span class="string">"新增的学生的方法执行了"</span>);    <span class="keyword">return</span> student; &#125;</span><br></pre></td></tr></table></figure>
+
+<p>这两个函数的区别：</p>
+<p>当user值不为null时，orElse函数依然会执行 createStudent() 方法</p>
+<p>而orElseGet函数并不会执行 createStudent() 方法，大家可自行测试。</p>
+<p><a href="https://www.cnblogs.com/rjzheng/p/9163246.html" target="_blank" rel="noopener">https://www.cnblogs.com/rjzheng/p/9163246.html</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/30/JAVA/Stream/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="杨发">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/tx.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="个人技术博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/30/JAVA/Stream/" itemprop="url">Stream</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-30T21:30:20+08:00">
+                2019-11-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JAVA/" itemprop="url" rel="index">
+                    <span itemprop="name">JAVA</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Stream"><a href="#Stream" class="headerlink" title="Stream"></a>Stream</h1><p>Java 8 中的 Stream 是对集合（Collection）对象功能的增强，它专注于对集合对象进行各种非常便利、高效的<strong>聚合操作（aggregate operation）</strong>，或者大批量数据操作 (bulk data operation)。Stream API 借助于同样新出现的Lambda表达式，极大的提高编程效率和程序可读性。同时它提供<strong>串行</strong>和<strong>并行</strong>两种模式进行汇聚操作，并发模式能够充分利用多核处理器的优势，使用fork/join并行方式来拆分任务和加速处理过程。</p>
+<p><img src="/2019/11/30/JAVA/Stream/clipboard2.png" alt="clipboard2.png"></p>
+<h2 id="中间操作"><a href="#中间操作" class="headerlink" title="中间操作"></a>中间操作</h2><h3 id="筛选与切片"><a href="#筛选与切片" class="headerlink" title="筛选与切片"></a>筛选与切片</h3><h4 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h4><p>接收 Lambda，从流中过滤某些数据</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">list.stream()</span><br><span class="line">       .filter( (student -&gt; student.getNo() &gt; <span class="number">3</span>) ) <span class="comment">//中间操作过滤编号小于4</span></span><br><span class="line">       .forEach( (student -&gt; System.out.println(student.toString())));</span><br></pre></td></tr></table></figure>
+
+<h4 id="limit"><a href="#limit" class="headerlink" title="limit"></a>limit</h4><p>截断流，使其元素不超过指定数量</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">list.stream()</span><br><span class="line">      .limit(<span class="number">2</span>) <span class="comment">//截断流，只取前两个</span></span><br><span class="line">      .forEach((student -&gt; System.out.println(student)));</span><br></pre></td></tr></table></figure>
+
+<h4 id="skip"><a href="#skip" class="headerlink" title="skip"></a>skip</h4><p>跳过元素，返回一个扔掉了前n个元素的流，与limit相反</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">list.stream()</span><br><span class="line">      .skip(<span class="number">2</span>) <span class="comment">//跳过流的前两个</span></span><br><span class="line">      .forEach((System.out::println));</span><br></pre></td></tr></table></figure>
+
+<h4 id="distinct"><a href="#distinct" class="headerlink" title="distinct"></a>distinct</h4><p>通过 equals() 和 hashCode() 去除 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">list.stream()</span><br><span class="line">      .distinct()</span><br><span class="line">      .forEach((System.out::println));</span><br></pre></td></tr></table></figure>
+
+<h3 id="映射"><a href="#映射" class="headerlink" title="映射"></a><strong>映射</strong></h3><h4 id="map"><a href="#map" class="headerlink" title="map"></a>map</h4><p>接收 Lambda，将元素转换成其他形式，接受一个函数，会作用到每一个元素上。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">list.stream()</span><br><span class="line">        .map((String::toUpperCase))  <span class="comment">// 映射函数</span></span><br><span class="line">        .forEach((System.out::println));</span><br></pre></td></tr></table></figure>
+
+<h4 id="flatMap"><a href="#flatMap" class="headerlink" title="flatMap"></a>flatMap</h4><p>接收一个函数作为参数，将流中的每个值都转换成另一个流，然后把所有流合并为一个流</p>
+<h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><h4 id="sorted"><a href="#sorted" class="headerlink" title="sorted()"></a>sorted()</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">list.stream()</span><br><span class="line">        .sorted()  <span class="comment">// 自然排序</span></span><br><span class="line">        .forEach((System.out::println));</span><br></pre></td></tr></table></figure>
+
+<h4 id="sorted（Comparator-com）-定制排序"><a href="#sorted（Comparator-com）-定制排序" class="headerlink" title="sorted（Comparator com） 定制排序"></a>sorted（Comparator com） 定制排序</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">list.stream()</span><br><span class="line">        .sorted(Comparator.comparingInt(String::length)) <span class="comment">// 定制排序</span></span><br><span class="line">        .forEach((System.out::println));</span><br></pre></td></tr></table></figure>
+
+<h2 id="终止操作"><a href="#终止操作" class="headerlink" title="终止操作"></a>终止操作</h2><h3 id="查找与匹配"><a href="#查找与匹配" class="headerlink" title="查找与匹配"></a>查找与匹配</h3><h4 id="allMatch"><a href="#allMatch" class="headerlink" title="allMatch"></a>allMatch</h4><p>是否全部匹配，返回Boolean值</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">boolean</span> g = list.stream()</span><br><span class="line">        .allMatch((student -&gt; student.getSex().equals(<span class="string">"G"</span>)));</span><br><span class="line">System.out.println(g);</span><br></pre></td></tr></table></figure>
+
+<h4 id="anyMatch"><a href="#anyMatch" class="headerlink" title="anyMatch"></a>anyMatch</h4><p>至少匹配一个，返回Boolean值</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">boolean</span> g = list.stream()</span><br><span class="line">        .anyMatch((student -&gt; student.getSex().equals(<span class="string">"G"</span>)));</span><br><span class="line">System.out.println(g);</span><br></pre></td></tr></table></figure>
+
+<h4 id="noneMatch"><a href="#noneMatch" class="headerlink" title="noneMatch"></a>noneMatch</h4><p>没有匹配元素，返回Boolean值</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">boolean</span> g = list.stream()</span><br><span class="line">        .noneMatch((student -&gt; student.getSex().equals(<span class="string">"G"</span>)));</span><br><span class="line">System.out.println(g);</span><br></pre></td></tr></table></figure>
+
+<h4 id="findFirst"><a href="#findFirst" class="headerlink" title="findFirst"></a>findFirst</h4><p>返回第一个元素，封装为一个Optional，避免了空指针</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Optional&lt;Student&gt; first = list.stream().findFirst();</span><br><span class="line">System.out.println(first.get());</span><br></pre></td></tr></table></figure>
+
+<h4 id="findAny"><a href="#findAny" class="headerlink" title="findAny"></a>findAny</h4><p>返回当前流中任意的元素</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Optional&lt;Student&gt; any = list.stream().findAny();</span><br><span class="line">System.out.println(any.get());</span><br></pre></td></tr></table></figure>
+
+<h4 id="count"><a href="#count" class="headerlink" title="count"></a>count</h4><p>返回流中元素总个数</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">long</span> count = list.stream().count();</span><br><span class="line">System.out.println(count);</span><br></pre></td></tr></table></figure>
+
+<h4 id="max"><a href="#max" class="headerlink" title="max"></a>max</h4><p>返回流中最大值，找出最高学生的信息</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Optional&lt;Student&gt; max = list.stream()</span><br><span class="line">        .max((x, y) -&gt; Float.compare(x.getHeight(), y.getHeight())); <span class="comment">// float 比较</span></span><br><span class="line">System.out.println(max.get());</span><br></pre></td></tr></table></figure>
+
+<h4 id="min"><a href="#min" class="headerlink" title="min"></a>min</h4><p>返回流中最小值，找出学生中最矮的学生身高</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Optional&lt;Float&gt; min = list.stream()</span><br><span class="line">        .map((Student::getHeight)) <span class="comment">// map 把身高拿出来，返回只有身高的流</span></span><br><span class="line">        .min(Float::compare);</span><br><span class="line">System.out.println(min.get());</span><br></pre></td></tr></table></figure>
+
+<h3 id="归纳"><a href="#归纳" class="headerlink" title="归纳"></a>归纳</h3><h4 id="map-reduce-模式"><a href="#map-reduce-模式" class="headerlink" title="map - reduce 模式"></a>map - reduce 模式</h4><p>是将流中元素反复结合起来，得到一个值，有两种表现形式</p>
+<h4 id="一个参数的Reduce"><a href="#一个参数的Reduce" class="headerlink" title="一个参数的Reduce"></a>一个参数的Reduce</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Optional&lt;Float&gt; reduce = list.stream()</span><br><span class="line">        .map((Student::getHeight)) <span class="comment">// 获得每个学生的身高</span></span><br><span class="line">        .reduce(Float::sum); <span class="comment">// 将身高总和加起来</span></span><br><span class="line">System.out.println(reduce.get());</span><br></pre></td></tr></table></figure>
+
+<p>假设Stream中的元素a[0]、a[1]、a[2]…a[n - 1]，表示将a[0]与a[1]进行二合运算，结果与a[2]做二合运算，一直到最后与a[n-1]做二合运算。</p>
+<h4 id="两个参数的Reduce"><a href="#两个参数的Reduce" class="headerlink" title="两个参数的Reduce"></a>两个参数的Reduce</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Float reduce = list.Float reduce = list.stream()</span><br><span class="line">        .map((Student::getHeight)) <span class="comment">// 获得每个学生的身高</span></span><br><span class="line">        .reduce(<span class="number">0f</span>, Float::sum); <span class="comment">// 定义一个初始化的值为0</span></span><br><span class="line">System.out.println(reduce);</span><br></pre></td></tr></table></figure>
+
+<p>它多了一个初始化的值，因此计算的顺序是identity与a[0]进行二合运算，结果与a[1]再进行二合运算，最终与a[n-1]进行二合运算，identity一般设为不影响结果的值。</p>
+<h3 id="收集"><a href="#收集" class="headerlink" title="收集"></a>收集</h3><h4 id="collect"><a href="#collect" class="headerlink" title="collect"></a>collect</h4><p>是将流转换为其他形式。接收一个 Collector 接口的实现，用于给Stream中元素做汇总的方法。</p>
+<p><img src="/2019/11/30/JAVA/Stream/clipboard3.png" alt="clipboard3.png"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Set&lt;String&gt; collect = list.stream()</span><br><span class="line">        .map((Student::getName)) <span class="comment">// 获取所有学生的身高</span></span><br><span class="line">        .collect(Collectors.toSet());  <span class="comment">// 把学生的名字收集到 set 集合中去</span></span><br><span class="line">System.out.println(collect);  <span class="comment">// 去重结果</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">HashSet&lt;String&gt; collect = list.stream()</span><br><span class="line">        .map((Student::getName)) <span class="comment">//什么集合，就是 集合名字::new</span></span><br><span class="line">        .collect(Collectors.toCollection(HashSet::<span class="keyword">new</span>)); </span><br><span class="line">System.out.println(collect);</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/30/JAVA/Lambda/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="杨发">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/tx.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="个人技术博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/30/JAVA/Lambda/" itemprop="url">Lambda</a></h1>
         
 
         <div class="post-meta">
@@ -346,8 +860,8 @@
           
             <h1 id="Lambda-表达式"><a href="#Lambda-表达式" class="headerlink" title="Lambda 表达式"></a>Lambda 表达式</h1><p><strong>复制小括号，写死右箭头，落地大括号。</strong></p>
 <h2 id="函数式接口"><a href="#函数式接口" class="headerlink" title="函数式接口"></a>函数式接口</h2><p>函数式接口就是只显式声明一个<strong>抽象方法</strong>的接口。为保证方法数量不多不少，java8提供了一个专用注解 @FunctionalInterface，这样，当接口中声明的<strong>抽象方法</strong>多于或少于一个时就会报错。如下图所示：</p>
-<p><img src="/2019/11/30/JAVA/Lambda%20/1.png" alt="img"></p>
-<p><img src="/2019/11/30/JAVA/Lambda%20/2.png" alt="img"></p>
+<p><img src="/2019/11/30/JAVA/Lambda/clipboard.png" alt="clipboard.png"></p>
+<p><img src="/2019/11/30/JAVA/Lambda/clipboard1.png" alt="clipboard1.png"></p>
 <h2 id="Java内置的四大核心函数式接口"><a href="#Java内置的四大核心函数式接口" class="headerlink" title="Java内置的四大核心函数式接口"></a>Java内置的四大核心函数式接口</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Consumer&lt;T&gt;  消费型接口 消费对象</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">accept</span><span class="params">(T t)</span></span>;</span><br><span class="line">Supplier&lt;T&gt;  供给型接口 生成对象</span><br><span class="line">    <span class="function">T <span class="title">get</span><span class="params">()</span></span>;</span><br><span class="line">Function&lt;R,T&gt;  函数型接口 指定特定功能</span><br><span class="line">    <span class="function">R <span class="title">apply</span><span class="params">(T t)</span></span>;</span><br><span class="line">Predicate&lt;T&gt;  断言型接口 进行条件判断</span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">test</span><span class="params">(T t)</span></span>;</span><br></pre></td></tr></table></figure>
 
 <h2 id="Lambda表达式"><a href="#Lambda表达式" class="headerlink" title="Lambda表达式"></a>Lambda表达式</h2><p>Lambda表达式本质上是一个匿名方法。让我们来看下面这个例子：</p>
@@ -393,111 +907,6 @@
 
 <p><strong>测试</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String s1 = <span class="keyword">this</span>.interfaceWithParams.run(<span class="number">1</span>);</span><br><span class="line">System.out.println(<span class="string">"您输入的是："</span>+s1);</span><br><span class="line">String s2 = <span class="keyword">this</span>.interfaceWithParams1.run(<span class="number">2</span>);</span><br><span class="line">System.out.println(<span class="string">"您输入的是："</span>+s2);</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="Stream"><a href="#Stream" class="headerlink" title="Stream"></a>Stream</h1><p>Java 8 中的 Stream 是对集合（Collection）对象功能的增强，它专注于对集合对象进行各种非常便利、高效的<strong>聚合操作（aggregate operation）</strong>，或者大批量数据操作 (bulk data operation)。Stream API 借助于同样新出现的Lambda表达式，极大的提高编程效率和程序可读性。同时它提供<strong>串行</strong>和<strong>并行</strong>两种模式进行汇聚操作，并发模式能够充分利用多核处理器的优势，使用fork/join并行方式来拆分任务和加速处理过程。</p>
-<p><img src="/2019/11/30/JAVA/Lambda%20/3.png" alt="img"></p>
-<h2 id="中间操作"><a href="#中间操作" class="headerlink" title="中间操作"></a>中间操作</h2><h3 id="筛选与切片"><a href="#筛选与切片" class="headerlink" title="筛选与切片"></a>筛选与切片</h3><h4 id="filter"><a href="#filter" class="headerlink" title="filter"></a><strong>filter</strong></h4><p>接收 Lambda，从流中过滤某些数据</p>
-<p>list.stream()       .filter( (student -&gt; student.getNo() &gt; 3) ) //中间操作过滤编号小于4       .forEach( (student -&gt; System.out.println(student.toString()))); </p>
-<p><strong>limit</strong></p>
-<p>截断流，使其元素不超过指定数量</p>
-<p>list.stream()      .limit(2) //截断流，只取两个      .forEach((student -&gt; System.out.println(student))); </p>
-<p><strong>skip</strong></p>
-<p>跳过元素，返回一个扔掉了前n个元素的流，与limit相反</p>
-<p>list.stream()      .skip(2) //跳过流的前两个      .forEach((System.out::println)); </p>
-<p><strong>distinct</strong> </p>
-<p>通过 equals() 和 hashCode() 去除 </p>
-<p>list.stream()      .distinct()      .forEach((System.out::println)); </p>
-<p><strong>映射</strong></p>
-<p><strong>map</strong> </p>
-<p>接收 Lambda，将元素转换成其他形式，接受一个函数，会作用到每一个元素上。</p>
-<p>list.stream()        .map((String::toUpperCase))  // 映射函数        .forEach((System.out::println)); </p>
-<p><strong>flatMap</strong></p>
-<p>接收一个函数作为参数，将流中的每个值都转换成另一个流，然后把所有流合并为一个流</p>
-<p><strong>排序</strong></p>
-<p><strong>sorted()</strong> </p>
-<p>list.stream()        .sorted()  // 自然排序        .forEach((System.out::println)); </p>
-<p><strong>sorted（Comparator com） 定制排序</strong></p>
-<p>list.stream()        .sorted(Comparator.comparingInt(String::length)) // 定制排序        .forEach((System.out::println)); </p>
-<p><strong>终止操作</strong></p>
-<p><strong>查找与匹配</strong></p>
-<p><strong>allMatch</strong></p>
-<p>是否全部匹配，返回Boolean值</p>
-<p>boolean g = list.stream()        .allMatch((student -&gt; student.getSex().equals(“G”))); System.out.println(g); </p>
-<p><strong>anyMatch</strong></p>
-<p>至少匹配一个，返回Boolean值</p>
-<p>boolean g = list.stream()        .anyMatch((student -&gt; student.getSex().equals(“G”))); System.out.println(g); </p>
-<p><strong>noneMatch</strong></p>
-<p>没有匹配元素，返回Boolean值</p>
-<p>boolean g = list.stream()        .noneMatch((student -&gt; student.getSex().equals(“G”))); System.out.println(g); </p>
-<p><strong>findFirst</strong></p>
-<p>返回第一个元素，封装为一个Optional，避免了空指针</p>
-<p>Optional<Student> first = list.stream()        .findFirst(); System.out.println(first.get()); </Student></p>
-<p><strong>findAny</strong></p>
-<p>返回当前流中任意的元素</p>
-<p>Optional<Student> any = list.stream()        .findAny(); System.out.println(any.get()); </Student></p>
-<p><strong>count</strong></p>
-<p>返回流中元素总个数</p>
-<p>long count = list.stream()        .count(); System.out.println(count); </p>
-<p><strong>max</strong></p>
-<p>返回流中最大值，找出最高学生的信息</p>
-<p>Optional<Student> max = list.stream()        .max((x, y) -&gt; Float.compare(x.getHeight(), y.getHeight())); System.out.println(max.get()); </Student></p>
-<p><strong>min</strong></p>
-<p>返回流中最小值，找出学生中最矮的学生身高</p>
-<p>Optional<Float> min = list.stream()        .map((Student::getHeight))        .min(Float::compare); System.out.println(min.get()); </Float></p>
-<p><strong>归约</strong></p>
-<p><strong>map - reduce</strong> <strong>模式</strong></p>
-<p>是将流中元素反复结合起来，得到一个值，有两种表现形式</p>
-<p><strong>1. 一个参数的Reduce</strong></p>
-<p>Optional<Float> reduce = list.stream()        .map((Student::getHeight)) // 获得每个学生的身高        .reduce(Float::sum); // 将身高总和加起来 System.out.println(reduce.get()); </Float></p>
-<p>假设Stream中的元素a[0]、a[1]、a[2]…a[n - 1]，表示将a[0]与a[1]进行二合运算，结果与a[2]做二合运算，一直到最后与a[n-1]做二合运算。</p>
-<p><strong>1.2 两个参数的Reduce</strong></p>
-<p>Float reduce = list.stream()        .map((Student::getHeight)) // 获得每个学生的身高        .reduce(0f, Float::sum); // 定义一个初始化的值为0 System.out.println(reduce); </p>
-<p>它多了一个初始化的值，因此计算的顺序是identity与a[0]进行二合运算，结果与a[1]再进行二合运算，最终与a[n-1]进行二合运算，identity一般设为不影响结果的值。</p>
-<p><strong>1.3 三个参数的Reduce</strong></p>
-<p><strong>收集</strong></p>
-<p><strong>collect</strong> </p>
-<p>是将流转换为其他形式。接收一个 Collector 接口的实现，用于给Stream中元素做汇总的方法。</p>
-<p><img src="/2019/11/30/JAVA/Lambda%20/C:%5CUsers%5Ca%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5C2168a1305a514c0894a1b48bfab7d909%5Cclipboard.png" alt="img"></p>
-<p>Set<String> collect = list.stream()        .map((Student::getName)) // 获取所有学生的身高        .collect(Collectors.toSet());  // 把学生的名字收集到 set 集合中去 System.out.println(collect);  // 去重结果 </String></p>
-<p>HashSet<String> collect = list.stream()        .map((Student::getName)) //什么集合，就是 集合名字::new        .collect(Collectors.toCollection(HashSet::new));  System.out.println(collect); </String></p>
-<p><strong>3、Optional容器类</strong></p>
-<p>Optional 类主要解决的问题是臭名昭著的空指针异常（NullPointerException）</p>
-<p><img src="/2019/11/30/JAVA/Lambda%20/C:%5CUsers%5Ca%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5C1fb54e85f1ee4283a9d6ea3049651302%5Cclipboard.png" alt="img"></p>
-<p>orElse(T other)     与    orElseGet(Supplier&lt;? extends T&gt; other) </p>
-<p>@Test public void test2() {    Student student = new Student(1, “A”, “M”, 184);    Student student1 = Optional.ofNullable(student).orElse(createStudent());    Student student2 = Optional.ofNullable(student).orElseGet(this::createStudent);     } public Student createStudent(){    Student student = new Student();    student.setName(“新增的学生”);    System.out.println(“新增的学生的方法执行了”);    return student; } </p>
-<p>这两个函数的区别：</p>
-<p>当user值不为null时，orElse函数依然会执行 createStudent() 方法</p>
-<p>而orElseGet函数并不会执行 createStudent() 方法，大家可自行测试。</p>
-<p><a href="https://www.cnblogs.com/rjzheng/p/9163246.html" target="_blank" rel="noopener">https://www.cnblogs.com/rjzheng/p/9163246.html</a></p>
-<p><strong>4、线程安全的时间API，java.time</strong></p>
-<p>Java 8 在 java.time 包下提供了很多新的 API。以下为两个比较重要的 API：</p>
-<p><strong>Local(本地)</strong> − 简化了日期时间的处理，没有时区的问题。</p>
-<p><strong>Zoned(时区)</strong> − 通过制定的时区处理日期时间。</p>
-<p>新的java.time包涵盖了所有处理日期，时间，日期/时间，时区，时刻（instants），过程（during）与时钟（clock）的操作。</p>
-<p><strong>1、DateTimeFormatter</strong> </p>
-<p><img src="/2019/11/30/JAVA/Lambda%20/C:%5CUsers%5Ca%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5C00dccebe132c4efab849901071e264f6%5Cclipboard.png" alt="img"></p>
-<p>DateTimeFormatter[] formatters = new DateTimeFormatter[]{        // 直接使用常量创建DateTimeFormatter格式器        DateTimeFormatter.ISO_LOCAL_DATE,        DateTimeFormatter.ISO_LOCAL_TIME,        DateTimeFormatter.ISO_LOCAL_DATE_TIME,        // 使用本地化的不同风格来创建DateTimeFormatter格式器        DateTimeFormatter.ofLocalizedDateTime(FormatStyle.FULL, FormatStyle.MEDIUM),        DateTimeFormatter.ofLocalizedTime(FormatStyle.LONG),        // 根据模式字符串来创建DateTimeFormatter格式器        DateTimeFormatter.ofPattern(“Gyyyy%%MMM%%dd HH:mm:ss”) }; LocalDateTime date = LocalDateTime.now(); //获取当前本地时间 // 依次使用不同的格式器对LocalDateTime进行格式化 for(int i = 0 ; i &lt; formatters.length ; i++) {    // 下面两行代码的作用相同    System.out.println(date.format(formatters[i]));    System.out.println(formatters[i].format(date)); // 一般用这个 } </p>
-<p><strong>2、LocalDate、LocalTime、LocalDateTime</strong></p>
-<p><img src="/2019/11/30/JAVA/Lambda%20/C:%5CUsers%5Ca%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5C7ec41ea599bb459b9c648b31e343ac91%5Cclipboard.png" alt="img"></p>
-<p>LocalDateTime localDateTime = LocalDateTime.now(); // 获取当前时间 // 对时间的增减 LocalDateTime localDateTime1 = localDateTime.minusYears(1); // 加一年 LocalDateTime localDateTime2 = localDateTime.plusYears(1); // 减一年 // 获取时间的部分信息，get操作 DayOfWeek dayOfWeek = localDateTime.getDayOfWeek(); // 获取星期几 </p>
-<p><strong>3、Instant 时间戳</strong></p>
-<p>Instant instant = Instant.now(); // 获取以 UTC 时区的时间 System.out.println(instant); </p>
-<p><strong>4、Duration、Period</strong></p>
-<p>两个类表示时间量或两个日期之间的差</p>
-<p>两者之间的差异为：Period基于日期值，而Duration基于时间值。</p>
-<p><strong>Duration 类  计算两个</strong> <strong>时间</strong> <strong>之间的间隔</strong></p>
-<p>Duration类表示秒或纳秒时间间隔，适合处理较短的时间，需要更高的精确性。我们能使用between()方法比较两个瞬间的差：</p>
-<p>LocalTime startTime = LocalTime.now(); Thread.sleep(20000); LocalTime endTime = LocalTime.now(); Duration between = Duration.between(startTime, endTime); System.out.println(between.getSeconds()); // 使用get to等方法获取所需数据 </p>
-<p><strong>Period 类  计算两个</strong> <strong>日期</strong> <strong>之间的间隔</strong></p>
-<p>Period 类表示一段时间的年、月、日，使用between()方法获取两个日期之间的差作为Period 对象返回：</p>
-<p>LocalDate startDate = LocalDate.of(2015, 2, 20); LocalDate endDate = LocalDate.of(2017, 1, 15);  Period period = Period.between(startDate, endDate); //用 Period 类方法获取日期单元 System.out.println(period.getYears()); // 获取两个日期之间差几年 System.out.println(period.getMonths());// 获取两个日期之间差几月 System.out.println(period.getDays()); // 获取两个日期之间差几天 </p>
-<p><strong>5、TemporalAdjuster  时间矫正器</strong></p>
-<p>使用 TemporalAdjuster 可以对当前时间进行处理，如下个周一，下个周日等等需求。 方法通常以 With 开头。</p>
-<p><img src="/2019/11/30/JAVA/Lambda%20/C:%5CUsers%5Ca%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5Cac51f6d754354063b5a6e0c8a54578c9%5Cclipboard.png" alt="img"></p>
-<p>LocalDate today = LocalDate.now(); System.out.println(“今天: “ + today); // 使用DateAdjuster将今天的日期调整到下周一 LocalDate nextMonday = today.with(TemporalAdjusters.next(DayOfWeek.MONDAY)); System.out.println(“下周一: “ + nextMonday); // 使用 TemporalAdjuster 将今天的日期调整为月的最后一天 LocalDate lastDayOfMonth = today.with(TemporalAdjusters.lastDayOfMonth()); System.out.println(“这个月最后一天: “ + lastDayOfMonth); // 创建一个在3个月2天后日期的 TemporalAdjuster TemporalAdjuster adjuster = TemporalAdjusters.ofDateAdjuster((LocalDate date) -&gt; date.plusMonths(3).plusDays(2)); LocalDate dayAfter3Mon2Day = today.with(adjuster); System.out.println(“三月零两天后的日期: “ + dayAfter3Mon2Day); </p>
-<p><strong>6、ZoneDate、ZoneTime、ZoneDateTime</strong></p>
 
           
         
@@ -672,6 +1081,219 @@
 <p>@ApiOperation(value = “根据用户ID查询用户”,notes = “查询单个用户的信息”) @ApiParam(name =”id”,value = “用户id”,required = true) @GetMapping(“/users/{id}”) public Object getUserById(@PathVariable(“id”) String id) {    } </p>
 <p><img src="/2019/11/30/SpringBoot/Swagger/clipboard3.png" alt="img"></p>
 
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/30/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%BA%BF%E6%80%A7%E8%A1%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="杨发">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/tx.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="个人技术博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/30/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%BA%BF%E6%80%A7%E8%A1%A8/" itemprop="url">线性表</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-30T17:01:24+08:00">
+                2019-11-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="概念筑基"><a href="#概念筑基" class="headerlink" title="概念筑基"></a>概念筑基</h1><ul>
+<li>数据</li>
+<li>数据对象 有相同数量和类型数据项的数据元素的集合</li>
+<li>数据元素 组成数据的基本单位</li>
+<li>数据项</li>
+<li>数据结构 包含相互关系数据元素的集合</li>
+</ul>
+<h2 id="逻辑结构与物理结构"><a href="#逻辑结构与物理结构" class="headerlink" title="逻辑结构与物理结构"></a>逻辑结构与物理结构</h2><p>逻辑针对数据元素之间的关系，物理针对计算机存储单元之间的关系</p>
+<p>逻辑关系：元素之间无关联、一对一、一对多、多对多；分别对应集合结构、线性结构、树形结构、图形结构。</p>
+<p>物理结构：数据存储单元之间顺序存储、链式存储。</p>
+<h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><p>求解特定问题的求解步骤的描述，在计算机中表现为指令的有限序列，并且每条指令表示一个或多个操作</p>
+<p>算法的特性：</p>
+<ul>
+<li>输入</li>
+<li>输出</li>
+<li>有穷性</li>
+<li>确定性</li>
+<li>可行性</li>
+</ul>
+<p>算法设计的特性：</p>
+<ul>
+<li>正确性</li>
+<li>可读性</li>
+<li>健壮性 对输入不合法的情况做出合适的处理</li>
+<li>时间效率高，存储量低‘</li>
+</ul>
+<p>算法效率的度量：</p>
+<p>测定运行时间最可靠的方法就是计算对运行时间有消耗的基本操作的执行次数。运行时间与这个计数成正比。</p>
+<p>判断一个算法的效率，函数中常数和其他次要项常常可以忽略，更应该关注主项（最高阶项）的阶数。</p>
+<p>推导时间复杂度的方法：</p>
+<ol>
+<li>用常数1取代运行时间中的所有加法常数</li>
+<li>在修改后的运行次数函数中，只保留最高阶项</li>
+<li>如果最高阶项存在且不是1，则去除与整个项相乘的常数。</li>
+<li>得到的结果就是大O阶</li>
+</ol>
+<p>对于循环体来说，时间复杂度就是内循环的复杂度乘循环的次数。</p>
+<h1 id="线性表"><a href="#线性表" class="headerlink" title="线性表"></a>线性表</h1><p>有顺序结构和链式结构。单链表数据结构在插入和删除操作上，与线性表的顺序存储结构是没有太大优势的。但是如果我们希望从第i个位置，插入10个元素，对于顺序存储结构意味着，每一次插入都要移动n-i个元素，每次都是O(n)。而单链表，我们只需要第一次找到第i个位置的指针，此时为O(n)，接下来只是简单地通过赋值移动指针，事件复杂度为O(1)。显然，对于插入和删除数据越频繁的操作，单链表的效率优势就越明显。</p>
+<h2 id="单链表的整表创建"><a href="#单链表的整表创建" class="headerlink" title="单链表的整表创建"></a>单链表的整表创建</h2><p>1.头插法：让不断生成的结点始终位于第一的位置。新结点指向上一次的新结点，头指针指向新结点。</p>
+<p>2.尾插法：把每次新结点都插在终端结点后面。上一次的新结点指向新结点。</p>
+<h2 id="单链表的整表删除"><a href="#单链表的整表删除" class="headerlink" title="单链表的整表删除"></a>单链表的整表删除</h2><p>链表中每个元素只有数据域和指向下一个元素的指针；要删除的话，只能从第一个开始删除，然后不断往后循环。</p>
+<h2 id="单链表结构与顺序存储结构优缺点"><a href="#单链表结构与顺序存储结构优缺点" class="headerlink" title="单链表结构与顺序存储结构优缺点"></a>单链表结构与顺序存储结构优缺点</h2><p>时间性能上，单链表查找弱于顺序存储结构，插入和删除在多元素时优于顺序存储结构。空间性能上，顺序存储需要预先分配空间，这就直接导致会有浪费或者上溢。</p>
+<p>例如：1.在游戏开发中，对于用户注册的个人信息，除了注册时插入数据外，绝大多数情况下都是读取，所以应该考虑使用顺序存储结构。而游戏中的玩家的武器或者装备列表，随着玩家游戏的过程中，可能随时增加或删除，此时再用顺序存储就太不合适了。2.当线性表中的元素个数变化较大或者根本不知道多大时，为了空间考虑还是使用单链表结构。如果事先知道线性表的大致长度，比如一年12个月，一周共7天，这种用顺序存储结构效率高很多。</p>
+<h2 id="静态链表"><a href="#静态链表" class="headerlink" title="静态链表"></a>静态链表</h2><p>当最初期的编程高级语言Basic、Fortran，由于没有指针，链表结构如何实现呢？和我在Java中定义链表差不多，我用一个包装类里面放数据和它指向的下个元素的地址。那这些没有指针的语言，它们可以使用数组来代替指针。首先是数组中的每个元素都是由两个数据域组成，data和cur；这个cur放的就是该元素的后继在数组中的下标。这种用数组描述的链表就是静态链表，还有叫游标实现法的。</p>
+<p>光这样放元素还是不够完善，我们需要对数组第一个和最后一个元素作为特殊元素处理，不存数据。通常把未被使用数组元素（剩余空闲的数组元素连在一起的）称为备用链表。而数组第一个元素，下标为0的数组元素的cur就存放备用链表的第一个结点的下标；而数组的最后一个元素的cur则存放第一个有数组的元素的下标，相当于头结点。如下图：第一个节点中cur为7，庚元素的cur为0，数组的末尾的cur为1，这三个表示的意思，我们都应该要知道。7是备用链表的起始位置，0是表示当前数组元素为不为空的元素最后一个，1是表示数组中不为空的第一个位置的下标。7、0、1都是下标。</p>
+<p><img src="/2019/11/30/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%BA%BF%E6%80%A7%E8%A1%A8/StudyPic/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E9%9D%99%E6%80%81%E9%93%BE%E8%A1%A8.png" alt="a">  </p>
+<h3 id="静态链表的插入与删除"><a href="#静态链表的插入与删除" class="headerlink" title="静态链表的插入与删除"></a>静态链表的插入与删除</h3><p>静态链表要解决的是：如何用静态模拟动态链表结构的存储空间的分配，需要时申请，无用时释放。</p>
+<h4 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h4><p>那么如何模拟结点创建呢？我们将数组中未被使用过的及已经被删除的分量用游标链成一个备用的链表，每当进行插入时，就从备用链表中取得一个结点作为待插入的新结点。  </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*备用链表非空，就返回要分配出去的结点的下标，否则返回0*/</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Malloc_SLL</span><span class="params">(StaticLinkList space)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//静态链表的第一个位置放的就是备用链表</span></span><br><span class="line">	<span class="comment">//第一个元素的下标，现在我们先拿到</span></span><br><span class="line">	<span class="comment">//备用链表的第一个元素</span></span><br><span class="line">	<span class="keyword">int</span> i = space[<span class="number">0</span>].cur;</span><br><span class="line">	<span class="comment">//如果能拿到备用链表的第一个结点，那就把它下一个</span></span><br><span class="line">	<span class="comment">//结点作为新一个第一结点。因为需要人能顶起下次被取出的任务</span></span><br><span class="line">	<span class="keyword">if</span> (space[<span class="number">0</span>].cur) &#123;</span><br><span class="line">		space[<span class="number">0</span>].cur = space[i].cur;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>现在能从备用链表中拿到新的空间作为放新结点的位置了。那我们就来实现如何给静态链表插入一个元素。大致思路还是：先判断插入位置是否合理；再拿到插入位置的前一个结点，让它把它的后继结点的游标给我们新插入的结点来继承；然后新结点再作为前面结点的后继。很好理解，每个元素只有下一个元素的游标，我们要插入某个位置，那就要把这个位置的上游指向新结点且新结点指向上游的后继结点；那就先把上游的后继结点游标拿到，不然赋值就覆盖了。  </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Status <span class="title">ListInsert</span><span class="params">(StaticLinkList L,<span class="keyword">int</span> i,ElemTyp e)</span> </span>&#123;</span><br><span class="line">	<span class="comment">//j用来接收分配位置,k用来接收静态链表的最后一位元素的下标，</span></span><br><span class="line">	<span class="comment">//位于该k位置元素的游标指向第一个放元素的下标；l用来计数。</span></span><br><span class="line">	<span class="keyword">int</span> j,k,l;</span><br><span class="line">	k = MAX_SIZE - <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span> (i&lt;<span class="number">1</span> ||i&gt;ListLength(L) +<span class="number">1</span>)</span><br><span class="line">		<span class="keyword">return</span> ERROR;</span><br><span class="line">	j = Malloc_SSL(L); <span class="comment">/*获得空闲分量的下标*/</span></span><br><span class="line">	<span class="keyword">if</span> (j) &#123;</span><br><span class="line">		L[j].data = e; <span class="comment">/*插入位置数据域赋值*/</span></span><br><span class="line">		<span class="keyword">for</span> (l=<span class="number">1</span>; l&lt;i; l++) &#123; <span class="comment">/*l是相对于长度来说，l=1下面第一次循环就拿到开头元素的下标，那么他要循环到插入位置前一个元素，那对应的下标就是i-1，就循环i-1次*/</span></span><br><span class="line">			k = L[k].cur;</span><br><span class="line">		&#125;</span><br><span class="line">		L[j].cur = L[k].cur;</span><br><span class="line">		L[k].cur = j;</span><br><span class="line">		<span class="keyword">return</span> OK;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ERROR;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里面比较难理解的就是找到插入位置的前一个元素。一个循环，它的结束条件还是要看它循环体什么时候符合条件；符合条件了就要结束循环。  </p>
+<h4 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h4><p>要删除i位置的结点，很简单，就是把i上游的游标不再指向i了，指向i的下游；然后将i位置结点释放。<br>直接上代码：  </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Status <span class="title">ListDelete</span><span class="params">(StaticLinkList L,<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> j,k;</span><br><span class="line">	<span class="keyword">if</span> (i &lt;<span class="number">1</span> || i&gt;ListLength(L)) &#123;</span><br><span class="line">		<span class="keyword">return</span> ERROR;</span><br><span class="line">	&#125;</span><br><span class="line">	k = MAX_SIZE - <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (j = <span class="number">1</span>;j&lt;=i<span class="number">-1</span>;j++) &#123;</span><br><span class="line">		k = L[k].cur;</span><br><span class="line">	&#125;</span><br><span class="line">	j = L[k],cur;</span><br><span class="line">	L[k].cur = L[j].cur;</span><br><span class="line">	Free_SSL(L,j);</span><br><span class="line">	<span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其中的Free_SSL(L,j)是释放元素：  </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*将下标为k的空闲结点回收到备用链表*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Free_SSL</span><span class="params">(StaticLinkList space,<span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">	<span class="comment">/*用了头插法，把新产生的空闲结点放到备用链表第一个元素之前*/</span></span><br><span class="line">	space[k].cur = space[<span class="number">0</span>].cur;</span><br><span class="line">	space[<span class="number">0</span>].cur = k;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>为啥这里不用尾插法？理论上是可行，反正都是把空闲结点放进备用链表。不过尾插就得找到备用链表的最后一个结点，在静态链表中只能不断遍历才能拿到。这就过于麻烦了吧！静态链表有三个特殊位置，第一个是第一位指向了备用链表的位置，第二个是最后一位指向了有元素的第一个位置，第三个是备用链表的起始位置，它指向备用链表的后继。<br>头插法是，我们只要把插入的结点指向之前的第一个结点就行；在静态链表中，除了要这样做之外，还要把第一个结点指向的位置换成新结点。  </p>
+<h3 id="静态链表的优缺点"><a href="#静态链表的优缺点" class="headerlink" title="静态链表的优缺点"></a>静态链表的优缺点</h3><p>优点是继承了单链表的优点，缺点是没有解决表长难确定的问题，失去了顺序存储结构随机存取的特性。<br>静态链表理解它的思想就ok了。   </p>
+<h2 id="循环链表"><a href="#循环链表" class="headerlink" title="循环链表"></a>循环链表</h2><p>第一个特点，从任一结点都能完整遍历链表。我们把单链表的尾结点的指针从空指针改为指向头结点。这样就把整个单链表形成一个环，这种头尾相连的单链表就是单循环链表。简称循环链表（circular linked list）。<br>通常为了让空链表和非空链表处理一致，通常设置一个头结点。<br>循环链表和单链表的主要差异就在于循环的判断条件，原来是判断p-&gt;next是否为空，现在是p-&gt;next不等于头结点，则循环未结束。<br>循环链表就是为了解决从任一结点都能遍历链表，我们都知道链表的头和尾是两个特殊位置，如果我们想要不遍历整个链表就拿到头和尾，那该咋整呢？我们用一个尾指针来指向尾结点，不就解决了。  </p>
+<p>现在咋们有两个循环链表A和B，我们要让B接在A后面，如果只有头指针的情况下，怎么办？<br>那就得遍历A，指导尾结点结束，然后让尾结点不再指向A的头结点；让它指向B的头结点，然后遍历B，让B的尾结点不指向B的头结点，去指向A的头结点。这里用到了两个遍历时间复杂度O(n)。<br>如果现在有尾指针的情况下呢？<br>A的尾指针去指向B的尾指针的next-&gt;next也就是B的头，让B的next指向A的尾指针的next-&gt;next也就是A的头。这里的时间复杂度是多少？也就两步吧？这不就很简单了。这就是尾指针的爽点。<br>文字看起来不爽，来用代码表示一下：  </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">p = rearA-&gt;next; <span class="comment">/*拿到A的头结点*/</span></span><br><span class="line">rearA-&gt;next=rearB-&gt;next-&gt;next; <span class="comment">/*A的尾结点指向B的头结点*/</span></span><br><span class="line">rearB-&gt;next=p; <span class="comment">/*B的尾结点指向A的头结点*/</span></span><br><span class="line"><span class="built_in">free</span>(p);</span><br></pre></td></tr></table></figure>
+
+<h2 id="双向链表"><a href="#双向链表" class="headerlink" title="双向链表"></a>双向链表</h2><p>在一个循环链表的情况下，我们现在需要从尾结点开始，遍历整个链表，并且最后要回到头结点。遍历一次咋们还是在尾结点，还得多走一步才能回到头结点。<br>现在我们整一个双向链表，啥是双向链表？先不管，反正能反着访问就行，那我们就可以从尾结点逆序访问到头结点，还不用多走一步。<br>我们在单链表中，有了next指针，使得我们要查找下一结点的时间复杂度为O(1)。可是如果我们要找的是上一个结点，就得是O(n)了。因为我们每次都得从头开始查找。<br>为了克服单向性这一个访问缺点，我们的科学家设计出了双向链表。double linked list是在单链表的每一个节点中，再设置一个指向其前驱结点的指针域。那么现在双向链表的每一个结点都有两个指针域，一个指向直接后继，另一个指向直接前驱。  </p>
+<p>双向链表的插入与删除思路：<br>在a1（p结点）与a2之间插入一个s结点，现在能知道的就是p结点和e结点。进行指针操作必须要注意p-&gt;next只能最后被赋值，因为它表示的就是a1与a2之间的联系，如果他改变了就表示联系断了。  </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*先给插入的s结点的两个指针域赋值，完成s结点的指向*/</span></span><br><span class="line">s-&gt;next = p-&gt;next;   </span><br><span class="line">s-&gt;prior = p;</span><br><span class="line"><span class="comment">/*对a2结点的priod指针（指向前一结点的指针域）赋值*/</span></span><br><span class="line">p-&gt;next-&gt;prior = s;</span><br><span class="line"><span class="comment">/*对a1结点的next指针赋值*/</span></span><br><span class="line">p-&gt;next = s;</span><br></pre></td></tr></table></figure>
+
+<p>双向链表插入得修改三个结点，首先是插入结点的前后指针，再是插入位置的后一结点的前指针，最后是插入结点位置的前一结点的后指针。  </p>
+<p>删除：假如删除的就是p结点，它的前后结点的指针都与他无关了，之前和它有关的都得改变。  </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">p-&gt;next-&gt;prior=p-&gt;prior;</span><br><span class="line">p-&gt;prior-&gt;next=p-&gt;next;</span><br><span class="line"><span class="built_in">free</span>(p);</span><br></pre></td></tr></table></figure>
           
         
       
@@ -961,219 +1583,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/30/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%BA%BF%E6%80%A7%E8%A1%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="杨发">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/tx.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="个人技术博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/30/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%BA%BF%E6%80%A7%E8%A1%A8/" itemprop="url">线性表</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-30T17:01:24+08:00">
-                2019-11-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index">
-                    <span itemprop="name">数据结构</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="概念筑基"><a href="#概念筑基" class="headerlink" title="概念筑基"></a>概念筑基</h1><ul>
-<li>数据</li>
-<li>数据对象 有相同数量和类型数据项的数据元素的集合</li>
-<li>数据元素 组成数据的基本单位</li>
-<li>数据项</li>
-<li>数据结构 包含相互关系数据元素的集合</li>
-</ul>
-<h2 id="逻辑结构与物理结构"><a href="#逻辑结构与物理结构" class="headerlink" title="逻辑结构与物理结构"></a>逻辑结构与物理结构</h2><p>逻辑针对数据元素之间的关系，物理针对计算机存储单元之间的关系</p>
-<p>逻辑关系：元素之间无关联、一对一、一对多、多对多；分别对应集合结构、线性结构、树形结构、图形结构。</p>
-<p>物理结构：数据存储单元之间顺序存储、链式存储。</p>
-<h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><p>求解特定问题的求解步骤的描述，在计算机中表现为指令的有限序列，并且每条指令表示一个或多个操作</p>
-<p>算法的特性：</p>
-<ul>
-<li>输入</li>
-<li>输出</li>
-<li>有穷性</li>
-<li>确定性</li>
-<li>可行性</li>
-</ul>
-<p>算法设计的特性：</p>
-<ul>
-<li>正确性</li>
-<li>可读性</li>
-<li>健壮性 对输入不合法的情况做出合适的处理</li>
-<li>时间效率高，存储量低‘</li>
-</ul>
-<p>算法效率的度量：</p>
-<p>测定运行时间最可靠的方法就是计算对运行时间有消耗的基本操作的执行次数。运行时间与这个计数成正比。</p>
-<p>判断一个算法的效率，函数中常数和其他次要项常常可以忽略，更应该关注主项（最高阶项）的阶数。</p>
-<p>推导时间复杂度的方法：</p>
-<ol>
-<li>用常数1取代运行时间中的所有加法常数</li>
-<li>在修改后的运行次数函数中，只保留最高阶项</li>
-<li>如果最高阶项存在且不是1，则去除与整个项相乘的常数。</li>
-<li>得到的结果就是大O阶</li>
-</ol>
-<p>对于循环体来说，时间复杂度就是内循环的复杂度乘循环的次数。</p>
-<h1 id="线性表"><a href="#线性表" class="headerlink" title="线性表"></a>线性表</h1><p>有顺序结构和链式结构。单链表数据结构在插入和删除操作上，与线性表的顺序存储结构是没有太大优势的。但是如果我们希望从第i个位置，插入10个元素，对于顺序存储结构意味着，每一次插入都要移动n-i个元素，每次都是O(n)。而单链表，我们只需要第一次找到第i个位置的指针，此时为O(n)，接下来只是简单地通过赋值移动指针，事件复杂度为O(1)。显然，对于插入和删除数据越频繁的操作，单链表的效率优势就越明显。</p>
-<h2 id="单链表的整表创建"><a href="#单链表的整表创建" class="headerlink" title="单链表的整表创建"></a>单链表的整表创建</h2><p>1.头插法：让不断生成的结点始终位于第一的位置。新结点指向上一次的新结点，头指针指向新结点。</p>
-<p>2.尾插法：把每次新结点都插在终端结点后面。上一次的新结点指向新结点。</p>
-<h2 id="单链表的整表删除"><a href="#单链表的整表删除" class="headerlink" title="单链表的整表删除"></a>单链表的整表删除</h2><p>链表中每个元素只有数据域和指向下一个元素的指针；要删除的话，只能从第一个开始删除，然后不断往后循环。</p>
-<h2 id="单链表结构与顺序存储结构优缺点"><a href="#单链表结构与顺序存储结构优缺点" class="headerlink" title="单链表结构与顺序存储结构优缺点"></a>单链表结构与顺序存储结构优缺点</h2><p>时间性能上，单链表查找弱于顺序存储结构，插入和删除在多元素时优于顺序存储结构。空间性能上，顺序存储需要预先分配空间，这就直接导致会有浪费或者上溢。</p>
-<p>例如：1.在游戏开发中，对于用户注册的个人信息，除了注册时插入数据外，绝大多数情况下都是读取，所以应该考虑使用顺序存储结构。而游戏中的玩家的武器或者装备列表，随着玩家游戏的过程中，可能随时增加或删除，此时再用顺序存储就太不合适了。2.当线性表中的元素个数变化较大或者根本不知道多大时，为了空间考虑还是使用单链表结构。如果事先知道线性表的大致长度，比如一年12个月，一周共7天，这种用顺序存储结构效率高很多。</p>
-<h2 id="静态链表"><a href="#静态链表" class="headerlink" title="静态链表"></a>静态链表</h2><p>当最初期的编程高级语言Basic、Fortran，由于没有指针，链表结构如何实现呢？和我在Java中定义链表差不多，我用一个包装类里面放数据和它指向的下个元素的地址。那这些没有指针的语言，它们可以使用数组来代替指针。首先是数组中的每个元素都是由两个数据域组成，data和cur；这个cur放的就是该元素的后继在数组中的下标。这种用数组描述的链表就是静态链表，还有叫游标实现法的。</p>
-<p>光这样放元素还是不够完善，我们需要对数组第一个和最后一个元素作为特殊元素处理，不存数据。通常把未被使用数组元素（剩余空闲的数组元素连在一起的）称为备用链表。而数组第一个元素，下标为0的数组元素的cur就存放备用链表的第一个结点的下标；而数组的最后一个元素的cur则存放第一个有数组的元素的下标，相当于头结点。如下图：第一个节点中cur为7，庚元素的cur为0，数组的末尾的cur为1，这三个表示的意思，我们都应该要知道。7是备用链表的起始位置，0是表示当前数组元素为不为空的元素最后一个，1是表示数组中不为空的第一个位置的下标。7、0、1都是下标。</p>
-<p><img src="/2019/11/30/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%BA%BF%E6%80%A7%E8%A1%A8/StudyPic/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E9%9D%99%E6%80%81%E9%93%BE%E8%A1%A8.png" alt="a">  </p>
-<h3 id="静态链表的插入与删除"><a href="#静态链表的插入与删除" class="headerlink" title="静态链表的插入与删除"></a>静态链表的插入与删除</h3><p>静态链表要解决的是：如何用静态模拟动态链表结构的存储空间的分配，需要时申请，无用时释放。</p>
-<h4 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h4><p>那么如何模拟结点创建呢？我们将数组中未被使用过的及已经被删除的分量用游标链成一个备用的链表，每当进行插入时，就从备用链表中取得一个结点作为待插入的新结点。  </p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*备用链表非空，就返回要分配出去的结点的下标，否则返回0*/</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Malloc_SLL</span><span class="params">(StaticLinkList space)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//静态链表的第一个位置放的就是备用链表</span></span><br><span class="line">	<span class="comment">//第一个元素的下标，现在我们先拿到</span></span><br><span class="line">	<span class="comment">//备用链表的第一个元素</span></span><br><span class="line">	<span class="keyword">int</span> i = space[<span class="number">0</span>].cur;</span><br><span class="line">	<span class="comment">//如果能拿到备用链表的第一个结点，那就把它下一个</span></span><br><span class="line">	<span class="comment">//结点作为新一个第一结点。因为需要人能顶起下次被取出的任务</span></span><br><span class="line">	<span class="keyword">if</span> (space[<span class="number">0</span>].cur) &#123;</span><br><span class="line">		space[<span class="number">0</span>].cur = space[i].cur;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>现在能从备用链表中拿到新的空间作为放新结点的位置了。那我们就来实现如何给静态链表插入一个元素。大致思路还是：先判断插入位置是否合理；再拿到插入位置的前一个结点，让它把它的后继结点的游标给我们新插入的结点来继承；然后新结点再作为前面结点的后继。很好理解，每个元素只有下一个元素的游标，我们要插入某个位置，那就要把这个位置的上游指向新结点且新结点指向上游的后继结点；那就先把上游的后继结点游标拿到，不然赋值就覆盖了。  </p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Status <span class="title">ListInsert</span><span class="params">(StaticLinkList L,<span class="keyword">int</span> i,ElemTyp e)</span> </span>&#123;</span><br><span class="line">	<span class="comment">//j用来接收分配位置,k用来接收静态链表的最后一位元素的下标，</span></span><br><span class="line">	<span class="comment">//位于该k位置元素的游标指向第一个放元素的下标；l用来计数。</span></span><br><span class="line">	<span class="keyword">int</span> j,k,l;</span><br><span class="line">	k = MAX_SIZE - <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span> (i&lt;<span class="number">1</span> ||i&gt;ListLength(L) +<span class="number">1</span>)</span><br><span class="line">		<span class="keyword">return</span> ERROR;</span><br><span class="line">	j = Malloc_SSL(L); <span class="comment">/*获得空闲分量的下标*/</span></span><br><span class="line">	<span class="keyword">if</span> (j) &#123;</span><br><span class="line">		L[j].data = e; <span class="comment">/*插入位置数据域赋值*/</span></span><br><span class="line">		<span class="keyword">for</span> (l=<span class="number">1</span>; l&lt;i; l++) &#123; <span class="comment">/*l是相对于长度来说，l=1下面第一次循环就拿到开头元素的下标，那么他要循环到插入位置前一个元素，那对应的下标就是i-1，就循环i-1次*/</span></span><br><span class="line">			k = L[k].cur;</span><br><span class="line">		&#125;</span><br><span class="line">		L[j].cur = L[k].cur;</span><br><span class="line">		L[k].cur = j;</span><br><span class="line">		<span class="keyword">return</span> OK;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ERROR;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这里面比较难理解的就是找到插入位置的前一个元素。一个循环，它的结束条件还是要看它循环体什么时候符合条件；符合条件了就要结束循环。  </p>
-<h4 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h4><p>要删除i位置的结点，很简单，就是把i上游的游标不再指向i了，指向i的下游；然后将i位置结点释放。<br>直接上代码：  </p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Status <span class="title">ListDelete</span><span class="params">(StaticLinkList L,<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> j,k;</span><br><span class="line">	<span class="keyword">if</span> (i &lt;<span class="number">1</span> || i&gt;ListLength(L)) &#123;</span><br><span class="line">		<span class="keyword">return</span> ERROR;</span><br><span class="line">	&#125;</span><br><span class="line">	k = MAX_SIZE - <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (j = <span class="number">1</span>;j&lt;=i<span class="number">-1</span>;j++) &#123;</span><br><span class="line">		k = L[k].cur;</span><br><span class="line">	&#125;</span><br><span class="line">	j = L[k],cur;</span><br><span class="line">	L[k].cur = L[j].cur;</span><br><span class="line">	Free_SSL(L,j);</span><br><span class="line">	<span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>其中的Free_SSL(L,j)是释放元素：  </p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*将下标为k的空闲结点回收到备用链表*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Free_SSL</span><span class="params">(StaticLinkList space,<span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">	<span class="comment">/*用了头插法，把新产生的空闲结点放到备用链表第一个元素之前*/</span></span><br><span class="line">	space[k].cur = space[<span class="number">0</span>].cur;</span><br><span class="line">	space[<span class="number">0</span>].cur = k;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>为啥这里不用尾插法？理论上是可行，反正都是把空闲结点放进备用链表。不过尾插就得找到备用链表的最后一个结点，在静态链表中只能不断遍历才能拿到。这就过于麻烦了吧！静态链表有三个特殊位置，第一个是第一位指向了备用链表的位置，第二个是最后一位指向了有元素的第一个位置，第三个是备用链表的起始位置，它指向备用链表的后继。<br>头插法是，我们只要把插入的结点指向之前的第一个结点就行；在静态链表中，除了要这样做之外，还要把第一个结点指向的位置换成新结点。  </p>
-<h3 id="静态链表的优缺点"><a href="#静态链表的优缺点" class="headerlink" title="静态链表的优缺点"></a>静态链表的优缺点</h3><p>优点是继承了单链表的优点，缺点是没有解决表长难确定的问题，失去了顺序存储结构随机存取的特性。<br>静态链表理解它的思想就ok了。   </p>
-<h2 id="循环链表"><a href="#循环链表" class="headerlink" title="循环链表"></a>循环链表</h2><p>第一个特点，从任一结点都能完整遍历链表。我们把单链表的尾结点的指针从空指针改为指向头结点。这样就把整个单链表形成一个环，这种头尾相连的单链表就是单循环链表。简称循环链表（circular linked list）。<br>通常为了让空链表和非空链表处理一致，通常设置一个头结点。<br>循环链表和单链表的主要差异就在于循环的判断条件，原来是判断p-&gt;next是否为空，现在是p-&gt;next不等于头结点，则循环未结束。<br>循环链表就是为了解决从任一结点都能遍历链表，我们都知道链表的头和尾是两个特殊位置，如果我们想要不遍历整个链表就拿到头和尾，那该咋整呢？我们用一个尾指针来指向尾结点，不就解决了。  </p>
-<p>现在咋们有两个循环链表A和B，我们要让B接在A后面，如果只有头指针的情况下，怎么办？<br>那就得遍历A，指导尾结点结束，然后让尾结点不再指向A的头结点；让它指向B的头结点，然后遍历B，让B的尾结点不指向B的头结点，去指向A的头结点。这里用到了两个遍历时间复杂度O(n)。<br>如果现在有尾指针的情况下呢？<br>A的尾指针去指向B的尾指针的next-&gt;next也就是B的头，让B的next指向A的尾指针的next-&gt;next也就是A的头。这里的时间复杂度是多少？也就两步吧？这不就很简单了。这就是尾指针的爽点。<br>文字看起来不爽，来用代码表示一下：  </p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">p = rearA-&gt;next; <span class="comment">/*拿到A的头结点*/</span></span><br><span class="line">rearA-&gt;next=rearB-&gt;next-&gt;next; <span class="comment">/*A的尾结点指向B的头结点*/</span></span><br><span class="line">rearB-&gt;next=p; <span class="comment">/*B的尾结点指向A的头结点*/</span></span><br><span class="line"><span class="built_in">free</span>(p);</span><br></pre></td></tr></table></figure>
-
-<h2 id="双向链表"><a href="#双向链表" class="headerlink" title="双向链表"></a>双向链表</h2><p>在一个循环链表的情况下，我们现在需要从尾结点开始，遍历整个链表，并且最后要回到头结点。遍历一次咋们还是在尾结点，还得多走一步才能回到头结点。<br>现在我们整一个双向链表，啥是双向链表？先不管，反正能反着访问就行，那我们就可以从尾结点逆序访问到头结点，还不用多走一步。<br>我们在单链表中，有了next指针，使得我们要查找下一结点的时间复杂度为O(1)。可是如果我们要找的是上一个结点，就得是O(n)了。因为我们每次都得从头开始查找。<br>为了克服单向性这一个访问缺点，我们的科学家设计出了双向链表。double linked list是在单链表的每一个节点中，再设置一个指向其前驱结点的指针域。那么现在双向链表的每一个结点都有两个指针域，一个指向直接后继，另一个指向直接前驱。  </p>
-<p>双向链表的插入与删除思路：<br>在a1（p结点）与a2之间插入一个s结点，现在能知道的就是p结点和e结点。进行指针操作必须要注意p-&gt;next只能最后被赋值，因为它表示的就是a1与a2之间的联系，如果他改变了就表示联系断了。  </p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*先给插入的s结点的两个指针域赋值，完成s结点的指向*/</span></span><br><span class="line">s-&gt;next = p-&gt;next;   </span><br><span class="line">s-&gt;prior = p;</span><br><span class="line"><span class="comment">/*对a2结点的priod指针（指向前一结点的指针域）赋值*/</span></span><br><span class="line">p-&gt;next-&gt;prior = s;</span><br><span class="line"><span class="comment">/*对a1结点的next指针赋值*/</span></span><br><span class="line">p-&gt;next = s;</span><br></pre></td></tr></table></figure>
-
-<p>双向链表插入得修改三个结点，首先是插入结点的前后指针，再是插入位置的后一结点的前指针，最后是插入结点位置的前一结点的后指针。  </p>
-<p>删除：假如删除的就是p结点，它的前后结点的指针都与他无关了，之前和它有关的都得改变。  </p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">p-&gt;next-&gt;prior=p-&gt;prior;</span><br><span class="line">p-&gt;prior-&gt;next=p-&gt;next;</span><br><span class="line"><span class="built_in">free</span>(p);</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/30/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%98%9F%E5%88%97/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1407,7 +1816,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
