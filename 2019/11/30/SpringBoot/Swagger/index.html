@@ -87,14 +87,14 @@
 <meta property="og:site_name" content="个人技术博客">
 <meta property="og:description" content="Swagger我们提供Restful接口的时候，API文档是尤为的重要，它承载着对接口的定义，描述等。它还是和API消费方沟通的重要工具。在实际情况中由于接口和文档存放的位置不同，我们很难及时的去维护文档。个人在实际的工作中就遇到过很多接口更新了很久，但是文档却还是老版本的情况，其实在这个时候这份文档就已经失去了它存在的意义。而Swagger是目前我见过的最好的API文档生成工具，使用起来也很方便">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;30&#x2F;SpringBoot&#x2F;Swagger&#x2F;clipboard.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;30&#x2F;SpringBoot&#x2F;Swagger&#x2F;clipboard1.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;30&#x2F;SpringBoot&#x2F;Swagger&#x2F;clipboard4.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;30&#x2F;SpringBoot&#x2F;Swagger&#x2F;clipboard2.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;30&#x2F;SpringBoot&#x2F;Swagger&#x2F;clipboard3.png">
-<meta property="og:updated_time" content="2019-11-30T15:46:32.026Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;15752913-89f99d6b29476e7b.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;15752913-2590890623152f03.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;15752913-0142e40cdc6643c9.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;15752913-03e0b2edfe1c03f2.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;15752913-feceee1618984c48.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:updated_time" content="2019-12-21T05:44:43.491Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;30&#x2F;SpringBoot&#x2F;Swagger&#x2F;clipboard.png">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;15752913-89f99d6b29476e7b.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
 
 
 
@@ -382,33 +382,35 @@
 
 <h2 id="Swagger-的配置类"><a href="#Swagger-的配置类" class="headerlink" title="Swagger 的配置类"></a>Swagger 的配置类</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableSwagger</span>2</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SwaggerConfig</span> <span class="keyword">extends</span> <span class="title">WebMvcConfigurationSupport</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Docket <span class="title">productApi</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Docket(DocumentationType.SWAGGER_2).select()</span><br><span class="line">                <span class="comment">// 扫描的包路径</span></span><br><span class="line">                .apis(RequestHandlerSelectors.basePackage(<span class="string">"com.yf.controller"</span>))</span><br><span class="line">                <span class="comment">// 定义要生成文档的Api的url路径规则</span></span><br><span class="line">                .paths(PathSelectors.any())</span><br><span class="line">                .build()</span><br><span class="line">                <span class="comment">// 设置swagger-ui.html页面上的一些元素信息。</span></span><br><span class="line">                .apiInfo(metaData());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> ApiInfo <span class="title">metaData</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ApiInfoBuilder()</span><br><span class="line">                <span class="comment">// 标题</span></span><br><span class="line">                .title(<span class="string">"SpringBoot集成Swagger2测试"</span>)</span><br><span class="line">                <span class="comment">// 描述</span></span><br><span class="line">                .description(<span class="string">"这是一篇博客演示"</span>)</span><br><span class="line">                <span class="comment">// 文档版本</span></span><br><span class="line">                .version(<span class="string">"1.0.0"</span>)</span><br><span class="line">                .license(<span class="string">"Apache License Version 2.0"</span>)</span><br><span class="line">                .licenseUrl(<span class="string">"https://www.apache.org/licenses/LICENSE-2.0"</span>)</span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">addResourceHandlers</span><span class="params">(ResourceHandlerRegistry registry)</span> </span>&#123;</span><br><span class="line">        registry.addResourceHandler(<span class="string">"swagger-ui.html"</span>)</span><br><span class="line">                .addResourceLocations(<span class="string">"classpath:/META-INF/resources/"</span>);</span><br><span class="line"></span><br><span class="line">        registry.addResourceHandler(<span class="string">"/webjars/**"</span>)</span><br><span class="line">                .addResourceLocations(<span class="string">"classpath:/META-INF/resources/webjars/"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2019/11/30/SpringBoot/Swagger/clipboard.png" alt="img"></p>
-<h2 id="Swagger-常用注解"><a href="#Swagger-常用注解" class="headerlink" title="Swagger 常用注解"></a>Swagger 常用注解</h2><p><img src="/2019/11/30/SpringBoot/Swagger/clipboard1.png" alt="img"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15752913-89f99d6b29476e7b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<h2 id="Swagger-常用注解"><a href="#Swagger-常用注解" class="headerlink" title="Swagger 常用注解"></a>Swagger 常用注解</h2><p><img src="https://upload-images.jianshu.io/upload_images/15752913-2590890623152f03.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
 <h3 id="Api"><a href="#Api" class="headerlink" title="@Api()"></a>@Api()</h3><ol>
 <li>用于类：表示标识这个类是swagger的资源</li>
 <li>tags——表示说明</li>
 <li>value——也是说明，可以使用tags替代</li>
 <li>但是tags 如果有多个值，会生成多个list</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ApiOperation</span>(value = <span class="string">"获取用户列表"</span>,notes = <span class="string">"获取所有用户的信息"</span>)</span><br><span class="line"><span class="meta">@GetMapping</span>(<span class="string">"/users"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> Object <span class="title">index</span><span class="params">()</span> </span>&#123;</span><br><span class="line">   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Api</span>(value=<span class="string">"用户controller"</span>,tags=<span class="string">"用户操作接口"</span>)</span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2019/11/30/SpringBoot/Swagger/clipboard4.png" alt="img"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15752913-0142e40cdc6643c9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
 <h3 id="ApiOperation"><a href="#ApiOperation" class="headerlink" title="@ApiOperation()"></a>@ApiOperation()</h3><ol>
 <li>用于方法：表示一个 http 请求的操作</li>
 <li>value——用于方法描述</li>
 <li>notes——用于提示内容</li>
 <li>tags可以重新分组（视情况而用）</li>
 </ol>
-<p>@ApiOperation(value = “获取用户列表”,notes = “获取所有用户的信息”) @GetMapping(“/users”) public Object index() {    } </p>
-<p><img src="/2019/11/30/SpringBoot/Swagger/clipboard2.png" alt="img"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ApiOperation</span>(value = <span class="string">"获取用户列表"</span>,notes = <span class="string">"获取所有用户的信息"</span>)</span><br><span class="line"><span class="meta">@GetMapping</span>(<span class="string">"/users"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> Object <span class="title">index</span><span class="params">()</span> </span>&#123;</span><br><span class="line">   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/15752913-03e0b2edfe1c03f2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
 <h3 id="ApiParam"><a href="#ApiParam" class="headerlink" title="@ApiParam()"></a>@ApiParam()</h3><ol>
 <li>用于参数：对方法参数的补充说明</li>
 <li>name——参数名</li>
 <li>value——参数的描述</li>
 <li>required——是否必填</li>
 </ol>
-<p>@ApiOperation(value = “根据用户ID查询用户”,notes = “查询单个用户的信息”) @ApiParam(name =”id”,value = “用户id”,required = true) @GetMapping(“/users/{id}”) public Object getUserById(@PathVariable(“id”) String id) {    } </p>
-<p><img src="/2019/11/30/SpringBoot/Swagger/clipboard3.png" alt="img"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ApiOperation</span>(value = <span class="string">"根据用户ID查询用户"</span>,notes = <span class="string">"查询单个用户的信息"</span>)</span><br><span class="line"><span class="meta">@ApiParam</span>(name =<span class="string">"id"</span>,value = <span class="string">"用户id"</span>,required = <span class="keyword">true</span>)</span><br><span class="line"><span class="meta">@GetMapping</span>(<span class="string">"/users/&#123;id&#125;"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> Object <span class="title">getUserById</span><span class="params">(@PathVariable(<span class="string">"id"</span>)</span> String id) </span>&#123;</span><br><span class="line">   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/15752913-feceee1618984c48.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
 
       
     </div>
@@ -443,7 +445,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/11/30/JAVA/Lambda/" rel="prev" title="Lambda">
+              <a href="/2019/12/01/JAVA/Lambda/" rel="prev" title="Lambda">
                 Lambda <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -526,7 +528,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -537,7 +539,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -548,7 +550,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

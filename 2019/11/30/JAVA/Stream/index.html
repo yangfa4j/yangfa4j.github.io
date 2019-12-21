@@ -87,11 +87,11 @@
 <meta property="og:site_name" content="个人技术博客">
 <meta property="og:description" content="StreamJava 8 中的 Stream 是对集合（Collection）对象功能的增强，它专注于对集合对象进行各种非常便利、高效的聚合操作（aggregate operation），或者大批量数据操作 (bulk data operation)。Stream API 借助于同样新出现的Lambda表达式，极大的提高编程效率和程序可读性。同时它提供串行和并行两种模式进行汇聚操作，并发模式能够充">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;30&#x2F;JAVA&#x2F;Stream&#x2F;clipboard2.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;30&#x2F;JAVA&#x2F;Stream&#x2F;clipboard3.png">
-<meta property="og:updated_time" content="2019-12-02T15:08:22.579Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;15752913-3163897aaf505cb8.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;15752913-23c1e639900db0c5.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:updated_time" content="2019-12-21T07:32:23.441Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;30&#x2F;JAVA&#x2F;Stream&#x2F;clipboard2.png">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;15752913-3163897aaf505cb8.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
 
 
 
@@ -283,7 +283,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-30T21:30:20+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-30T00:00:00+08:00">
                 2019-11-30
               </time>
             
@@ -375,7 +375,7 @@
 
       
         <h1 id="Stream"><a href="#Stream" class="headerlink" title="Stream"></a>Stream</h1><p>Java 8 中的 Stream 是对集合（Collection）对象功能的增强，它专注于对集合对象进行各种非常便利、高效的<strong>聚合操作（aggregate operation）</strong>，或者大批量数据操作 (bulk data operation)。Stream API 借助于同样新出现的Lambda表达式，极大的提高编程效率和程序可读性。同时它提供<strong>串行</strong>和<strong>并行</strong>两种模式进行汇聚操作，并发模式能够充分利用多核处理器的优势，使用fork/join并行方式来拆分任务和加速处理过程。</p>
-<p><img src="/2019/11/30/JAVA/Stream/clipboard2.png" alt="clipboard2.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15752913-3163897aaf505cb8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="clipboard2.png"></p>
 <h2 id="中间操作"><a href="#中间操作" class="headerlink" title="中间操作"></a>中间操作</h2><h3 id="筛选与切片"><a href="#筛选与切片" class="headerlink" title="筛选与切片"></a>筛选与切片</h3><h4 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h4><p>接收 Lambda，从流中过滤某些数据</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">list.stream()</span><br><span class="line">       .filter( (student -&gt; student.getNo() &gt; <span class="number">3</span>) ) <span class="comment">//中间操作过滤编号小于4</span></span><br><span class="line">       .forEach( (student -&gt; System.out.println(student.toString())));</span><br></pre></td></tr></table></figure>
 
@@ -428,7 +428,7 @@
 
 <p>它多了一个初始化的值，因此计算的顺序是identity与a[0]进行二合运算，结果与a[1]再进行二合运算，最终与a[n-1]进行二合运算，identity一般设为不影响结果的值。</p>
 <h3 id="收集"><a href="#收集" class="headerlink" title="收集"></a>收集</h3><h4 id="collect"><a href="#collect" class="headerlink" title="collect"></a>collect</h4><p>是将流转换为其他形式。接收一个 Collector 接口的实现，用于给Stream中元素做汇总的方法。</p>
-<p><img src="/2019/11/30/JAVA/Stream/clipboard3.png" alt="clipboard3.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15752913-23c1e639900db0c5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Set&lt;String&gt; collect = list.stream()</span><br><span class="line">        .map((Student::getName)) <span class="comment">// 获取所有学生的身高</span></span><br><span class="line">        .collect(Collectors.toSet());  <span class="comment">// 把学生的名字收集到 set 集合中去</span></span><br><span class="line">System.out.println(collect);  <span class="comment">// 去重结果</span></span><br></pre></td></tr></table></figure>
 
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">HashSet&lt;String&gt; collect = list.stream()</span><br><span class="line">        .map((Student::getName)) <span class="comment">//什么集合，就是 集合名字::new</span></span><br><span class="line">        .collect(Collectors.toCollection(HashSet::<span class="keyword">new</span>)); </span><br><span class="line">System.out.println(collect);</span><br></pre></td></tr></table></figure>
@@ -462,8 +462,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/11/30/JAVA/Lambda/" rel="next" title="Lambda">
-                <i class="fa fa-chevron-left"></i> Lambda
+              <a href="/2019/11/06/JAVA/JVM/" rel="next" title="JVM">
+                <i class="fa fa-chevron-left"></i> JVM
               </a>
             
           </div>
@@ -555,7 +555,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -566,7 +566,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -577,7 +577,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

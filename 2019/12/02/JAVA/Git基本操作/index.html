@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Git&GitHub," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="GITGit工作区的概念 向仓库中添加文件流程 Git的基本操作命令用户名与邮箱的全局设置12$ git config --global user.name &quot;yangfa&quot; $ git config --global user.email &quot;849949161@qq.com&quot;  idea中使用git时，做一些文件忽略 1.idea;*.iml;  &#x2F;&#x2F; 在后面加上忽略idea的配置  git i">
+<meta name="keywords" content="Git&amp;GitHub">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git基本操作">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;02&#x2F;JAVA&#x2F;Git%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C&#x2F;index.html">
+<meta property="og:site_name" content="个人技术博客">
+<meta property="og:description" content="GITGit工作区的概念 向仓库中添加文件流程 Git的基本操作命令用户名与邮箱的全局设置12$ git config --global user.name &quot;yangfa&quot; $ git config --global user.email &quot;849949161@qq.com&quot;  idea中使用git时，做一些文件忽略 1.idea;*.iml;  &#x2F;&#x2F; 在后面加上忽略idea的配置  git i">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;15752913-68608c28c197eb87.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;15752913-d7e760332187ee5f.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;15752913-83354bf0fa7ae503.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;15752913-72b738be612c7bab.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;15752913-2f17f0c3be820bbd.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;15752913-24f34ab6677e1683.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;15752913-3f56fdbddc4cf6bc.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;15752913-c4a36a60bc8c0460.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;15752913-c7b8e60ca7c77244.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;15752913-1286ccdb9a188cd6.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;15752913-f87fbbb6adccb8f7.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;15752913-9b1121e5847abcb9.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;15752913-5f1638a9c16bd4ed.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;15752913-c49ce6814e97c91d.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;15752913-6a51331ccd24aa95.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;15752913-c3112723696d6fdb.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;15752913-d2296253deeb0368.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;15752913-8848825b94a97971.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;15752913-8dd3c82ccc4dd5dd.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;15752913-98d48e503f05632d.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;15752913-fe7aca73ba70ccdf.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;15752913-aacbf1a00aa2aca4.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;15752913-5bd604a962f33a7b.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;15752913-67ff097b04ff9468.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;15752913-73d9923842e56520.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;15752913-f41c822d46cdd14e.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;15752913-835cb7b001a71ce1.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;15752913-29f94e0eff2841b7.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;15752913-27a6384f55d6bd54.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;15752913-6862f55a95a2ec86.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;15752913-78021061571dc954.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;15752913-6aa1fa186d6b3606.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;15752913-b1bc241791d2a6fa.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;15752913-66b380e5ae0614e5.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;15752913-80995cd4c179ea1e.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;15752913-e1a54783dacb1bb4.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;15752913-fa1e6486c3bb9dc8.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:updated_time" content="2019-12-21T07:34:23.185Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;15752913-68608c28c197eb87.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/12/02/JAVA/Git基本操作/"/>
+
+
+
+
+
+  <title>Git基本操作 | 个人技术博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">个人技术博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">记录了一些与JAVA相关的技术文章</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/02/JAVA/Git%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="杨发">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/tx.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="个人技术博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Git基本操作</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-02T00:00:00+08:00">
+                2019-12-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JAVA/" itemprop="url" rel="index">
+                    <span itemprop="name">JAVA</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.6k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="GIT"><a href="#GIT" class="headerlink" title="GIT"></a>GIT</h1><h2 id="Git工作区的概念"><a href="#Git工作区的概念" class="headerlink" title="Git工作区的概念"></a>Git工作区的概念</h2><p><img src="https://upload-images.jianshu.io/upload_images/15752913-68608c28c197eb87.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<h2 id="向仓库中添加文件流程"><a href="#向仓库中添加文件流程" class="headerlink" title="向仓库中添加文件流程"></a>向仓库中添加文件流程</h2><p><img src="https://upload-images.jianshu.io/upload_images/15752913-d7e760332187ee5f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<h2 id="Git的基本操作命令"><a href="#Git的基本操作命令" class="headerlink" title="Git的基本操作命令"></a>Git的基本操作命令</h2><h3 id="用户名与邮箱的全局设置"><a href="#用户名与邮箱的全局设置" class="headerlink" title="用户名与邮箱的全局设置"></a>用户名与邮箱的全局设置</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git config --global user.name <span class="string">"yangfa"</span> </span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git config --global user.email <span class="string">"849949161@qq.com"</span></span></span><br></pre></td></tr></table></figure>
+
+<h3 id="idea中使用git时，做一些文件忽略"><a href="#idea中使用git时，做一些文件忽略" class="headerlink" title="idea中使用git时，做一些文件忽略"></a>idea中使用git时，做一些文件忽略</h3><p><img src="https://upload-images.jianshu.io/upload_images/15752913-83354bf0fa7ae503.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.idea;*.iml;  // 在后面加上忽略idea的配置</span><br></pre></td></tr></table></figure>
+
+<h3 id="git-init-初始化仓库"><a href="#git-init-初始化仓库" class="headerlink" title="git init             初始化仓库"></a>git init             初始化仓库</h3><p>把这个目录变成git可以管理的仓库</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15752913-72b738be612c7bab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<h3 id="git-add-文件名-添加到暂存区"><a href="#git-add-文件名-添加到暂存区" class="headerlink" title="git add  [文件名]      添加到暂存区"></a>git add  [文件名]      添加到暂存区</h3><p>在版本库testgit目录下新建一个记事本文件 readme.txt 内容如下：111111111，</p>
+<p>使用git add 命令把文件添加到暂存区。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15752913-2f17f0c3be820bbd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<h3 id="git-commit-提交当前文件到仓库"><a href="#git-commit-提交当前文件到仓库" class="headerlink" title="git commit      提交当前文件到仓库"></a>git commit      提交当前文件到仓库</h3><p>把文件提交到Git仓库， -m 后面添加注释</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15752913-24f34ab6677e1683.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<h3 id="git-status-查看目前状态"><a href="#git-status-查看目前状态" class="headerlink" title="git status          查看目前状态"></a>git status          查看目前状态</h3><p><img src="https://upload-images.jianshu.io/upload_images/15752913-3f56fdbddc4cf6bc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<p>修改文件信息，添加一行2222222222内容，继续使用git status来查看下结果，如下：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15752913-c4a36a60bc8c0460.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<p>上面的命令告诉我们 readme.txt文件已被修改，但是未被提交</p>
+<h3 id="git-diff-文件名-查看文件的修改"><a href="#git-diff-文件名-查看文件的修改" class="headerlink" title="git diff  [文件名]        查看文件的修改"></a>git diff  [文件名]        查看文件的修改</h3><p><img src="https://upload-images.jianshu.io/upload_images/15752913-c7b8e60ca7c77244.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<p>如上可以看到，readme.txt文件内容从一行11111111改成 二行 添加了一行222222222内容。</p>
+<h3 id="对修改后的文件进行提交，先add后commit"><a href="#对修改后的文件进行提交，先add后commit" class="headerlink" title="对修改后的文件进行提交，先add后commit"></a>对修改后的文件进行提交，先add后commit</h3><p><img src="https://upload-images.jianshu.io/upload_images/15752913-1286ccdb9a188cd6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<h3 id="cat-文件名-查看文件内容"><a href="#cat-文件名-查看文件内容" class="headerlink" title="cat    [文件名]                  查看文件内容"></a>cat    [文件名]                  查看文件内容</h3><p><img src="https://upload-images.jianshu.io/upload_images/15752913-f87fbbb6adccb8f7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<h3 id="git-reset-–hard-版本回退"><a href="#git-reset-–hard-版本回退" class="headerlink" title="git reset   –hard           版本回退"></a>git reset   –hard           版本回退</h3><p>如上，我们已经学会了修改文件，现在我继续对readme.txt文件进行修改，再增加一行</p>
+<p>内容为33333333333333.继续执行add，commit命令 如下：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15752913-9b1121e5847abcb9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<p>现在我想使用版本回退操作，我想把当前的版本回退到上一个版本，要使用什么命令呢？可以使用如下2种命令，</p>
+<h4 id="git-reset-–hard-HEAD"><a href="#git-reset-–hard-HEAD" class="headerlink" title="git reset –hard HEAD^"></a>git reset –hard HEAD^</h4><p>那么如果要回退到上上个版本只需把HEAD^ 改成 HEAD^^ 以此类推。</p>
+<h4 id="git-reset-–hard-HEAD-x"><a href="#git-reset-–hard-HEAD-x" class="headerlink" title="git reset –hard HEAD~x"></a>git reset –hard HEAD~x</h4><p>那如果要回退到前100个版本的话，使用上面的方法肯定不方便，我们可以使用下面的简便命令操作：git reset –hard HEAD~100 即可。未回退之前的readme.txt内容如下：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15752913-5f1638a9c16bd4ed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<p>如果想回退到上一个版本的命令如下操作：</p>
+<p>第一种:</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15752913-c49ce6814e97c91d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<p>第二种：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15752913-6a51331ccd24aa95.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<p>接着查看文件内容如下：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15752913-c3112723696d6fdb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<p>已经回退到第二个版本了。</p>
+<h3 id="git-log-查看历史记录"><a href="#git-log-查看历史记录" class="headerlink" title="git log            查看历史记录"></a>git log            查看历史记录</h3><p><img src="https://upload-images.jianshu.io/upload_images/15752913-d2296253deeb0368.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<p>git log命令显示从最近到最远的显示日志，我们可以看到最近三次提交，最近的一次是,增加内容为333333.上一次是添加内容222222，第一次默认是 111111。</p>
+<h3 id="git-log-–pretty-oneline-一行显示历史记录"><a href="#git-log-–pretty-oneline-一行显示历史记录" class="headerlink" title="git log –pretty=oneline     一行显示历史记录"></a>git log –pretty=oneline     一行显示历史记录</h3><p>如果嫌上面显示的信息太多的话，我们可以使用命令 git log –pretty=oneline 演示如下：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15752913-8848825b94a97971.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<h3 id="git-reflog-获取每次提交的版本号，便于版本切换"><a href="#git-reflog-获取每次提交的版本号，便于版本切换" class="headerlink" title="git reflog               获取每次提交的版本号，便于版本切换"></a>git reflog               <strong>获取每次提交的版本号，便于版本切换</strong></h3><p><img src="https://upload-images.jianshu.io/upload_images/15752913-8dd3c82ccc4dd5dd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<h3 id="git-reset-–hard-版本号-根据版本号，回退到指定版本"><a href="#git-reset-–hard-版本号-根据版本号，回退到指定版本" class="headerlink" title="git reset –hard  [版本号]        根据版本号，回退到指定版本"></a>git reset –hard  [版本号]        <strong>根据版本号，回退到指定版本</strong></h3><p>使用git log 来查看下历史记录信息，如下：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15752913-98d48e503f05632d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<p>我们看到 增加333333 内容我们没有看到了，但是现在我想回退到最新的版本，如：有333333的内容要如何恢复呢？我们可以通过版本号回退，使用命令方法如下：</p>
+<h4 id="先查看每次操作后的版本号：git-reflog"><a href="#先查看每次操作后的版本号：git-reflog" class="headerlink" title="先查看每次操作后的版本号：git reflog"></a>先查看每次操作后的版本号：git reflog</h4><p><img src="https://upload-images.jianshu.io/upload_images/15752913-fe7aca73ba70ccdf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<p>通过版本号定位版本，最后回退：</p>
+<p>通过上面的显示我们可以知道，增加内容3333的版本号是 4f30862.我们现在可以通过回退命令返回指定的版本。</p>
+<h4 id="git-reset-–hard-版本号"><a href="#git-reset-–hard-版本号" class="headerlink" title="git reset –hard 版本号"></a>git reset –hard 版本号</h4><p><img src="https://upload-images.jianshu.io/upload_images/15752913-aacbf1a00aa2aca4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<h3 id="git-clone-克隆"><a href="#git-clone-克隆" class="headerlink" title="git clone                 克隆"></a>git clone                 克隆</h3><p>把GitHub中的仓库克隆到本地Git仓库。</p>
+<h3 id="git-push-推送到远端"><a href="#git-push-推送到远端" class="headerlink" title="git push               推送到远端"></a>git push               推送到远端</h3><h3 id="git-branch-查看当前分支"><a href="#git-branch-查看当前分支" class="headerlink" title="git branch               查看当前分支"></a>git branch               查看当前分支</h3><h4 id="git-branch-v-查看所有的分支"><a href="#git-branch-v-查看所有的分支" class="headerlink" title="git branch -v    查看所有的分支"></a>git branch -v    查看所有的分支</h4><p><img src="https://upload-images.jianshu.io/upload_images/15752913-5bd604a962f33a7b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<h4 id="git-branch-分支名-创建分支"><a href="#git-branch-分支名-创建分支" class="headerlink" title="git branch   [分支名]     创建分支"></a>git branch   [分支名]     创建分支</h4><p><img src="https://upload-images.jianshu.io/upload_images/15752913-67ff097b04ff9468.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<h4 id="git-branch-d-分支名-删除分支"><a href="#git-branch-d-分支名-删除分支" class="headerlink" title="git branch -d   [分支名]     删除分支"></a>git branch -d   [分支名]     删除分支</h4><p><strong>只有分支被合并后才能被删除</strong></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15752913-73d9923842e56520.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<h3 id="git-checkout-切换分支"><a href="#git-checkout-切换分支" class="headerlink" title="git checkout     切换分支"></a>git checkout     切换分支</h3><h4 id="git-checkout-b-分支名-创建并切换分支"><a href="#git-checkout-b-分支名-创建并切换分支" class="headerlink" title="git checkout  -b   [分支名]    创建并切换分支"></a>git checkout  -b   [分支名]    创建并切换分支</h4><p><img src="https://upload-images.jianshu.io/upload_images/15752913-f41c822d46cdd14e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<h4 id="git-checkout-分支名-切换到指定分支"><a href="#git-checkout-分支名-切换到指定分支" class="headerlink" title="git checkout  [分支名]      切换到指定分支"></a>git checkout  [分支名]      切换到指定分支</h4><p><img src="https://upload-images.jianshu.io/upload_images/15752913-835cb7b001a71ce1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<h3 id="git-marge-分支名-当前所在分支与参数分支合并"><a href="#git-marge-分支名-当前所在分支与参数分支合并" class="headerlink" title="git marge  [分支名]      当前所在分支与参数分支合并"></a>git marge  [分支名]      <strong>当前所在分支与参数分支合并</strong></h3><h2 id="理解工作区与暂存区的区别"><a href="#理解工作区与暂存区的区别" class="headerlink" title="理解工作区与暂存区的区别"></a>理解工作区与暂存区的区别</h2><p>工作区：就是你在电脑上看到的目录，比如目录下testgit里的文件(.git隐藏目录版本库除外)。或者以后需要再新建的目录文件等等都属于工作区范畴。</p>
+<p>版本库(Repository)：工作区有一个隐藏目录.git,这个不属于工作区，这是版本库。其中版本库里面存了很多东西，其中最重要的就是stage(暂存区)，还有Git为我们自动创建了第一个分支master,以及指向master的一个指针HEAD。</p>
+<p>我们前面说过使用Git提交文件到版本库有两步：</p>
+<p>第一步：是使用 git add 把文件添加进去，实际上就是把文件添加到暂存区。</p>
+<p>第二步：使用git commit提交更改，实际上就是把暂存区的所有内容提交到当前分支上。</p>
+<p>我们在readme.txt再添加一行内容为4444444，接着在目录下新建一个文件为test.txt 内容为test，我们先用命令 git status来查看下状态，如下：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15752913-29f94e0eff2841b7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<p>现在我们先使用git add 命令把2个文件都添加到暂存区中，再使用git status来查看下状态，如下：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15752913-27a6384f55d6bd54.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<p>接着我们可以使用git commit一次性提交到分支上，如下：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15752913-6862f55a95a2ec86.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<h2 id="Git撤销修改和删除文件操作"><a href="#Git撤销修改和删除文件操作" class="headerlink" title="Git撤销修改和删除文件操作"></a>Git撤销修改和删除文件操作</h2><h3 id="git-checkout-–-file-撤销修改"><a href="#git-checkout-–-file-撤销修改" class="headerlink" title="git checkout – file            撤销修改"></a>git checkout – file            <strong>撤销修改</strong></h3><p>比如我现在在readme.txt文件里面增加一行 内容为555555555555，我们先通过命令查看如下：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15752913-78021061571dc954.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<p>在我未提交之前，我发现添加5555555555555内容有误，我要撤销修改，如下：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15752913-6aa1fa186d6b3606.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<p>你可以发现，Git会告诉你，<strong>git checkout – file [ 文件名]</strong> 可以丢弃工作区的修改：</p>
+<p>git checkout – readme.txt,如下所示：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15752913-b1bc241791d2a6fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<p><strong>注意：命令git checkout – readme.txt 中的 – 很重要，如果没有 – 的话，那么命令变成创建分支了。</strong></p>
+<h3 id="rm-删除文件"><a href="#rm-删除文件" class="headerlink" title="rm                       删除文件"></a>rm                       <strong>删除文件</strong></h3><p>假如我现在版本库testgit目录添加一个文件b.txt,然后提交。如下：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15752913-66b380e5ae0614e5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<p>如上：一般情况下，可以直接在文件目录中把文件删了，或者使用如上rm命令：rm b.txt ，如果我想彻底从版本库中删掉了此文件的话，可以再执行commit命令 提交，现在目录是这样的，</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15752913-80995cd4c179ea1e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<p>只要再没有commit之前，还可以在版本库中恢复此文件，如何操作呢？如下：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15752913-e1a54783dacb1bb4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<p>再来看看我们testgit目录，添加了3个文件了。如下所示：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15752913-fa1e6486c3bb9dc8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<p>至此GIT中常用的命令都已经介绍完了。下面进入GitHub的学习。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Git-GitHub/" rel="tag"># Git&GitHub</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/01/JAVA/Lambda/" rel="next" title="Lambda">
+                <i class="fa fa-chevron-left"></i> Lambda
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/03/%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF/Docker/" rel="prev" title="Docker">
+                Docker <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/tx.jpg"
+                alt="杨发" />
+            
+              <p class="site-author-name" itemprop="name">杨发</p>
+              <p class="site-description motion-element" itemprop="description">学习与工作总结</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/yangfa4j" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#GIT"><span class="nav-number">1.</span> <span class="nav-text">GIT</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Git工作区的概念"><span class="nav-number">1.1.</span> <span class="nav-text">Git工作区的概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#向仓库中添加文件流程"><span class="nav-number">1.2.</span> <span class="nav-text">向仓库中添加文件流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git的基本操作命令"><span class="nav-number">1.3.</span> <span class="nav-text">Git的基本操作命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#用户名与邮箱的全局设置"><span class="nav-number">1.3.1.</span> <span class="nav-text">用户名与邮箱的全局设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#idea中使用git时，做一些文件忽略"><span class="nav-number">1.3.2.</span> <span class="nav-text">idea中使用git时，做一些文件忽略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-init-初始化仓库"><span class="nav-number">1.3.3.</span> <span class="nav-text">git init             初始化仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-add-文件名-添加到暂存区"><span class="nav-number">1.3.4.</span> <span class="nav-text">git add  [文件名]      添加到暂存区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-commit-提交当前文件到仓库"><span class="nav-number">1.3.5.</span> <span class="nav-text">git commit      提交当前文件到仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-status-查看目前状态"><span class="nav-number">1.3.6.</span> <span class="nav-text">git status          查看目前状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-diff-文件名-查看文件的修改"><span class="nav-number">1.3.7.</span> <span class="nav-text">git diff  [文件名]        查看文件的修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对修改后的文件进行提交，先add后commit"><span class="nav-number">1.3.8.</span> <span class="nav-text">对修改后的文件进行提交，先add后commit</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cat-文件名-查看文件内容"><span class="nav-number">1.3.9.</span> <span class="nav-text">cat    [文件名]                  查看文件内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-reset-–hard-版本回退"><span class="nav-number">1.3.10.</span> <span class="nav-text">git reset   –hard           版本回退</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#git-reset-–hard-HEAD"><span class="nav-number">1.3.10.1.</span> <span class="nav-text">git reset –hard HEAD^</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#git-reset-–hard-HEAD-x"><span class="nav-number">1.3.10.2.</span> <span class="nav-text">git reset –hard HEAD~x</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-log-查看历史记录"><span class="nav-number">1.3.11.</span> <span class="nav-text">git log            查看历史记录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-log-–pretty-oneline-一行显示历史记录"><span class="nav-number">1.3.12.</span> <span class="nav-text">git log –pretty=oneline     一行显示历史记录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-reflog-获取每次提交的版本号，便于版本切换"><span class="nav-number">1.3.13.</span> <span class="nav-text">git reflog               获取每次提交的版本号，便于版本切换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-reset-–hard-版本号-根据版本号，回退到指定版本"><span class="nav-number">1.3.14.</span> <span class="nav-text">git reset –hard  [版本号]        根据版本号，回退到指定版本</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#先查看每次操作后的版本号：git-reflog"><span class="nav-number">1.3.14.1.</span> <span class="nav-text">先查看每次操作后的版本号：git reflog</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#git-reset-–hard-版本号"><span class="nav-number">1.3.14.2.</span> <span class="nav-text">git reset –hard 版本号</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-clone-克隆"><span class="nav-number">1.3.15.</span> <span class="nav-text">git clone                 克隆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-push-推送到远端"><span class="nav-number">1.3.16.</span> <span class="nav-text">git push               推送到远端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-branch-查看当前分支"><span class="nav-number">1.3.17.</span> <span class="nav-text">git branch               查看当前分支</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#git-branch-v-查看所有的分支"><span class="nav-number">1.3.17.1.</span> <span class="nav-text">git branch -v    查看所有的分支</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#git-branch-分支名-创建分支"><span class="nav-number">1.3.17.2.</span> <span class="nav-text">git branch   [分支名]     创建分支</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#git-branch-d-分支名-删除分支"><span class="nav-number">1.3.17.3.</span> <span class="nav-text">git branch -d   [分支名]     删除分支</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-checkout-切换分支"><span class="nav-number">1.3.18.</span> <span class="nav-text">git checkout     切换分支</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#git-checkout-b-分支名-创建并切换分支"><span class="nav-number">1.3.18.1.</span> <span class="nav-text">git checkout  -b   [分支名]    创建并切换分支</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#git-checkout-分支名-切换到指定分支"><span class="nav-number">1.3.18.2.</span> <span class="nav-text">git checkout  [分支名]      切换到指定分支</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-marge-分支名-当前所在分支与参数分支合并"><span class="nav-number">1.3.19.</span> <span class="nav-text">git marge  [分支名]      当前所在分支与参数分支合并</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#理解工作区与暂存区的区别"><span class="nav-number">1.4.</span> <span class="nav-text">理解工作区与暂存区的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git撤销修改和删除文件操作"><span class="nav-number">1.5.</span> <span class="nav-text">Git撤销修改和删除文件操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#git-checkout-–-file-撤销修改"><span class="nav-number">1.5.1.</span> <span class="nav-text">git checkout – file            撤销修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rm-删除文件"><span class="nav-number">1.5.2.</span> <span class="nav-text">rm                       删除文件</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">杨发</span>
+
+  
+</div>
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+-->
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
