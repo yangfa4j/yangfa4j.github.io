@@ -79,25 +79,38 @@
 
 
 
-<meta name="description" content="JVMJVM的位置 JVM的构成图！！！ 栈管运行，堆管存储类加载器加载 .class  文件进内存，并将这些内容转换成方法区中运行时是数据接口      BootStrap   启动类加载器    C++ 启动类加载器是使用C++语言实现的(HotSpot)，负责加载JVM虚拟机运行时所需的基本系统级别的类，如java.lang.String, java.lang.Object等等 启动类加载器">
+<meta name="description" content="JVM的位置  栈管运行，堆管存储类加载器 加载 .class  文件进内存（运行时数据区），并将这些内容转换成方法区中运行时是数据接口。   BootStrap   启动类加载器    C++ 启动类加载器是使用C++语言实现的(HotSpot)，负责加载JVM虚拟机运行时所需的基本系统级别的类，如java.lang.String, java.lang.Object等等。 启动类加载器(Boot">
 <meta name="keywords" content="JVM">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JVM">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;06&#x2F;JAVA&#x2F;JVM&#x2F;index.html">
 <meta property="og:site_name" content="个人技术博客">
-<meta property="og:description" content="JVMJVM的位置 JVM的构成图！！！ 栈管运行，堆管存储类加载器加载 .class  文件进内存，并将这些内容转换成方法区中运行时是数据接口      BootStrap   启动类加载器    C++ 启动类加载器是使用C++语言实现的(HotSpot)，负责加载JVM虚拟机运行时所需的基本系统级别的类，如java.lang.String, java.lang.Object等等 启动类加载器">
+<meta property="og:description" content="JVM的位置  栈管运行，堆管存储类加载器 加载 .class  文件进内存（运行时数据区），并将这些内容转换成方法区中运行时是数据接口。   BootStrap   启动类加载器    C++ 启动类加载器是使用C++语言实现的(HotSpot)，负责加载JVM虚拟机运行时所需的基本系统级别的类，如java.lang.String, java.lang.Object等等。 启动类加载器(Boot">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;15752913-60351be6c2a77a46.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
-<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;15752913-0f69ec1a9bd34c80.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
-<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;15752913-51a7f57fa5a8f84a.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
-<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;15752913-d4450ddca50c2ebe.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
-<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;15752913-63358a37f51e0275.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
-<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;15752913-6ad0fa9e21b922a3.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
-<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;15752913-5e61fd54b7f6b5cb.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
-<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;15752913-40561f671d04264e.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
-<meta property="og:updated_time" content="2019-12-21T12:34:40.237Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20191230221508.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20191230221655.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20191230221818.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20191230221904.jpg">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20191230222159.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20191230222558.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20191230222751.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20191230222854.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20191230223000.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20191230223048.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20191230223222.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20191230223419.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20191230223536.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20191230223746.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20191230223628.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20191230223915.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20191230224014.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20191230224244.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20191230224443.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20191230224510.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20191230224634.png">
+<meta property="og:updated_time" content="2019-12-30T14:46:53.220Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;15752913-60351be6c2a77a46.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20191230221508.png">
 
 
 
@@ -343,7 +356,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1k
+                  1.2k
                 </span>
               
 
@@ -359,7 +372,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  4
                 </span>
               
             </div>
@@ -380,52 +393,69 @@
       
 
       
-        <h1 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h1><h2 id="JVM的位置"><a href="#JVM的位置" class="headerlink" title="JVM的位置"></a>JVM的位置</h2><p><img src="https://upload-images.jianshu.io/upload_images/15752913-60351be6c2a77a46.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<h2 id="JVM的构成图！！！"><a href="#JVM的构成图！！！" class="headerlink" title="JVM的构成图！！！"></a>JVM的构成图！！！</h2><p><img src="https://upload-images.jianshu.io/upload_images/15752913-0f69ec1a9bd34c80.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<h2 id="栈管运行，堆管存储"><a href="#栈管运行，堆管存储" class="headerlink" title="栈管运行，堆管存储"></a><strong>栈管运行，堆管存储</strong></h2><h2 id="类加载器"><a href="#类加载器" class="headerlink" title="类加载器"></a>类加载器</h2><p>加载 .class  文件进内存，并将这些内容转换成<strong>方法区</strong>中运行时是数据接口</p>
-<img src="https://upload-images.jianshu.io/upload_images/15752913-51a7f57fa5a8f84a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" style="zoom: 67%;">
+        <h1 id="JVM的位置"><a href="#JVM的位置" class="headerlink" title="JVM的位置"></a>JVM的位置</h1><p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20191230221508.png" alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20191230221655.png" alt></p>
+<h1 id="栈管运行，堆管存储"><a href="#栈管运行，堆管存储" class="headerlink" title="栈管运行，堆管存储"></a>栈管运行，堆管存储</h1><h1 id="类加载器"><a href="#类加载器" class="headerlink" title="类加载器"></a>类加载器</h1><p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20191230221818.png" alt></p>
+<p><strong>加载 .class  文件进内存</strong>（运行时数据区），并将这些内容转换成方法区中运行时是数据接口。</p>
+<img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20191230221904.jpg" style="zoom:80%;">
 
-
-
-<p><img src="https://upload-images.jianshu.io/upload_images/15752913-d4450ddca50c2ebe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<h3 id="BootStrap-启动类加载器-C"><a href="#BootStrap-启动类加载器-C" class="headerlink" title="BootStrap   启动类加载器    C++"></a>BootStrap   启动类加载器    C++</h3><ol>
-<li>启动类加载器是使用C++语言实现的(HotSpot)，负责加载JVM虚拟机运行时所需的基本系统级别的类，如java.lang.String, java.lang.Object等等</li>
-<li>启动类加载器(Bootstrap Classloader)会读取 <strong>{JRE_HOME}/lib</strong> 下的jar包(如 rt.jar)和配置，然后将这些系统类加载到方法区内</li>
-<li>由于类加载器是使用平台相关的底层C/C++语言实现的， 所以该加载器不能被Java代码访问到。但是，我们可以查询某个类是否被引导类加载器加载过</li>
+<h2 id="BootStrap-启动类加载器-C"><a href="#BootStrap-启动类加载器-C" class="headerlink" title="BootStrap   启动类加载器    C++"></a>BootStrap   启动类加载器    C++</h2><ol>
+<li>启动类加载器是使用C++语言实现的(HotSpot)，负责加载JVM虚拟机运行时所需的基本系统级别的类，如java.lang.String, java.lang.Object等等。</li>
+<li>启动类加载器(Bootstrap Classloader)会读取 {JRE_HOME}/lib 下的jar包(如 rt.jar)和配置，然后将这些系统类加载到方法区内。</li>
+<li>由于类加载器是使用平台相关的底层C/C++语言实现的， 所以该加载器不能被Java代码访问到。但是，我们可以查询某个类是否被引导类加载器加载过。</li>
 <li>位置：$JAVAHOME/jre/lib/rt.jar 都是 <strong>BootStrap</strong> 加载</li>
 </ol>
-<h3 id="Extension-扩展类加载器-JAVA"><a href="#Extension-扩展类加载器-JAVA" class="headerlink" title="Extension   扩展类加载器    JAVA"></a>Extension   扩展类加载器    JAVA</h3><ol>
-<li>此加载器由 sun.misc.Launcher$ExtClassLoader 实现，它负责加载 <strong>{JAVA_HOME}\lib\ext</strong> 目录下的类库， 开发者可以直接获取此加载器</li>
-<li>拓展类加载器是是整个JVM加载器的Java代码可以访问到的类加载器的最顶端，即是超级父加载器，拓展类加载器是没有父类加载器的</li>
+<h2 id="Extension-扩展类加载器-JAVA"><a href="#Extension-扩展类加载器-JAVA" class="headerlink" title="Extension   扩展类加载器    JAVA"></a>Extension   扩展类加载器    JAVA</h2><ol>
+<li>此加载器由 sun.misc.Launcher$ExtClassLoader 实现，它负责加载 {JAVA_HOME}\lib\ext 目录下的类库， 开发者可以直接获取此加载器。</li>
+<li>拓展类加载器是是整个JVM加载器的Java代码可以访问到的类加载器的最顶端，即是超级父加载器，拓展类加载器是没有父类加载器的。</li>
 <li>位置：$JAVAHOME/jre/lib/ext/ 目录下，都是 <strong>Extension</strong> 加载   </li>
 </ol>
-<h3 id="AppClassLoader-应用程序加载器"><a href="#AppClassLoader-应用程序加载器" class="headerlink" title="AppClassLoader   应用程序加载器"></a>AppClassLoader   应用程序加载器</h3><ol>
-<li>此加载器负责加载用户类路径上指定的类库，若没有指定自定义加载器，则此加载器一般是程序中默认的加载器</li>
-<li>应用类加载器将拓展类加载器当成自己的父类加载器</li>
+<h2 id="AppClassLoader-应用程序加载器"><a href="#AppClassLoader-应用程序加载器" class="headerlink" title="AppClassLoader   应用程序加载器"></a>AppClassLoader   应用程序加载器</h2><ol>
+<li>此加载器负责加载用户类路径上指定的类库，若没有指定自定义加载器，则此加载器一般是程序中默认的加载器。</li>
+<li>应用类加载器将拓展类加载器当成自己的父类加载器。</li>
 <li>位置：我们自己写的类，都是由 <strong>AppClassLoader</strong> 加载</li>
 </ol>
-<h3 id="用户自定义加载器"><a href="#用户自定义加载器" class="headerlink" title="用户自定义加载器"></a>用户自定义加载器</h3><p>用户可以自己定义类加载器来加载类。所有的类加载器都要继承 java.lang.ClassLoader 类并重写 findClass(String name) 方法。用户自定义类加载器默认父加载器是 应用程序加载器</p>
+<h2 id="用户自定义加载器"><a href="#用户自定义加载器" class="headerlink" title="用户自定义加载器"></a>用户自定义加载器</h2><p>用户可以自己定义类加载器来加载类。</p>
+<p>所有的类加载器都要继承 java.lang.ClassLoader 类并重写 findClass(String name) 方法。用户自定义类加载器默认父加载器是 应用程序加载器</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyClassLoader</span> <span class="keyword">extends</span> <span class="title">ClassLoader</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> Class&lt;?&gt; findClass(String name) <span class="keyword">throws</span> ClassNotFoundException &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">super</span>.findClass(name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
-<h3 id="双亲委派机制"><a href="#双亲委派机制" class="headerlink" title="双亲委派机制"></a>双亲委派机制</h3><p><img src="https://upload-images.jianshu.io/upload_images/15752913-63358a37f51e0275.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<p><strong>解释：</strong>从加载类的关系图来说明，所有的类加载都必须要经过 Bootstrap ，如果没有 再去 Extension 中找，最后才轮到 AppClassLoad ，<strong>自顶向下寻找！</strong></p>
+<h2 id="双亲委派机制"><a href="#双亲委派机制" class="headerlink" title="双亲委派机制"></a>双亲委派机制</h2><p><strong>解释：</strong>从加载类的关系图来说明，所有的类加载都必须要经过 Bootstrap ，如果没有 再去 Extension 中找，最后才轮到 AppClassLoad ，<strong>自顶向下寻找！</strong></p>
 <p><strong>双亲委派模型工作过程：</strong>一个类加载器收到类加载的请求，它首先会把这个请求委派给父类加载器去完成，层层上升，只有当父类加载器无法完成此加载请求时，子加载器才会尝试自己去加载。</p>
-<p><strong>这种机制保证了每一个类在加载的时候，都会优先加载JDK中的类。</strong></p>
-<h2 id="方法区、也会发生GC"><a href="#方法区、也会发生GC" class="headerlink" title="方法区、也会发生GC"></a>方法区、也会发生GC</h2><p><strong>存放 静态变量、常量、常量池、类信息</strong></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/15752913-6ad0fa9e21b922a3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<h2 id="堆、GC发生的主要场所"><a href="#堆、GC发生的主要场所" class="headerlink" title="堆、GC发生的主要场所"></a>堆、GC发生的主要场所</h2><p><strong>存放对象实例，GC回收的主要区域，分为新生区，养老区，永久存储区。</strong></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/15752913-5e61fd54b7f6b5cb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<h3 id="新生区"><a href="#新生区" class="headerlink" title="新生区"></a>新生区</h3><p><img src="https://upload-images.jianshu.io/upload_images/15752913-40561f671d04264e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<p>5、JVM虚拟机分类<br>1、 1.7版本的 HotSpot</p>
-<p>2、1.8版本的 HotSpot，取消永久区，新增元空间</p>
-<p>3、JVM调优的三个参数</p>
-<p>5、GC调优原则<br>频繁收集Young区，较少收集Old区，基本不动Perm区<br>1、新生代<br>新生代区域一般使用Minor GC，频繁发生，此区域用到的算法是复制算法（Copying）。<br>复制算法在复制幸存下来的对象时，不会产生垃圾碎片。</p>
-<p>2、老年代<br>老年代一般是由标记清除或是标记清除与标记整理的混合实现。。<br>标记清除（Mark-Sweep）:两次扫描，时间花费比较多，且会产生垃圾碎片，空间不连续。</p>
-<p>标记整理（Mark-Compact）:效率低，但是空间连续。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20191230222159.png" alt></p>
+<h1 id="方法区，也会发生GC"><a href="#方法区，也会发生GC" class="headerlink" title="方法区，也会发生GC"></a>方法区，也会发生GC</h1><p>存放 静态变量、常量、类信息、运行时常量池</p>
+<p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20191230222558.png" alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20191230222751.png" alt></p>
+<h1 id="堆，GC发生的主要场所"><a href="#堆，GC发生的主要场所" class="headerlink" title="堆，GC发生的主要场所"></a>堆，GC发生的主要场所</h1><p>存放对象实例，GC回收的主要区域，分为新生代，老年代，永久存储区。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20191230222854.png" alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20191230223000.png" alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20191230223048.png" alt></p>
+<h2 id="交换过程"><a href="#交换过程" class="headerlink" title="交换过程"></a>交换过程</h2><p>S0（from）与S1（to），他们的位置和名分不是固定的，每次GC后都会交换，交换的原则是：<strong>GC发生后，谁空谁是to</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20191230223222.png" alt></p>
+<h1 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h1><p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20191230223419.png" alt></p>
+<h1 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h1><p>寄存器是有限存贮容量的高速存贮部件，它们可用来暂存指令、数据和地址。每一个线程都有它自己的寄存器，指向内存中下一个调用的地址。</p>
+<h1 id="堆参数调优"><a href="#堆参数调优" class="headerlink" title="堆参数调优"></a>堆参数调优</h1><h2 id="1-7版本的-HotSpot"><a href="#1-7版本的-HotSpot" class="headerlink" title="1.7版本的 HotSpot"></a>1.7版本的 HotSpot</h2><p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20191230223536.png" alt></p>
+<h2 id="1-8版本的-HotSpot，取消永久区，新增元空间"><a href="#1-8版本的-HotSpot，取消永久区，新增元空间" class="headerlink" title="1.8版本的 HotSpot，取消永久区，新增元空间"></a>1.8版本的 HotSpot，取消永久区，新增元空间</h2><p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20191230223746.png" alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20191230223628.png" alt></p>
+<h2 id="JVM调优的三个参数，实际工作中都调成一致"><a href="#JVM调优的三个参数，实际工作中都调成一致" class="headerlink" title="JVM调优的三个参数，实际工作中都调成一致"></a>JVM调优的三个参数，实际工作中都调成一致</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-Xms1024m -Xmx1024m -XX:+PrintGCDetails  // JVM内存大小与日志详情</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20191230223915.png" alt></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">long</span> maxMemory = Runtime.getRuntime().maxMemory(); <span class="comment">// 虚拟机使用最大内存</span></span><br><span class="line"><span class="keyword">long</span> totalMemory = Runtime.getRuntime().totalMemory(); <span class="comment">// 虚拟机目前使用内存</span></span><br><span class="line">System.out.println(<span class="string">"虚拟机使用最大内存 = "</span> + maxMemory + <span class="string">"字节、"</span> + (maxMemory / (<span class="keyword">double</span>) <span class="number">1024</span> / <span class="number">1024</span>) + <span class="string">"MB"</span>);</span><br><span class="line">System.out.println(<span class="string">"虚拟机目前使用内存 = "</span> + totalMemory + <span class="string">"字节、"</span> + (totalMemory / (<span class="keyword">double</span>) <span class="number">1024</span> / <span class="number">1024</span>) + <span class="string">"MB"</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="GC日志分析"><a href="#GC日志分析" class="headerlink" title="GC日志分析"></a>GC日志分析</h2><p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20191230224014.png" alt></p>
+<h1 id="GC4大算法"><a href="#GC4大算法" class="headerlink" title="GC4大算法"></a>GC4大算法</h1><h2 id="引用计数法"><a href="#引用计数法" class="headerlink" title="引用计数法"></a>引用计数法</h2><p>对象添加一个引用计数器，每当一个地方引用它时，计数器加1。每当引用失效时，计数器减少1。当计数器的数值为0时，也就是对象没有引用了，就被垃圾回收掉。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20191230224244.png" alt></p>
+<h2 id="复制算法（Copying）"><a href="#复制算法（Copying）" class="headerlink" title="复制算法（Copying）"></a>复制算法（Copying）</h2><p>直接复制过去</p>
+<h2 id="标记清除（Mark-Sweep）"><a href="#标记清除（Mark-Sweep）" class="headerlink" title="标记清除（Mark-Sweep）"></a>标记清除（Mark-Sweep）</h2><p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20191230224443.png" alt></p>
+<h2 id="标记压缩（Mark-Compact）"><a href="#标记压缩（Mark-Compact）" class="headerlink" title="标记压缩（Mark-Compact）"></a>标记压缩（Mark-Compact）</h2><p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20191230224510.png" alt></p>
+<h1 id="GC调优原则（分代收集算法）"><a href="#GC调优原则（分代收集算法）" class="headerlink" title="GC调优原则（分代收集算法）"></a>GC调优原则（分代收集算法）</h1><h2 id="频繁收集Young区，较少收集Old区，基本不动元空间"><a href="#频繁收集Young区，较少收集Old区，基本不动元空间" class="headerlink" title="频繁收集Young区，较少收集Old区，基本不动元空间"></a>频繁收集Young区，较少收集Old区，基本不动元空间</h2><h2 id="新生代"><a href="#新生代" class="headerlink" title="新生代"></a>新生代</h2><p>新生代区域一般使用Minor GC，频繁发生，此区域用到的算法是复制算法（Copying）。</p>
+<p>复制算法在复制幸存下来的对象时，<strong>不会产生垃圾碎片。</strong></p>
+<h2 id="老年代"><a href="#老年代" class="headerlink" title="老年代"></a>老年代</h2><p>老年代一般是由<strong>标记清除</strong>或是<strong>标记清除</strong>与<strong>标记压缩</strong>的混合实现。。</p>
+<p>标记清除（Mark-Sweep）:<strong>两次扫描，时间花费比较多，且会产生垃圾碎片，空间不连续。</strong></p>
+<p>标记整理（Mark-Compact）:<strong>两次扫描，一次移动，效率低，但是空间连续，移动对象需要成本</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20191230224634.png" alt></p>
 <p>深入理解Java虚拟机：<a href="https://blog.csdn.net/zhang_jiayuan/article/details/82083163" target="_blank" rel="noopener">https://blog.csdn.net/zhang_jiayuan/article/details/82083163</a></p>
-<p>3、寄存器<br>寄存器是有限存贮容量的高速存贮部件，它们可用来暂存指令、数据和地址。<br> 每一个线程都有它自己的寄存器，指向内存中下一个调用的地址。</p>
 
       
     </div>
@@ -567,7 +597,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -610,7 +640,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JVM"><span class="nav-number">1.</span> <span class="nav-text">JVM</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JVM的位置"><span class="nav-number">1.1.</span> <span class="nav-text">JVM的位置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JVM的构成图！！！"><span class="nav-number">1.2.</span> <span class="nav-text">JVM的构成图！！！</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#栈管运行，堆管存储"><span class="nav-number">1.3.</span> <span class="nav-text">栈管运行，堆管存储</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类加载器"><span class="nav-number">1.4.</span> <span class="nav-text">类加载器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#BootStrap-启动类加载器-C"><span class="nav-number">1.4.1.</span> <span class="nav-text">BootStrap   启动类加载器    C++</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Extension-扩展类加载器-JAVA"><span class="nav-number">1.4.2.</span> <span class="nav-text">Extension   扩展类加载器    JAVA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AppClassLoader-应用程序加载器"><span class="nav-number">1.4.3.</span> <span class="nav-text">AppClassLoader   应用程序加载器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用户自定义加载器"><span class="nav-number">1.4.4.</span> <span class="nav-text">用户自定义加载器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#双亲委派机制"><span class="nav-number">1.4.5.</span> <span class="nav-text">双亲委派机制</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法区、也会发生GC"><span class="nav-number">1.5.</span> <span class="nav-text">方法区、也会发生GC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#堆、GC发生的主要场所"><span class="nav-number">1.6.</span> <span class="nav-text">堆、GC发生的主要场所</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#新生区"><span class="nav-number">1.6.1.</span> <span class="nav-text">新生区</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JVM的位置"><span class="nav-number">1.</span> <span class="nav-text">JVM的位置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#栈管运行，堆管存储"><span class="nav-number">2.</span> <span class="nav-text">栈管运行，堆管存储</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#类加载器"><span class="nav-number">3.</span> <span class="nav-text">类加载器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#BootStrap-启动类加载器-C"><span class="nav-number">3.1.</span> <span class="nav-text">BootStrap   启动类加载器    C++</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Extension-扩展类加载器-JAVA"><span class="nav-number">3.2.</span> <span class="nav-text">Extension   扩展类加载器    JAVA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AppClassLoader-应用程序加载器"><span class="nav-number">3.3.</span> <span class="nav-text">AppClassLoader   应用程序加载器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用户自定义加载器"><span class="nav-number">3.4.</span> <span class="nav-text">用户自定义加载器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#双亲委派机制"><span class="nav-number">3.5.</span> <span class="nav-text">双亲委派机制</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#方法区，也会发生GC"><span class="nav-number">4.</span> <span class="nav-text">方法区，也会发生GC</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#堆，GC发生的主要场所"><span class="nav-number">5.</span> <span class="nav-text">堆，GC发生的主要场所</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#交换过程"><span class="nav-number">5.1.</span> <span class="nav-text">交换过程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#栈"><span class="nav-number">6.</span> <span class="nav-text">栈</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#寄存器"><span class="nav-number">7.</span> <span class="nav-text">寄存器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#堆参数调优"><span class="nav-number">8.</span> <span class="nav-text">堆参数调优</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-7版本的-HotSpot"><span class="nav-number">8.1.</span> <span class="nav-text">1.7版本的 HotSpot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-8版本的-HotSpot，取消永久区，新增元空间"><span class="nav-number">8.2.</span> <span class="nav-text">1.8版本的 HotSpot，取消永久区，新增元空间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JVM调优的三个参数，实际工作中都调成一致"><span class="nav-number">8.3.</span> <span class="nav-text">JVM调优的三个参数，实际工作中都调成一致</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GC日志分析"><span class="nav-number">8.4.</span> <span class="nav-text">GC日志分析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GC4大算法"><span class="nav-number">9.</span> <span class="nav-text">GC4大算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#引用计数法"><span class="nav-number">9.1.</span> <span class="nav-text">引用计数法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#复制算法（Copying）"><span class="nav-number">9.2.</span> <span class="nav-text">复制算法（Copying）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#标记清除（Mark-Sweep）"><span class="nav-number">9.3.</span> <span class="nav-text">标记清除（Mark-Sweep）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#标记压缩（Mark-Compact）"><span class="nav-number">9.4.</span> <span class="nav-text">标记压缩（Mark-Compact）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GC调优原则（分代收集算法）"><span class="nav-number">10.</span> <span class="nav-text">GC调优原则（分代收集算法）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#频繁收集Young区，较少收集Old区，基本不动元空间"><span class="nav-number">10.1.</span> <span class="nav-text">频繁收集Young区，较少收集Old区，基本不动元空间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#新生代"><span class="nav-number">10.2.</span> <span class="nav-text">新生代</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#老年代"><span class="nav-number">10.3.</span> <span class="nav-text">老年代</span></a></li></ol></li></ol></div>
             
 
           </div>

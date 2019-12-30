@@ -79,19 +79,19 @@
 
 
 
-<meta name="description" content="Lambda 表达式复制小括号，写死右箭头，落地大括号。 函数式接口函数式接口就是只显式声明一个抽象方法的接口。为保证方法数量不多不少，java8提供了一个专用注解 @FunctionalInterface，这样，当接口中声明的抽象方法多于或少于一个时就会报错。如下图所示：   Java内置的四大核心函数式接口12345678Consumer&amp;lt;T&amp;gt;  消费型接口 消费对象    voi">
+<meta name="description" content="Lambda 表达式复制小括号，写死右箭头，落地大括号。 函数式接口函数式接口就是只显式声明一个抽象方法的接口。为保证方法数量不多不少，java8提供了一个专用注解 @FunctionalInterface，这样，当接口中声明的抽象方法多于或少于一个时就会报错。如下图所示：     Java内置的四大核心函数式接口1234567891011Consumer&amp;lt;T&amp;gt;  消费型接口 消费对象">
 <meta name="keywords" content="Java8新特性">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Lambda">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;01&#x2F;JAVA&#x2F;Lambda&#x2F;index.html">
 <meta property="og:site_name" content="个人技术博客">
-<meta property="og:description" content="Lambda 表达式复制小括号，写死右箭头，落地大括号。 函数式接口函数式接口就是只显式声明一个抽象方法的接口。为保证方法数量不多不少，java8提供了一个专用注解 @FunctionalInterface，这样，当接口中声明的抽象方法多于或少于一个时就会报错。如下图所示：   Java内置的四大核心函数式接口12345678Consumer&amp;lt;T&amp;gt;  消费型接口 消费对象    voi">
+<meta property="og:description" content="Lambda 表达式复制小括号，写死右箭头，落地大括号。 函数式接口函数式接口就是只显式声明一个抽象方法的接口。为保证方法数量不多不少，java8提供了一个专用注解 @FunctionalInterface，这样，当接口中声明的抽象方法多于或少于一个时就会报错。如下图所示：     Java内置的四大核心函数式接口1234567891011Consumer&amp;lt;T&amp;gt;  消费型接口 消费对象">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;15752913-235843d4d085cfb1.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
-<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;15752913-47e753f72fe67865.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
-<meta property="og:updated_time" content="2019-12-21T07:32:56.016Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20191228084512.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20191228084546.png">
+<meta property="og:updated_time" content="2019-12-28T00:48:55.610Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;15752913-235843d4d085cfb1.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20191228084512.png">
 
 
 
@@ -337,7 +337,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  553
+                  572
                 </span>
               
 
@@ -376,18 +376,20 @@
       
         <h1 id="Lambda-表达式"><a href="#Lambda-表达式" class="headerlink" title="Lambda 表达式"></a>Lambda 表达式</h1><p><strong>复制小括号，写死右箭头，落地大括号。</strong></p>
 <h2 id="函数式接口"><a href="#函数式接口" class="headerlink" title="函数式接口"></a>函数式接口</h2><p>函数式接口就是只显式声明一个<strong>抽象方法</strong>的接口。为保证方法数量不多不少，java8提供了一个专用注解 @FunctionalInterface，这样，当接口中声明的<strong>抽象方法</strong>多于或少于一个时就会报错。如下图所示：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/15752913-235843d4d085cfb1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="clipboard.png"></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/15752913-47e753f72fe67865.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="clipboard1.png"></p>
-<h2 id="Java内置的四大核心函数式接口"><a href="#Java内置的四大核心函数式接口" class="headerlink" title="Java内置的四大核心函数式接口"></a>Java内置的四大核心函数式接口</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Consumer&lt;T&gt;  消费型接口 消费对象</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">accept</span><span class="params">(T t)</span></span>;</span><br><span class="line">Supplier&lt;T&gt;  供给型接口 生成对象</span><br><span class="line">    <span class="function">T <span class="title">get</span><span class="params">()</span></span>;</span><br><span class="line">Function&lt;R,T&gt;  函数型接口 指定特定功能</span><br><span class="line">    <span class="function">R <span class="title">apply</span><span class="params">(T t)</span></span>;</span><br><span class="line">Predicate&lt;T&gt;  断言型接口 进行条件判断</span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">test</span><span class="params">(T t)</span></span>;</span><br></pre></td></tr></table></figure>
+<img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20191228084512.png" style="zoom:150%;">
+
+<img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20191228084546.png" style="zoom:150%;">
+
+<h2 id="Java内置的四大核心函数式接口"><a href="#Java内置的四大核心函数式接口" class="headerlink" title="Java内置的四大核心函数式接口"></a>Java内置的四大核心函数式接口</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Consumer&lt;T&gt;  消费型接口 消费对象</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">accept</span><span class="params">(T t)</span></span>;</span><br><span class="line"></span><br><span class="line">Supplier&lt;T&gt;  供给型接口 生成对象</span><br><span class="line">    <span class="function">T <span class="title">get</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">Function&lt;R,T&gt;  函数型接口 指定特定功能</span><br><span class="line">    <span class="function">R <span class="title">apply</span><span class="params">(T t)</span></span>;</span><br><span class="line"></span><br><span class="line">Predicate&lt;T&gt;  断言型接口 进行条件判断</span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">test</span><span class="params">(T t)</span></span>;</span><br></pre></td></tr></table></figure>
 
 <h2 id="Lambda表达式"><a href="#Lambda表达式" class="headerlink" title="Lambda表达式"></a>Lambda表达式</h2><p>Lambda表达式本质上是一个匿名方法。让我们来看下面这个例子：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;    </span><br><span class="line">	<span class="keyword">return</span> x + y; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>转成Lambda表达式后是这个样子：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">int</span> x, <span class="keyword">int</span> y) -&gt; x + y;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">int</span> x, <span class="keyword">int</span> y) -&gt; &#123; x + y; &#125;  <span class="comment">// 复制小括号 写死右箭头 落地大括号</span></span><br></pre></td></tr></table></figure>
 
 <p>参数类型也可以省略，Java编译器会根据上下文推断出来：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(x, y) -&gt; x + y; <span class="comment">// 隐式的自动返回</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(x, y) -&gt; &#123; x + y; &#125; <span class="comment">// 隐式的自动返回</span></span><br></pre></td></tr></table></figure>
 
 <p>或者</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(x, y) -&gt; &#123; <span class="keyword">return</span> x + y; &#125; <span class="comment">// 显式指明返回值</span></span><br></pre></td></tr></table></figure>
@@ -568,7 +570,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
