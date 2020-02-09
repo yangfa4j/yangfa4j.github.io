@@ -336,7 +336,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  557
+                  579
                 </span>
               
 
@@ -519,7 +519,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  540
+                  607
                 </span>
               
 
@@ -560,10 +560,8 @@
           
           装饰者模式​    在不改变原有对象的基础之上，将功能附加到对象上。提供了比继承更有弹性的替代方案（扩展原有对象功能）。
 
-咖啡问题​    星巴克有各种不同的咖啡，每一种咖啡都可以加牛奶，巧克力等等的配料，每一种咖啡与配料的价格都不一样，为了以后方便扩充咖啡和配料，进行如下设计：
-
-
-抽象饮料父类
+装饰者与被装饰者继承同一个类，装饰者里面维护了一个被装饰的类，通过递归的方式依次添加新的功能。
+咖啡问题​    星巴克有各种不同的咖啡，每一种咖啡都可以加牛奶，巧克力等等的配
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -703,7 +701,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  617
+                  622
                 </span>
               
 
@@ -743,10 +741,10 @@
         
           
           桥接模式画图问题​    这里有一个画笔，可以画正方形、长方形、圆形。
-但是现在我们需要给这些形状进行上色，这里有三种颜色：白色、灰色、黑色。
-这里我们可以画出3*3=9种。图形：白色正方形、白色长方形、白色圆形。。。。。。到这里了我们几乎到知道了这里存在两种解决方案：
+​    但是现在我们需要给这些形状进行上色，这里有三种颜色：白色、灰色、黑色。
+​    这里我们可以画出3*3=9种。图形：白色正方形、白色长方形、白色圆形。。。。。。到这里了我们几乎到知道了这里存在两种解决方案：
 
-为每种形状都提供各种颜色的
+为每种
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -886,7 +884,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  450
+                  448
                 </span>
               
 
@@ -926,8 +924,9 @@
         
           
           适配器模式
+
 类适配器
-转换220V电压类12345678public class V220 &#123;    public int outPut220V() &#123;        int src = 220;        System.out.println("输出电压 :"+src+"伏
+220V电压类12345678public class V220 &#123;    public int outPut220V() &#123;        int src = 220;        System.out.println("输出电压 :"+src+"伏!
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1067,7 +1066,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  483
+                  655
                 </span>
               
 
@@ -1106,9 +1105,10 @@
       
         
           
-          建造者模式
-KFC套餐问题​    建造者模式可以用于描述KFC如何创建套餐：套餐是一个复杂对象，它一般包含主食（如汉堡、鸡肉卷等）和饮料（如果汁、可乐等）等组成部分，不同的套餐有不同的组成部分，而KFC的服务员可以根据顾客的要求，一步一步装配这些组成部分，构造一份完整的套餐，然后返回给顾客。
-KF
+          建造者模式​    建造者模式又叫创建者模式，是将一个复杂的对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示。
+​    创建者模式隐藏了复杂对象的创建过程，它把复杂对象的创建过程加以抽象，通过子类继承或者重载的方式，动态的创建具有复合属性的对象。
+
+KFC套餐问题​    建造者模式
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1610,7 +1610,7 @@ KF
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  599
+                  608
                 </span>
               
 
@@ -1792,7 +1792,7 @@ KF
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  438
+                  441
                 </span>
               
 
@@ -2118,7 +2118,7 @@ KF
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">51</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2129,7 +2129,7 @@ KF
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2140,7 +2140,7 @@ KF
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

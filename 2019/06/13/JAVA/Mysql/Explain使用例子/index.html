@@ -87,15 +87,15 @@
 <meta property="og:site_name" content="个人技术博客">
 <meta property="og:description" content="Explain使用例子​    首先先说总结，然后看具体案例的例子。 带头大哥不能少，中间兄弟不能断，索引列上别计算，范围之后全失效，百分like加右边，字符串上有引号。 左前缀保留原则如果索引了多个字段，查询从索引的最左端字段开始，并且不会跳过索引中的字段eg：索引字段1，2，3，对应楼层的1，2，3层如果没有1层，索引2和3，那么无法找到2楼和3楼如果没有中间层2层，那么无法找到3楼 1ALT">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20181107102340832.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20181107102929318.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;06&#x2F;13&#x2F;JAVA&#x2F;Mysql&#x2F;Explain%E4%BD%BF%E7%94%A8%E4%BE%8B%E5%AD%90&#x2F;C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5C3d646debdf8748ccb90c297d72a33b02%5Cclipboard.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;06&#x2F;13&#x2F;JAVA&#x2F;Mysql&#x2F;Explain%E4%BD%BF%E7%94%A8%E4%BE%8B%E5%AD%90&#x2F;C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5C8144ee9b1b5a4ccf8b554ea7dda7f35b%5Cclipboard.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;06&#x2F;13&#x2F;JAVA&#x2F;Mysql&#x2F;Explain%E4%BD%BF%E7%94%A8%E4%BE%8B%E5%AD%90&#x2F;C:%5CUsers%5CYF%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1580733951147.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;06&#x2F;13&#x2F;JAVA&#x2F;Mysql&#x2F;Explain%E4%BD%BF%E7%94%A8%E4%BE%8B%E5%AD%90&#x2F;C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5Cc0b2fdf6f80a4b5a8ac166630e84a7c5%5Cclipboard.png">
-<meta property="og:updated_time" content="2020-02-03T12:49:56.000Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200204141936.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200204142131.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200204142208.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200204142308.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200204142338.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200204142400.png">
+<meta property="og:updated_time" content="2020-02-04T06:24:13.272Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20181107102340832.png">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200204141936.png">
 
 
 
@@ -341,7 +341,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  756
+                  765
                 </span>
               
 
@@ -381,9 +381,9 @@
         <h1 id="Explain使用例子"><a href="#Explain使用例子" class="headerlink" title="Explain使用例子"></a>Explain使用例子</h1><p>​    首先先说总结，然后看具体案例的例子。</p>
 <p><strong>带头大哥不能少，中间兄弟不能断，索引列上别计算，范围之后全失效，百分like加右边，字符串上有引号。</strong></p>
 <h2 id="左前缀保留原则"><a href="#左前缀保留原则" class="headerlink" title="左前缀保留原则"></a>左前缀保留原则</h2><p>如果索引了多个字段，查询从索引的最左端字段开始，并且不会跳过索引中的字段<br>eg：索引字段1，2，3，对应楼层的1，2，3层<br>如果没有1层，索引2和3，那么无法找到2楼和3楼<br>如果没有中间层2层，那么无法找到3楼</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> staffs <span class="keyword">ADD</span> <span class="keyword">INDEX</span> idx_staffs_nameAgePos(<span class="keyword">name</span>, age, pos);</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> staffs <span class="keyword">ADD</span> <span class="keyword">INDEX</span> idx_staffs_nameAgePos(<span class="keyword">name</span>, age, pos);  <span class="comment">-- 三个字段的组合索引</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="https://img-blog.csdnimg.cn/20181107102340832.png" alt="在这里插入图片描述"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20200204141936.png" alt></p>
 <ol>
 <li>创建索引 idx_staffs_nameAgePos(name, age, pos)，索引字段从左往右依次是<strong>name、age、pos</strong></li>
 <li>表1和表2没有name，所以索引无法查找，possible_keys和key都是NULL，出错</li>
@@ -393,7 +393,7 @@
 <li>已经建立好了索引，在select时，在where列表中对索引列表进行修改，容易引起索引失效，从而变成全表扫描ALL，降低数据库的效能</li>
 <li><strong>索引的列是字符串时，在 where 语句中，一定要加引号，如果不加，mysql会自动的做类型转换，从而导致索引失效，这是一个很常见的错误</strong></li>
 </ol>
-<h2 id="存储引擎不能使用索引中范围条件range（-lt-、-gt-、between、in等）右边的索引字段"><a href="#存储引擎不能使用索引中范围条件range（-lt-、-gt-、between、in等）右边的索引字段" class="headerlink" title="存储引擎不能使用索引中范围条件range（&lt;、&gt;、between、in等）右边的索引字段"></a>存储引擎不能使用索引中范围条件range（&lt;、&gt;、between、in等）右边的索引字段</h2><p><img src="https://img-blog.csdnimg.cn/20181107102929318.png" alt="在这里插入图片描述"></p>
+<h2 id="存储引擎不能使用索引中范围条件range（-lt-、-gt-、between、in等）右边的索引字段"><a href="#存储引擎不能使用索引中范围条件range（-lt-、-gt-、between、in等）右边的索引字段" class="headerlink" title="存储引擎不能使用索引中范围条件range（&lt;、&gt;、between、in等）右边的索引字段"></a>存储引擎不能使用索引中范围条件range（&lt;、&gt;、between、in等）右边的索引字段</h2><p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20200204142131.png" alt></p>
 <ol>
 <li><p>最下面的索引，age&gt;11是范围条件，它右边的字段pos=’manger’索引失效</p>
 </li>
@@ -402,7 +402,7 @@
 <li><p><strong>范围之后全失效</strong></p>
 </li>
 </ol>
-<h2 id="like形式查询，以通配符-开头时，要将-放在字母右边，否则索引失效转为全表扫描"><a href="#like形式查询，以通配符-开头时，要将-放在字母右边，否则索引失效转为全表扫描" class="headerlink" title="like形式查询，以通配符%开头时，要将%放在字母右边，否则索引失效转为全表扫描"></a>like形式查询，以通配符%开头时，要将%放在字母右边，否则索引失效转为全表扫描</h2><p><img src="/2019/06/13/JAVA/Mysql/Explain%E4%BD%BF%E7%94%A8%E4%BE%8B%E5%AD%90/C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5C3d646debdf8748ccb90c297d72a33b02%5Cclipboard.png" alt="img"></p>
+<h2 id="like形式查询，以通配符-开头时，要将-放在字母右边，否则索引失效转为全表扫描"><a href="#like形式查询，以通配符-开头时，要将-放在字母右边，否则索引失效转为全表扫描" class="headerlink" title="like形式查询，以通配符%开头时，要将%放在字母右边，否则索引失效转为全表扫描"></a>like形式查询，以通配符%开头时，要将%放在字母右边，否则索引失效转为全表扫描</h2><p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20200204142208.png" alt></p>
 <ol>
 <li>可以发现，当like后面字段通配符%放在左边时，索引失效，type转为全表扫描ALL</li>
 <li>因为字段扫描时，%在最左边无法确定字段，所以索引失效</li>
@@ -410,20 +410,20 @@
 <li><strong>百分like加右边</strong></li>
 </ol>
 <h2 id="尽量使用覆盖索引（Covering-Index）"><a href="#尽量使用覆盖索引（Covering-Index）" class="headerlink" title="尽量使用覆盖索引（Covering Index）"></a>尽量使用覆盖索引（Covering Index）</h2><p>​    减少使用select *，提高索引效率；</p>
-<h2 id="使用不等于（-、-lt-gt-）时，无法使用索引会导致全表扫描ALL"><a href="#使用不等于（-、-lt-gt-）时，无法使用索引会导致全表扫描ALL" class="headerlink" title="使用不等于（!=、&lt;&gt;）时，无法使用索引会导致全表扫描ALL"></a>使用不等于（!=、&lt;&gt;）时，无法使用索引会导致全表扫描ALL</h2><p><img src="/2019/06/13/JAVA/Mysql/Explain%E4%BD%BF%E7%94%A8%E4%BE%8B%E5%AD%90/C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5C8144ee9b1b5a4ccf8b554ea7dda7f35b%5Cclipboard.png" alt="img"></p>
+<h2 id="使用不等于（-、-lt-gt-）时，无法使用索引会导致全表扫描ALL"><a href="#使用不等于（-、-lt-gt-）时，无法使用索引会导致全表扫描ALL" class="headerlink" title="使用不等于（!=、&lt;&gt;）时，无法使用索引会导致全表扫描ALL"></a>使用不等于（!=、&lt;&gt;）时，无法使用索引会导致全表扫描ALL</h2><p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20200204142308.png" alt></p>
 <ol>
 <li>原本的name=’July’时，使用的查询类型type是ref非唯一性索引；</li>
 <li>当变成!=和&lt;&gt;后，转为全表扫描ALL，索引失效；</li>
 <li>不能使用不等于</li>
 </ol>
 <h2 id="在创建table中数据时，字段的null-not-null，要与explain-select-where列表中字段保持一致"><a href="#在创建table中数据时，字段的null-not-null，要与explain-select-where列表中字段保持一致" class="headerlink" title="在创建table中数据时，字段的null/not null，要与explain select where列表中字段保持一致"></a>在创建table中数据时，字段的null/not null，要与explain select where列表中字段保持一致</h2><p>eg：创建表时，插入数据，字段a为null；<br>explain select where列表中字段a not null；<br>查询会出问题；</p>
-<h2 id="字符串不加单引号，索引会失效"><a href="#字符串不加单引号，索引会失效" class="headerlink" title="字符串不加单引号，索引会失效"></a>字符串不加单引号，索引会失效</h2><p><img src="/2019/06/13/JAVA/Mysql/Explain%E4%BD%BF%E7%94%A8%E4%BE%8B%E5%AD%90/C:%5CUsers%5CYF%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1580733951147.png" alt="1580733951147"></p>
+<h2 id="字符串不加单引号，索引会失效"><a href="#字符串不加单引号，索引会失效" class="headerlink" title="字符串不加单引号，索引会失效"></a>字符串不加单引号，索引会失效</h2><p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20200204142338.png" alt></p>
 <ol>
 <li>name=‘917’，变成了name=917；优化器自动转换字段的类型，结果索引失效，key为NULL；</li>
 <li><strong>索引列上别计算</strong>，自动类型转换也是计算</li>
 <li>字符串上加引号</li>
 </ol>
-<h2 id="别用or，用它来连接时，索引会失效"><a href="#别用or，用它来连接时，索引会失效" class="headerlink" title="别用or，用它来连接时，索引会失效"></a>别用or，用它来连接时，索引会失效</h2><p><img src="/2019/06/13/JAVA/Mysql/Explain%E4%BD%BF%E7%94%A8%E4%BE%8B%E5%AD%90/C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5Cc0b2fdf6f80a4b5a8ac166630e84a7c5%5Cclipboard.png" alt="img"></p>
+<h2 id="别用or，用它来连接时，索引会失效"><a href="#别用or，用它来连接时，索引会失效" class="headerlink" title="别用or，用它来连接时，索引会失效"></a>别用or，用它来连接时，索引会失效</h2><p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20200204142400.png" alt></p>
 
       
     </div>
@@ -547,7 +547,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">51</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -558,7 +558,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -569,7 +569,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

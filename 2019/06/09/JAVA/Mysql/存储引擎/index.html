@@ -87,12 +87,12 @@
 <meta property="og:site_name" content="个人技术博客">
 <meta property="og:description" content="存储引擎存储引擎是什么东西​    在讲清楚什么是存储引擎之前，我们先来个比喻，我们都知道录制一个视频文件，可以转换成不同的格式，例如mp4，avi，wmv等，而存在我们电脑的磁盘上也会存在于不同类型的文件系统中如windows里常见的ntfs、fat32，存在于linux里常见的ext3，ext4，xfs，但是，给我们或者用户看的实际视频内容都是一样的。直观区别是，占用系统的空间大小与清晰程度可">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https:&#x2F;&#x2F;img2018.cnblogs.com&#x2F;blog&#x2F;988061&#x2F;201811&#x2F;988061-20181113182706498-379601585.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;06&#x2F;09&#x2F;JAVA&#x2F;Mysql&#x2F;%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E&#x2F;C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5Ccb87cc206ae840c9a2c804ea2016041b%5Cclipboard.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;06&#x2F;09&#x2F;JAVA&#x2F;Mysql&#x2F;%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E&#x2F;C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5C451fb327948a4841b3793fc2097ecad7%5Cclipboard.png">
-<meta property="og:updated_time" content="2020-02-03T06:31:26.000Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200204135531.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200204135631.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20191228080237.png">
+<meta property="og:updated_time" content="2020-02-04T05:57:50.153Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https:&#x2F;&#x2F;img2018.cnblogs.com&#x2F;blog&#x2F;988061&#x2F;201811&#x2F;988061-20181113182706498-379601585.png">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200204135531.png">
 
 
 
@@ -377,17 +377,18 @@
       
         <h1 id="存储引擎"><a href="#存储引擎" class="headerlink" title="存储引擎"></a>存储引擎</h1><h2 id="存储引擎是什么东西"><a href="#存储引擎是什么东西" class="headerlink" title="存储引擎是什么东西"></a>存储引擎是什么东西</h2><p>​    在讲清楚什么是存储引擎之前，我们先来个比喻，我们都知道录制一个视频文件，可以转换成不同的格式，例如mp4，avi，wmv等，而存在我们电脑的磁盘上也会存在于不同类型的文件系统中如windows里常见的ntfs、fat32，存在于linux里常见的ext3，ext4，xfs，但是，给我们或者用户看的实际视频内容都是一样的。直观区别是，占用系统的空间大小与清晰程度可能不一样。</p>
 <p>​    那么数据库表里的数据存储在数据库里及磁盘上和上述的视频格式及存储磁盘文件的系统格式特征类似，也有很多种存储方式。</p>
-<p>但是对于用户和应用程序来说同样一张表的数据，无论用什么引擎来存储，用户能够看到的数据是一样的。不同储引擎存取，引擎功能，占用空间大小，读取性能等可能有区别。<strong>说白了，存储引擎就是在如何存储数据、提取数据、更新数据等技术方法的实现上，底层的实现方式不同，那么就会呈现出不同存储引擎有着一些自己独有的特点和功能，对应着不同的存取机制。</strong><br>　　其实MySQL支持多种存储引擎，每种引擎有着一些自己独特的功能，用户在使用的时候，可以根据自己的业务场景来使用不同的存储引擎，其中MySQL最常用的存储引擎为：<strong>MyISAM</strong>和<strong>InnoDB</strong>。</p>
-<p><img src="https://img2018.cnblogs.com/blog/988061/201811/988061-20181113182706498-379601585.png" alt="img"></p>
+<p>​    但是对于用户和应用程序来说同样一张表的数据，无论用什么引擎来存储，用户能够看到的数据是一样的。不同储引擎存取，引擎功能，占用空间大小，读取性能等可能有区别。</p>
+<p>​    <strong>说白了，存储引擎就是在如何存储数据、提取数据、更新数据等技术方法的实现上，底层的实现方式不同，那么就会呈现出不同存储引擎有着一些自己独有的特点和功能，对应着不同的存取机制。</strong><br>　　其实MySQL支持多种存储引擎，每种引擎有着一些自己独特的功能，用户在使用的时候，可以根据自己的业务场景来使用不同的存储引擎，其中MySQL最常用的存储引擎为：<strong>MyISAM</strong>和<strong>InnoDB</strong>。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20200204135531.png" alt></p>
 <h2 id="MySQL存储引擎分类"><a href="#MySQL存储引擎分类" class="headerlink" title="MySQL存储引擎分类"></a>MySQL存储引擎分类</h2><p>MySQL5.1之前，默认的存储引擎是MyISAM，之后都改为<strong>InnoDB</strong></p>
 <h3 id="MyISAM"><a href="#MyISAM" class="headerlink" title="MyISAM"></a>MyISAM</h3><p>​    MyISAM是非聚集索引，使用B+Tree作为索引结构，索引和数据文件是分离的，索引保存的是数据文件的指针。主键索引和辅助索引是独立的。</p>
 <h3 id="InnoDB"><a href="#InnoDB" class="headerlink" title="InnoDB"></a>InnoDB</h3><p>​    InnoDB是聚集索引，使用B+Tree作为索引结构，数据文件是和（主键）索引绑在一起的（表数据文件本身就是按B+Tree组织的一个索引结构），必须要有主键，通过主键索引效率很高。但是辅助索引需要两次查询，先查询到主键，然后再通过主键查询到数据。因此，主键不应该过大，因为主键太大，其他索引也都会很大。</p>
 <h4 id="InnoDB为什么推荐使用自增ID作为主键？"><a href="#InnoDB为什么推荐使用自增ID作为主键？" class="headerlink" title="InnoDB为什么推荐使用自增ID作为主键？"></a>InnoDB为什么推荐使用自增ID作为主键？</h4><p>答：自增ID可以保证每次插入时B+索引是从右边扩展的，可以避免B+树和频繁合并和分裂（对比使用UUID）。如果使用字符串主键和随机主键，会使得数据随机插入，效率比较差。</p>
 <h4 id="InnoDB引擎的4大特性"><a href="#InnoDB引擎的4大特性" class="headerlink" title="InnoDB引擎的4大特性"></a>InnoDB引擎的4大特性</h4><p>插入缓冲（insert buffer)，二次写(double write)，自适应哈希索引(ahi)，预读(read ahead)。</p>
-<h3 id="MyISAM-与-InnoDB-的差别"><a href="#MyISAM-与-InnoDB-的差别" class="headerlink" title="MyISAM 与 InnoDB 的差别"></a>MyISAM 与 InnoDB 的差别</h3><p><img src="/2019/06/09/JAVA/Mysql/%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5Ccb87cc206ae840c9a2c804ea2016041b%5Cclipboard.png" alt="img"></p>
+<h3 id="MyISAM-与-InnoDB-的差别"><a href="#MyISAM-与-InnoDB-的差别" class="headerlink" title="MyISAM 与 InnoDB 的差别"></a>MyISAM 与 InnoDB 的差别</h3><p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20200204135631.png" alt></p>
 <h2 id="B-树结构"><a href="#B-树结构" class="headerlink" title="B+树结构"></a>B+树结构</h2><p>B+树，是B树的一种变体，也是一种<strong>多路搜索树</strong>。他们差别是：</p>
 <p><strong>B+树中所有的数据都会放在叶子结点，而不会放在非叶子结点</strong></p>
-<p><img src="/2019/06/09/JAVA/Mysql/%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5C451fb327948a4841b3793fc2097ecad7%5Cclipboard.png" alt="img"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20191228080237.png" alt></p>
 <h3 id="B-数的特点"><a href="#B-数的特点" class="headerlink" title="B+数的特点"></a>B+数的特点</h3><ol>
 <li>B+树 跟 B树 搜索基本相同，区别是 B+树 只有达到叶子结点才会命中，搜索性能等于在关键字全集中做二分查找。</li>
 <li>所有的 <strong>关键字都出现在叶子结点的链表中</strong>，（即关键字只能在叶子结点<strong>【稠密索引】</strong>），且链表中的关键字恰好是有序的。</li>
@@ -429,8 +430,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/06/08/JAVA/Mysql/%E6%97%A5%E6%9C%9F%E5%A4%84%E7%90%86/" rel="next" title="日期处理">
-                <i class="fa fa-chevron-left"></i> 日期处理
+              <a href="/2019/06/08/JAVA/Mysql/%E6%97%A5%E6%9C%9F%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0/" rel="next" title="日期处理函数">
+                <i class="fa fa-chevron-left"></i> 日期处理函数
               </a>
             
           </div>
@@ -522,7 +523,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">51</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -533,7 +534,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -544,7 +545,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

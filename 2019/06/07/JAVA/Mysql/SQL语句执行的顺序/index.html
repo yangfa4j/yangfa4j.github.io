@@ -87,21 +87,21 @@
 <meta property="og:site_name" content="个人技术博客">
 <meta property="og:description" content="SQL语句执行的顺序 from &amp;gt; on &amp;gt; where &amp;gt; group by &amp;gt; select &amp;gt; order by ​    理解sql语句的执行顺序对优化sql非常重要，那么sql语句的执行顺序是怎样的呢，以一条SQL语句做分析：  获得来自北京，并且订单数少于2的客户; 12345678SELECT u.user_id,COUNT(o.order_id) as">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;06&#x2F;07&#x2F;JAVA&#x2F;Mysql&#x2F;SQL%E8%AF%AD%E5%8F%A5%E6%89%A7%E8%A1%8C%E7%9A%84%E9%A1%BA%E5%BA%8F&#x2F;C:%5CUsers%5CYF%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1580734565837.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;06&#x2F;07&#x2F;JAVA&#x2F;Mysql&#x2F;SQL%E8%AF%AD%E5%8F%A5%E6%89%A7%E8%A1%8C%E7%9A%84%E9%A1%BA%E5%BA%8F&#x2F;C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5C78fd8c0a411142d49afff7fbd22d8dfc%5Cclipboard.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;06&#x2F;07&#x2F;JAVA&#x2F;Mysql&#x2F;SQL%E8%AF%AD%E5%8F%A5%E6%89%A7%E8%A1%8C%E7%9A%84%E9%A1%BA%E5%BA%8F&#x2F;C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5Cacb2e2edd8904bb4b22abf13dd82a906%5C1580735405(1).jpg">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;06&#x2F;07&#x2F;JAVA&#x2F;Mysql&#x2F;SQL%E8%AF%AD%E5%8F%A5%E6%89%A7%E8%A1%8C%E7%9A%84%E9%A1%BA%E5%BA%8F&#x2F;C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5C3996f4016c3741689f634ea988ebf6af%5Cclipboard.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;06&#x2F;07&#x2F;JAVA&#x2F;Mysql&#x2F;SQL%E8%AF%AD%E5%8F%A5%E6%89%A7%E8%A1%8C%E7%9A%84%E9%A1%BA%E5%BA%8F&#x2F;C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5Cac9b30224ff947c28b72a4e7856ab2da%5Cclipboard.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;06&#x2F;07&#x2F;JAVA&#x2F;Mysql&#x2F;SQL%E8%AF%AD%E5%8F%A5%E6%89%A7%E8%A1%8C%E7%9A%84%E9%A1%BA%E5%BA%8F&#x2F;C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5C013f8fa2a2964f9992ae8a82912f8b57%5Cclipboard.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;06&#x2F;07&#x2F;JAVA&#x2F;Mysql&#x2F;SQL%E8%AF%AD%E5%8F%A5%E6%89%A7%E8%A1%8C%E7%9A%84%E9%A1%BA%E5%BA%8F&#x2F;C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5Cde6b514920dd4dbe840afd76e42ae14c%5Cclipboard.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;06&#x2F;07&#x2F;JAVA&#x2F;Mysql&#x2F;SQL%E8%AF%AD%E5%8F%A5%E6%89%A7%E8%A1%8C%E7%9A%84%E9%A1%BA%E5%BA%8F&#x2F;C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5C2614c57d50fc4ed4b0cfd3aeccedc65f%5Cclipboard.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;06&#x2F;07&#x2F;JAVA&#x2F;Mysql&#x2F;SQL%E8%AF%AD%E5%8F%A5%E6%89%A7%E8%A1%8C%E7%9A%84%E9%A1%BA%E5%BA%8F&#x2F;C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5Cd733655c271a49f89075b2737a841d0e%5Cclipboard.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;06&#x2F;07&#x2F;JAVA&#x2F;Mysql&#x2F;SQL%E8%AF%AD%E5%8F%A5%E6%89%A7%E8%A1%8C%E7%9A%84%E9%A1%BA%E5%BA%8F&#x2F;C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5C0e955c8158444014afb973a1c51ef651%5Cclipboard.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;06&#x2F;07&#x2F;JAVA&#x2F;Mysql&#x2F;SQL%E8%AF%AD%E5%8F%A5%E6%89%A7%E8%A1%8C%E7%9A%84%E9%A1%BA%E5%BA%8F&#x2F;C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5Cb222870a74184346a6d70a155b1d11dd%5Cclipboard.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;06&#x2F;07&#x2F;JAVA&#x2F;Mysql&#x2F;SQL%E8%AF%AD%E5%8F%A5%E6%89%A7%E8%A1%8C%E7%9A%84%E9%A1%BA%E5%BA%8F&#x2F;C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5Cec52ca792dac48df82230bd03d133d57%5Cclipboard.png">
-<meta property="og:updated_time" content="2020-02-03T13:50:40.000Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200204140152.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200204140225.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200204140258.jpg">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200204140329.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200204140417.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200204140451.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200204140329.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200204140652.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200204140821.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200204140900.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200204140919.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200204140945.png">
+<meta property="og:updated_time" content="2020-02-04T06:11:57.317Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;06&#x2F;07&#x2F;JAVA&#x2F;Mysql&#x2F;SQL%E8%AF%AD%E5%8F%A5%E6%89%A7%E8%A1%8C%E7%9A%84%E9%A1%BA%E5%BA%8F&#x2F;C:%5CUsers%5CYF%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1580734565837.png">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200204140152.png">
 
 
 
@@ -386,45 +386,45 @@
       
         <h1 id="SQL语句执行的顺序"><a href="#SQL语句执行的顺序" class="headerlink" title="SQL语句执行的顺序"></a>SQL语句执行的顺序</h1><p> <strong>from &gt; on &gt; where &gt; group by &gt; select &gt; order by</strong></p>
 <p>​    理解sql语句的执行顺序对优化sql非常重要，那么sql语句的执行顺序是怎样的呢，以一条SQL语句做分析：</p>
-<p><img src="/2019/06/07/JAVA/Mysql/SQL%E8%AF%AD%E5%8F%A5%E6%89%A7%E8%A1%8C%E7%9A%84%E9%A1%BA%E5%BA%8F/C:%5CUsers%5CYF%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1580734565837.png" alt="1580734565837"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20200204140152.png" alt></p>
 <p>获得来自北京，并且订单数少于2的客户;</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> u.user_id,<span class="keyword">COUNT</span>(o.order_id) <span class="keyword">as</span> total_orders</span><br><span class="line"><span class="keyword">FROM</span> <span class="keyword">user</span> <span class="keyword">as</span> u</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> orders <span class="keyword">as</span> o</span><br><span class="line"><span class="keyword">ON</span> u.user_id = o.user_id</span><br><span class="line"><span class="keyword">WHERE</span> u.city = <span class="string">'beijing'</span></span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> u.user_id</span><br><span class="line"><span class="keyword">HAVING</span> <span class="keyword">COUNT</span>(o.order_id) &lt; <span class="number">2</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> total_orders <span class="keyword">desc</span></span><br></pre></td></tr></table></figure>
 
 <p>在这些SQL语句的执行过程中，都会产生一个虚拟表，用来保存SQL语句的执行结果</p>
 <h2 id="第一步，执行FROM语句"><a href="#第一步，执行FROM语句" class="headerlink" title="第一步，执行FROM语句"></a>第一步，执行FROM语句</h2><p>​    我们首先需要知道最开始从哪个表开始的，这就是<code>FROM</code>告诉我们的。现在有了<code>&lt;left_table&gt;</code>和<code>&lt;right_table&gt;</code>两个表，我们到底从哪个表开始，还是从两个表进行某种联系以后再开始呢？它们之间如何产生联系呢？——笛卡尔积</p>
 <p>经过FROM语句对两个表执行笛卡尔积，会得到一个虚拟表，VT1（vitual table 1），内容如下：</p>
-<p><img src="/2019/06/07/JAVA/Mysql/SQL%E8%AF%AD%E5%8F%A5%E6%89%A7%E8%A1%8C%E7%9A%84%E9%A1%BA%E5%BA%8F/C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5C78fd8c0a411142d49afff7fbd22d8dfc%5Cclipboard.png" alt="img"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20200204140225.png" alt></p>
 <p>总共有28（user的记录条数 * orders的记录条数）条记录。这就是VT1的结果，接下来的操作就在VT1的基础上进行</p>
 <h2 id="第二步，执行ON过滤"><a href="#第二步，执行ON过滤" class="headerlink" title="第二步，执行ON过滤"></a>第二步，执行ON过滤</h2><p>​    执行完笛卡尔积以后，接着就进行<code>ON a.user_id = b.user_id</code>条件过滤，根据<code>ON</code>中指定的条件，去掉那些不符合条件的数据,得到VT2如下：</p>
-<p><img src="/2019/06/07/JAVA/Mysql/SQL%E8%AF%AD%E5%8F%A5%E6%89%A7%E8%A1%8C%E7%9A%84%E9%A1%BA%E5%BA%8F/C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5Cacb2e2edd8904bb4b22abf13dd82a906%5C1580735405(1).jpg" alt="img"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20200204140258.jpg" alt></p>
 <h2 id="第三步，添加外部行"><a href="#第三步，添加外部行" class="headerlink" title="第三步，添加外部行"></a>第三步，添加外部行</h2><p>​    这一步只有在连接类型为<code>OUTER JOIN</code>时才发生，如<code>LEFT OUTER JOIN</code>、<code>RIGHT OUTER JOIN</code>和<code>FULL OUTER JOIN</code>。在大多数的时候，我们都是会省略掉<code>OUTER</code>关键字的，但<code>OUTER</code>表示的就是外部行的概念。</p>
 <p>​    <code>LEFT OUTER JOIN</code>把左表记为保留表：即左表的数据会被全部查询出来，若右表中无对应数据，会用NULL来填充：</p>
-<p><img src="/2019/06/07/JAVA/Mysql/SQL%E8%AF%AD%E5%8F%A5%E6%89%A7%E8%A1%8C%E7%9A%84%E9%A1%BA%E5%BA%8F/C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5C3996f4016c3741689f634ea988ebf6af%5Cclipboard.png" alt="img"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20200204140329.png" alt></p>
 <p>​    <code>RIGHT OUTER JOIN</code>把右表记为保留表：即右表的数据会被全部查询出来，若左表中无对应数据，则用NULL补充；</p>
-<p><img src="/2019/06/07/JAVA/Mysql/SQL%E8%AF%AD%E5%8F%A5%E6%89%A7%E8%A1%8C%E7%9A%84%E9%A1%BA%E5%BA%8F/C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5Cac9b30224ff947c28b72a4e7856ab2da%5Cclipboard.png" alt="img"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20200204140417.png" alt></p>
 <p>​    <code>FULL OUTER JOIN</code>把左右表都作为保留表，但在Mysql中不支持全连接，可以通过以下方式实现全连接：</p>
-<p><img src="/2019/06/07/JAVA/Mysql/SQL%E8%AF%AD%E5%8F%A5%E6%89%A7%E8%A1%8C%E7%9A%84%E9%A1%BA%E5%BA%8F/C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5C013f8fa2a2964f9992ae8a82912f8b57%5Cclipboard.png" alt="img"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20200204140451.png" alt></p>
 <p>​    由于我在准备的测试SQL查询逻辑语句中使用的是LEFT JOIN，得到的VT3表如下：</p>
-<p><img src="/2019/06/07/JAVA/Mysql/SQL%E8%AF%AD%E5%8F%A5%E6%89%A7%E8%A1%8C%E7%9A%84%E9%A1%BA%E5%BA%8F/C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5Cde6b514920dd4dbe840afd76e42ae14c%5Cclipboard.png" alt="img"></p>
-<h2 id="第四步，执行where条件过滤"><a href="#第四步，执行where条件过滤" class="headerlink" title="第四步，执行where条件过滤"></a>第四步，执行where条件过滤</h2><p>​    对添加了外部行的数据进行where条件过滤，只有符合<where_condition>条件的记录会被筛选出来，执行WHERE a.city = ‘beijing’ 得到VT4如下：</where_condition></p>
-<p><img src="/2019/06/07/JAVA/Mysql/SQL%E8%AF%AD%E5%8F%A5%E6%89%A7%E8%A1%8C%E7%9A%84%E9%A1%BA%E5%BA%8F/C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5C2614c57d50fc4ed4b0cfd3aeccedc65f%5Cclipboard.png" alt="img"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20200204140329.png" alt></p>
+<h2 id="第四步，执行where条件过滤"><a href="#第四步，执行where条件过滤" class="headerlink" title="第四步，执行where条件过滤"></a>第四步，执行where条件过滤</h2><p>​    对添加了外部行的数据进行where条件过滤，只有符合<where_condition>条件的记录会被筛选出来，执行<code>WHERE a.city = &#39;beijing</code>得到VT4如下：</where_condition></p>
+<p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20200204140652.png" alt></p>
 <p>但是在使用WHERE子句时，需要注意以下两点：</p>
 <ol>
-<li>由于数据还没有分组，因此现在还不能在where过滤条件中使用where_condition=MIN(col)这类的聚合函数对分组统计的过滤；</li>
-<li>由于还没有进行列的选取操作，因此在select中使用列的别名也是不被允许的，如：select  city as c from table1 wherec=’beijing’ 是不允许的</li>
+<li>由于数据还没有分组，因此现在还不能在 where 过滤条件中使用<code>where_condition=MIN(col)</code>这类的<strong>聚合函数</strong>对分组统计的过滤；</li>
+<li>由于还没有进行列的选取操作，因此在select中使用列的别名也是不被允许的，如：<code>select  city as c from table1 where c = &#39;beijing&#39;</code> 是不允许的</li>
 </ol>
-<h2 id="第五步，执行group-by分组语句"><a href="#第五步，执行group-by分组语句" class="headerlink" title="第五步，执行group by分组语句"></a>第五步，执行group by分组语句</h2><p><code>GROUP BY</code>子句主要是对使用<code>WHERE</code>子句得到的虚拟表进行分组操作，执行GROUP BY a.user_id得到VT5如下：</p>
-<p><img src="/2019/06/07/JAVA/Mysql/SQL%E8%AF%AD%E5%8F%A5%E6%89%A7%E8%A1%8C%E7%9A%84%E9%A1%BA%E5%BA%8F/C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5Cd733655c271a49f89075b2737a841d0e%5Cclipboard.png" alt="img"></p>
-<h2 id="第六步，执行having"><a href="#第六步，执行having" class="headerlink" title="第六步，执行having"></a>第六步，执行having</h2><p><code>HAVING</code>子句主要和<code>GROUP BY</code>子句配合使用，对分组得到VT5的数据进行条件过滤，执行 HAVING COUNT(b.order_id) &lt; 2，得到VT6如下：</p>
-<p><img src="/2019/06/07/JAVA/Mysql/SQL%E8%AF%AD%E5%8F%A5%E6%89%A7%E8%A1%8C%E7%9A%84%E9%A1%BA%E5%BA%8F/C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5C0e955c8158444014afb973a1c51ef651%5Cclipboard.png" alt="img"></p>
+<h2 id="第五步，执行group-by分组语句"><a href="#第五步，执行group-by分组语句" class="headerlink" title="第五步，执行group by分组语句"></a>第五步，执行group by分组语句</h2><p><code>GROUP BY</code>子句主要是对使用<code>WHERE</code>子句得到的虚拟表进行分组操作，执行<code>GROUP BY a.user_id</code>得到VT5如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20200204140821.png" alt></p>
+<h2 id="第六步，执行having"><a href="#第六步，执行having" class="headerlink" title="第六步，执行having"></a>第六步，执行having</h2><p><code>HAVING</code>子句主要和<code>GROUP BY</code>子句配合使用，对分组得到VT5的数据进行条件过滤，执行 <code>HAVING COUNT(b.order_id) &lt; 2</code>，得到VT6如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20200204140900.png" alt></p>
 <h2 id="第七步，select列表"><a href="#第七步，select列表" class="headerlink" title="第七步，select列表"></a>第七步，select列表</h2><p>现在才会执行到<code>SELECT</code>子句，不要以为<code>SELECT</code>子句被写在第一行，就是第一个被执行的。</p>
 <p>我们执行测试语句中的<code>SELECT a.user_id,user_name,COUNT(b.order_id) as total_orders</code>，从VT6中选择出我们需要的内容，得到VT7如下：</p>
-<p><img src="/2019/06/07/JAVA/Mysql/SQL%E8%AF%AD%E5%8F%A5%E6%89%A7%E8%A1%8C%E7%9A%84%E9%A1%BA%E5%BA%8F/C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5Cb222870a74184346a6d70a155b1d11dd%5Cclipboard.png" alt="img"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20200204140919.png" alt></p>
 <h2 id="第八步，执行distinct去重复数据"><a href="#第八步，执行distinct去重复数据" class="headerlink" title="第八步，执行distinct去重复数据"></a>第八步，执行distinct去重复数据</h2><p>​    如果在查询中指定了<code>DISTINCT</code>子句，则会创建一张内存临时表（如果内存放不下，就需要存放在硬盘了）。</p>
 <p>​    这张临时表的表结构和上一步产生的虚拟表是一样的，不同的是对进行DISTINCT操作的列增加了一个唯一索引，以此来除重复数据。测试SQL中没有<code>DISTINCT</code>字句，所以不会执行</p>
 <h2 id="第九步，执行order-by字句"><a href="#第九步，执行order-by字句" class="headerlink" title="第九步，执行order by字句"></a>第九步，执行order by字句</h2><p>对虚拟表VT7中的内容按照指定的列进行排序，然后返回一个新的虚拟表，我们执行测试SQL语句中的<code>ORDER BY total_orders DESC</code> ，得到结果如下：</p>
-<p>DESC倒序排序，ASC升序排序</p>
-<p><img src="/2019/06/07/JAVA/Mysql/SQL%E8%AF%AD%E5%8F%A5%E6%89%A7%E8%A1%8C%E7%9A%84%E9%A1%BA%E5%BA%8F/C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5Cec52ca792dac48df82230bd03d133d57%5Cclipboard.png" alt="img"></p>
+<p><strong>DESC</strong>倒序排序，<strong>ASC</strong>升序排序</p>
+<p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20200204140945.png" alt></p>
 <h2 id="第十步，执行limit字句"><a href="#第十步，执行limit字句" class="headerlink" title="第十步，执行limit字句"></a>第十步，执行limit字句</h2><p>LIMIT子句从上一步得到的虚拟表中选出从指定位置开始的指定行数据，常用来做分页；</p>
 <p>MySQL数据库的LIMIT支持如下形式的选择：<strong>limit n,m</strong></p>
 <p>表示从第n条记录开始选择m条记录。对于小数据，使用LIMIT子句没有任何问题，当数据量非常大的时候，使用LIMIT n, m是非常低效的。</p>
@@ -459,8 +459,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/05/JAVA/%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E4%B8%80%E4%B8%AA%E7%94%9F%E4%BA%A7%E8%80%85%E4%B8%8E%E4%B8%80%E4%B8%AA%E6%B6%88%E8%B4%B9%E8%80%85/" rel="next" title="一个生产者与一个消费者">
-                <i class="fa fa-chevron-left"></i> 一个生产者与一个消费者
+              <a href="/2019/06/05/JAVA/Mysql/%E7%B4%A2%E5%BC%95/" rel="next" title="索引">
+                <i class="fa fa-chevron-left"></i> 索引
               </a>
             
           </div>
@@ -469,8 +469,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/06/08/JAVA/Mysql/%E6%97%A5%E6%9C%9F%E5%A4%84%E7%90%86/" rel="prev" title="日期处理">
-                日期处理 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/06/08/JAVA/Mysql/%E6%97%A5%E6%9C%9F%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0/" rel="prev" title="日期处理函数">
+                日期处理函数 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -552,7 +552,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">51</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -563,7 +563,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -574,7 +574,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

@@ -79,22 +79,22 @@
 
 
 
-<meta name="description" content="桥接模式画图问题​    这里有一个画笔，可以画正方形、长方形、圆形。 但是现在我们需要给这些形状进行上色，这里有三种颜色：白色、灰色、黑色。 这里我们可以画出3*3=9种。图形：白色正方形、白色长方形、白色圆形。。。。。。到这里了我们几乎到知道了这里存在两种解决方案：  为每种形状都提供各种颜色的版本。 根据实际需要对颜色和形状进行组合。  方案一来实现的话，我们是不是也可以这样来理解呢？为每种">
+<meta name="description" content="桥接模式画图问题​    这里有一个画笔，可以画正方形、长方形、圆形。 ​    但是现在我们需要给这些形状进行上色，这里有三种颜色：白色、灰色、黑色。 ​    这里我们可以画出3*3=9种。图形：白色正方形、白色长方形、白色圆形。。。。。。到这里了我们几乎到知道了这里存在两种解决方案：  为每种形状都提供各种颜色的版本。 根据实际需要对颜色和形状进行组合。  方案一来实现的话，我们是不是也可以">
 <meta name="keywords" content="一天学一个设计模式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="桥接模式">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;09&#x2F;16&#x2F;JAVA&#x2F;%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F&#x2F;%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F&#x2F;index.html">
 <meta property="og:site_name" content="个人技术博客">
-<meta property="og:description" content="桥接模式画图问题​    这里有一个画笔，可以画正方形、长方形、圆形。 但是现在我们需要给这些形状进行上色，这里有三种颜色：白色、灰色、黑色。 这里我们可以画出3*3=9种。图形：白色正方形、白色长方形、白色圆形。。。。。。到这里了我们几乎到知道了这里存在两种解决方案：  为每种形状都提供各种颜色的版本。 根据实际需要对颜色和形状进行组合。  方案一来实现的话，我们是不是也可以这样来理解呢？为每种">
+<meta property="og:description" content="桥接模式画图问题​    这里有一个画笔，可以画正方形、长方形、圆形。 ​    但是现在我们需要给这些形状进行上色，这里有三种颜色：白色、灰色、黑色。 ​    这里我们可以画出3*3=9种。图形：白色正方形、白色长方形、白色圆形。。。。。。到这里了我们几乎到知道了这里存在两种解决方案：  为每种形状都提供各种颜色的版本。 根据实际需要对颜色和形状进行组合。  方案一来实现的话，我们是不是也可以">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;09&#x2F;16&#x2F;JAVA&#x2F;%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F&#x2F;%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F&#x2F;C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5Ca684205f290e4bc99e507f481f0c63aa%5Cclipboard.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;09&#x2F;16&#x2F;JAVA&#x2F;%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F&#x2F;%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F&#x2F;C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5Cc2234d074efb49198e9c029b1f6bc576%5Cclipboard.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;09&#x2F;16&#x2F;JAVA&#x2F;%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F&#x2F;%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F&#x2F;C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5C968c9c80af9d4e30bde424a50a153f68%5Cclipboard.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;09&#x2F;16&#x2F;JAVA&#x2F;%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F&#x2F;%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F&#x2F;C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5C6014087d7cff403ea459b0a1a66cc1ad%5Cclipboard.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;09&#x2F;16&#x2F;JAVA&#x2F;%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F&#x2F;%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F&#x2F;C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5C7e6e4be8b6704a9ab9c5e2f3a3cfac4a%5Cclipboard.png">
-<meta property="og:updated_time" content="2020-02-03T05:55:30.000Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200204155358.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200204155427.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200204155522.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200204160133.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200204160216.png">
+<meta property="og:updated_time" content="2020-02-04T08:02:44.311Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;09&#x2F;16&#x2F;JAVA&#x2F;%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F&#x2F;%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F&#x2F;C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5Ca684205f290e4bc99e507f481f0c63aa%5Cclipboard.png">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200204155358.png">
 
 
 
@@ -340,7 +340,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  617
+                  622
                 </span>
               
 
@@ -378,19 +378,20 @@
 
       
         <h1 id="桥接模式"><a href="#桥接模式" class="headerlink" title="桥接模式"></a>桥接模式</h1><h2 id="画图问题"><a href="#画图问题" class="headerlink" title="画图问题"></a>画图问题</h2><p>​    这里有一个画笔，可以画正方形、长方形、圆形。</p>
-<p>但是现在我们需要给这些形状进行上色，这里有三种颜色：白色、灰色、黑色。</p>
-<p>这里我们可以画出3*3=9种。图形：白色正方形、白色长方形、白色圆形。。。。。。到这里了我们几乎到知道了这里存在两种解决方案：</p>
+<p>​    但是现在我们需要给这些形状进行上色，这里有三种颜色：白色、灰色、黑色。</p>
+<p>​    这里我们可以画出3*3=9种。图形：白色正方形、白色长方形、白色圆形。。。。。。到这里了我们几乎到知道了这里存在两种解决方案：</p>
 <ol>
 <li><strong>为每种形状都提供各种颜色的版本。</strong></li>
 <li><strong>根据实际需要对颜色和形状进行组合。</strong></li>
 </ol>
 <p>方案一来实现的话，我们是不是也可以这样来理解呢？为每种颜色都提供各种形状的版本呢？这个是完全的可以的。如下：</p>
-<p><img src="/2019/09/16/JAVA/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F/C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5Ca684205f290e4bc99e507f481f0c63aa%5Cclipboard.png" alt="img"></p>
-<p>方案二所提供的就是解决方法是：提供两个父类一个是颜色、一个形状，颜色父类和形状父类两个类都包含了相应的子类，然后根据需要对颜色和形状进行组合。</p>
-<p><img src="/2019/09/16/JAVA/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F/C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5Cc2234d074efb49198e9c029b1f6bc576%5Cclipboard.png" alt="img"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20200204155358.png" alt></p>
+<p>方案二所提供的就是解决方法是：</p>
+<p>提供<strong>两个父类</strong>一个是<strong>颜色</strong>、一个<strong>形状</strong>，颜色父类和形状父类两个类都包含了相应的子类，然后根据需要对颜色和形状进行组合。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20200204155427.png" alt></p>
 <p>对于有几个变化的维度，我们一般采用方案二来实现，这样除了减少系统中的类个数，也利于系统扩展。对于方案二的应用我们称之为<strong>桥接模式</strong>。</p>
-<p><img src="/2019/09/16/JAVA/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F/C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5C968c9c80af9d4e30bde424a50a153f68%5Cclipboard.png" alt="img"></p>
-<h3 id="抽象形状类"><a href="#抽象形状类" class="headerlink" title="抽象形状类"></a>抽象形状类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Shape</span> </span>&#123;</span><br><span class="line">     Color color; <span class="comment">// 组合了颜色</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setColor</span><span class="params">(Color color)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.color = color;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span></span>; <span class="comment">// 抽象方法，字类各自实现</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20200204155522.png" alt></p>
+<h3 id="抽象形状类"><a href="#抽象形状类" class="headerlink" title="抽象形状类"></a>抽象形状类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Shape</span> </span>&#123;</span><br><span class="line">     Color color; <span class="comment">// 组合了颜色</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setColor</span><span class="params">(Color color)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.color = color;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span></span>; <span class="comment">// 抽象方法，子类各自实现自己的逻辑</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
@@ -411,8 +412,8 @@
 
 
 <h2 id="桥接的理解"><a href="#桥接的理解" class="headerlink" title="桥接的理解"></a>桥接的理解</h2><p>​    Sharp 类中组合了 Color 接口，Sharp 类的 draw() 方法实际是调用了实现Color 接口的类里面的 bepaint() 方法，怎么去画 是由 实现了 Color 接口的类自己说了算，这样就理解为桥接了。<strong>（间接调用）</strong></p>
-<h2 id="桥接模式在JDBC中的分析"><a href="#桥接模式在JDBC中的分析" class="headerlink" title="桥接模式在JDBC中的分析"></a>桥接模式在JDBC中的分析</h2><p><img src="/2019/09/16/JAVA/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F/C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5C6014087d7cff403ea459b0a1a66cc1ad%5Cclipboard.png" alt="img"></p>
-<p><img src="/2019/09/16/JAVA/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F/C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5C7e6e4be8b6704a9ab9c5e2f3a3cfac4a%5Cclipboard.png" alt="img"></p>
+<h2 id="桥接模式在JDBC中的分析"><a href="#桥接模式在JDBC中的分析" class="headerlink" title="桥接模式在JDBC中的分析"></a>桥接模式在JDBC中的分析</h2><p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20200204160133.png" alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20200204160216.png" alt></p>
 <p><strong>白色的圆形，黑色的长方形，这样的语句，可以把修饰词作为一类接口</strong></p>
 <p><strong>而被修饰的东西，可以设计为抽象类，这样也方面以后扩展代码，避免连续继承。</strong></p>
 <p><strong>如：面积为10M的长方形。。。</strong></p>
@@ -539,7 +540,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">51</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -550,7 +551,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -561,7 +562,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

@@ -87,14 +87,14 @@
 <meta property="og:site_name" content="个人技术博客">
 <meta property="og:description" content="Explain​    在日常工作中，我们会有时会开慢查询去记录一些执行时间比较久的SQL语句，找出这些SQL语句并不意味着完事了，这时我们常常用到 explain 这个命令来查看一个这些SQL语句的执行计划，查看该SQL语句有没有使用上了索引，有没有做全表扫描，这都可以通过explain命令来查看。所以我们深入了解MySQL的基于开销的优化器，还可以获得很多可能被优化器考虑到的访问策略的细节，以">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https:&#x2F;&#x2F;images2018.cnblogs.com&#x2F;blog&#x2F;512541&#x2F;201808&#x2F;512541-20180803142201303-545775900.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;06&#x2F;11&#x2F;JAVA&#x2F;Mysql&#x2F;Explain&#x2F;C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5Ca4e4eb019c374f2b85d69be214638d62%5Cclipboard.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;images2018.cnblogs.com&#x2F;blog&#x2F;512541&#x2F;201808&#x2F;512541-20180803143413064-173136748.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;06&#x2F;11&#x2F;JAVA&#x2F;Mysql&#x2F;Explain&#x2F;C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5C1534819ca79f4081a3e66eb98aacb27a%5Cclipboard.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;06&#x2F;11&#x2F;JAVA&#x2F;Mysql&#x2F;Explain&#x2F;C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5C156be18ad4b5420eba6f6619a3706066%5Cclipboard.png">
-<meta property="og:updated_time" content="2020-02-03T12:22:12.000Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200204141708.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200204141735.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200204141808.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200204141840.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200204141904.png">
+<meta property="og:updated_time" content="2020-02-04T06:22:40.477Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https:&#x2F;&#x2F;images2018.cnblogs.com&#x2F;blog&#x2F;512541&#x2F;201808&#x2F;512541-20180803142201303-545775900.png">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200204141708.png">
 
 
 
@@ -381,9 +381,9 @@
 <p>使用方法：explain + SQL语句</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 实际SQL，查找用户名为杨发的员工</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> emp <span class="keyword">where</span> <span class="keyword">name</span> = <span class="string">'杨发'</span>;</span><br><span class="line"><span class="comment">-- 查看SQL是否使用索引，前面加上explain即可</span></span><br><span class="line"><span class="keyword">explain</span> <span class="keyword">select</span> * <span class="keyword">from</span> emp <span class="keyword">where</span> <span class="keyword">name</span> = <span class="string">'杨发'</span>;</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://images2018.cnblogs.com/blog/512541/201808/512541-20180803142201303-545775900.png" alt="img"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20200204141708.png" alt></p>
 <p>expain出来的信息有10列，分别是id、select_type、table、type、possible_keys、key、key_len、ref、rows、Extra</p>
-<h2 id="Explain-怎么玩"><a href="#Explain-怎么玩" class="headerlink" title="Explain 怎么玩"></a>Explain 怎么玩</h2><p><img src="/2019/06/11/JAVA/Mysql/Explain/C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5Ca4e4eb019c374f2b85d69be214638d62%5Cclipboard.png" alt="img"></p>
+<h2 id="Explain-怎么玩"><a href="#Explain-怎么玩" class="headerlink" title="Explain 怎么玩"></a>Explain 怎么玩</h2><p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20200204141735.png" alt></p>
 <h3 id="id：SQL执行的顺序"><a href="#id：SQL执行的顺序" class="headerlink" title="id：SQL执行的顺序"></a>id：SQL执行的顺序</h3><p>SELECT识别符。这是SELECT的查询序列号</p>
 <p><strong>我的理解是SQL执行的顺序的标识，SQL从大到小的执行</strong></p>
 <ol>
@@ -393,8 +393,8 @@
 </ol>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查看在研发部并且名字以杨开头的员工，经典查询</span></span><br><span class="line"><span class="keyword">explain</span> <span class="keyword">select</span> e.no, e.name <span class="keyword">from</span> emp e <span class="keyword">left</span> <span class="keyword">join</span> dept d <span class="keyword">on</span> e.dept_no = d.no <span class="keyword">where</span> e.name <span class="keyword">like</span> <span class="string">'杨%'</span> <span class="keyword">and</span> d.name = <span class="string">'研发部'</span>;</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://images2018.cnblogs.com/blog/512541/201808/512541-20180803143413064-173136748.png" alt="img"></p>
-<h3 id="select-type：select语句的类型"><a href="#select-type：select语句的类型" class="headerlink" title="select_type：select语句的类型"></a>select_type：select语句的类型</h3><p><img src="/2019/06/11/JAVA/Mysql/Explain/C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5C1534819ca79f4081a3e66eb98aacb27a%5Cclipboard.png" alt="img"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20200204141808.png" alt></p>
+<h3 id="select-type：select语句的类型"><a href="#select-type：select语句的类型" class="headerlink" title="select_type：select语句的类型"></a>select_type：select语句的类型</h3><p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20200204141840.png" alt></p>
 <ol>
 <li>SIMPLE ：查询中不包含 子查询 与 Union，最简单的查询</li>
 <li>PRIMARY ：最外面的 SELECT，最后加载的查询</li>
@@ -405,7 +405,7 @@
 <li>UNION RESULT ：UNION结果集</li>
 </ol>
 <h3 id="type：查询的方式"><a href="#type：查询的方式" class="headerlink" title="type：查询的方式"></a>type：查询的方式</h3><p>对表访问方式，表示MySQL在表中找到所需行的方式，又称“<strong>访问类型</strong>”。</p>
-<p><img src="/2019/06/11/JAVA/Mysql/Explain/C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5C156be18ad4b5420eba6f6619a3706066%5Cclipboard.png" alt="img"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20200204141904.png" alt></p>
 <p>常用的类型有： <strong>ALL、index、range、 ref、eq_ref、const、system、NULL</strong>（从左到右，性能从差到好），一般到range，ref就比较好了。</p>
 <ol>
 <li>ALL：Full Table Scan， MySQL将<strong>遍历全表</strong>以找到匹配的行</li>
@@ -546,7 +546,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">51</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -557,7 +557,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -568,7 +568,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

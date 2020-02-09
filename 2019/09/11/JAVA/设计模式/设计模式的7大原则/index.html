@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="个人技术博客">
 <meta property="og:description" content="设计模式的7大原则单一职责、认真做好一件事对类来说，就是一个类只负责一项职责。 如果一个A类负责两个不同的职责：职责1与职责2。当职责1需求改变时去改变A时，可能造成职责2的错误。就需要把A类粒度分解为A1，A2。 接口隔离、接口细化对接口来说，建立单一的接口，不要建立臃肿庞大的接口。 也就是接口尽量细化，同时接口中的方法尽量少，细化。 依赖倒转，面向接口编程程序要依赖于抽象接口，不要依赖于具体实">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-02-03T05:55:32.000Z">
+<meta property="og:updated_time" content="2020-02-04T06:27:43.139Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -383,10 +383,11 @@
 <p>每一个软件实体应该包含本类独有的属性与方法</p>
 <h2 id="合成复用、少继承"><a href="#合成复用、少继承" class="headerlink" title="合成复用、少继承"></a>合成复用、少继承</h2><p>尽量使用合成/聚合，而不是通过继承达到复用的目的。</p>
 <h3 id="组合与聚合的差别"><a href="#组合与聚合的差别" class="headerlink" title="组合与聚合的差别"></a>组合与聚合的差别</h3><p>组合和聚合是有很大区别的，这个区别不是在形式上，而是在本质上：</p>
-<p> 比如A类中包含B类的一个引用b，当A类的一个对象消亡时，b这个引用所指向的对象也同时消亡（没有任何一个引用指向它，成了垃圾对象），这种情况叫做组合，反之b所指向的对象还会有另外的引用指向它，这种情况叫聚合。 </p>
+<p>比如A类中包含B类的一个引用b，当A类的一个对象消亡时，b这个引用所指向的对象也同时消亡（没有任何一个引用指向它，成了垃圾对象），这种情况叫做<strong>组合</strong>。</p>
+<p>反之b所指向的对象还会有另外的引用指向它，这种情况叫<strong>聚合</strong>。 </p>
 <p><strong>组合方式一般会这样写：</strong>     </p>
 <p>A类的构造方法里创建B类的对象，也就是说，当A类的一个对象产生时，B类的对象随之产生，当A类的这个对象消亡时，它所包含的B类的对象也随之消亡。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 组合：  </span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;  </span><br><span class="line">　　<span class="keyword">private</span> Hand hand;  </span><br><span class="line">　　<span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">    　　hand = <span class="keyword">new</span> Hand(); </span><br><span class="line">　&#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 组合：  </span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;  </span><br><span class="line">　　<span class="keyword">private</span> Computer computer;  </span><br><span class="line">　　<span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">    　　computer = <span class="keyword">new</span> Computer(); </span><br><span class="line">　&#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p> <strong>聚合方式则是这样：</strong>     </p>
 <p>A类的对象在创建时不会立即创建B类的对象，而是等待一个外界的对象传给它的这个对象的方法不是构造方法，通常是setter/getter方法。 </p>
@@ -522,7 +523,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">51</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -533,7 +534,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -544,7 +545,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

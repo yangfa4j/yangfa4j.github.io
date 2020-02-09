@@ -79,19 +79,19 @@
 
 
 
-<meta name="description" content="建造者模式 KFC套餐问题​    建造者模式可以用于描述KFC如何创建套餐：套餐是一个复杂对象，它一般包含主食（如汉堡、鸡肉卷等）和饮料（如果汁、可乐等）等组成部分，不同的套餐有不同的组成部分，而KFC的服务员可以根据顾客的要求，一步一步装配这些组成部分，构造一份完整的套餐，然后返回给顾客。 KFC123456public class KFC&amp;#123;    private String fo">
+<meta name="description" content="建造者模式​    建造者模式又叫创建者模式，是将一个复杂的对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示。 ​    创建者模式隐藏了复杂对象的创建过程，它把复杂对象的创建过程加以抽象，通过子类继承或者重载的方式，动态的创建具有复合属性的对象。  KFC套餐问题​    建造者模式可以用于描述KFC如何创建套餐 ​    套餐是一个复杂对象，它一般包含主食（如汉堡、鸡肉卷等）和饮">
 <meta name="keywords" content="一天学一个设计模式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="建造者模式">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;09&#x2F;14&#x2F;JAVA&#x2F;%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F&#x2F;%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F&#x2F;index.html">
 <meta property="og:site_name" content="个人技术博客">
-<meta property="og:description" content="建造者模式 KFC套餐问题​    建造者模式可以用于描述KFC如何创建套餐：套餐是一个复杂对象，它一般包含主食（如汉堡、鸡肉卷等）和饮料（如果汁、可乐等）等组成部分，不同的套餐有不同的组成部分，而KFC的服务员可以根据顾客的要求，一步一步装配这些组成部分，构造一份完整的套餐，然后返回给顾客。 KFC123456public class KFC&amp;#123;    private String fo">
+<meta property="og:description" content="建造者模式​    建造者模式又叫创建者模式，是将一个复杂的对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示。 ​    创建者模式隐藏了复杂对象的创建过程，它把复杂对象的创建过程加以抽象，通过子类继承或者重载的方式，动态的创建具有复合属性的对象。  KFC套餐问题​    建造者模式可以用于描述KFC如何创建套餐 ​    套餐是一个复杂对象，它一般包含主食（如汉堡、鸡肉卷等）和饮">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;09&#x2F;14&#x2F;JAVA&#x2F;%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F&#x2F;%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F&#x2F;C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5C1717dc39ce9f4ea9897ef73ce4fb9a7a%5Cclipboard.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;09&#x2F;14&#x2F;JAVA&#x2F;%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F&#x2F;%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F&#x2F;C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5C72787654ac2b4e33b97777d94f61a3ee%5Cclipboard.png">
-<meta property="og:updated_time" content="2020-02-03T05:55:18.000Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200204145817.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200204150116.png">
+<meta property="og:updated_time" content="2020-02-04T07:11:46.660Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;09&#x2F;14&#x2F;JAVA&#x2F;%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F&#x2F;%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F&#x2F;C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5C1717dc39ce9f4ea9897ef73ce4fb9a7a%5Cclipboard.png">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200204145817.png">
 
 
 
@@ -337,7 +337,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  483
+                  655
                 </span>
               
 
@@ -374,37 +374,40 @@
       
 
       
-        <h1 id="建造者模式"><a href="#建造者模式" class="headerlink" title="建造者模式"></a>建造者模式</h1><p><img src="/2019/09/14/JAVA/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F/C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5C1717dc39ce9f4ea9897ef73ce4fb9a7a%5Cclipboard.png" alt="img"></p>
-<h2 id="KFC套餐问题"><a href="#KFC套餐问题" class="headerlink" title="KFC套餐问题"></a>KFC套餐问题</h2><p>​    建造者模式可以用于描述KFC如何创建套餐：套餐是一个复杂对象，它一般包含主食（如汉堡、鸡肉卷等）和饮料（如果汁、可乐等）等组成部分，不同的套餐有不同的组成部分，而KFC的服务员可以根据顾客的要求，一步一步装配这些组成部分，构造一份完整的套餐，然后返回给顾客。</p>
+        <h1 id="建造者模式"><a href="#建造者模式" class="headerlink" title="建造者模式"></a>建造者模式</h1><p>​    建造者模式又叫创建者模式，是将一个<strong>复杂的对象的构建与它的表示分离</strong>，使得同样的构建过程可以创建不同的表示。</p>
+<p>​    创建者模式<strong>隐藏了复杂对象的创建过程</strong>，<strong>它把复杂对象的创建过程加以抽象</strong>，通过子类继承或者重载的方式，动态的创建具有复合属性的对象。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20200204145817.png" alt></p>
+<h2 id="KFC套餐问题"><a href="#KFC套餐问题" class="headerlink" title="KFC套餐问题"></a>KFC套餐问题</h2><p>​    建造者模式可以用于描述KFC如何创建套餐</p>
+<p>​    套餐是一个复杂对象，它一般包含主食（如汉堡、鸡肉卷等）和饮料（如果汁、可乐等）等组成部分，不同的套餐有不同的组成部分，而KFC的服务员可以根据顾客的要求，一步一步装配这些组成部分，构造一份完整的套餐，然后返回给顾客。</p>
 <h3 id="KFC"><a href="#KFC" class="headerlink" title="KFC"></a>KFC</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">KFC</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String food; <span class="comment">// 主食</span></span><br><span class="line">    <span class="keyword">private</span> String drink; <span class="comment">// 饮料</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// Setter Getter toString</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
 <h3 id="Builder"><a href="#Builder" class="headerlink" title="Builder"></a>Builder</h3><p>抽象建造者，组合了KFC套餐</p>
+<p><strong>抽象类的作用是有一个公共的属性，可以说是容器，暂存每一个子类继承后，自己单独设置的属性。</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">KFCBuilder</span> </span>&#123;</span><br><span class="line">    KFC kfc = <span class="keyword">new</span> KFC(); <span class="comment">// KFC 套餐</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">buildFood</span><span class="params">()</span></span>;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">buildDrink</span><span class="params">()</span></span>;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> KFC <span class="title">getKFC</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> kfc; <span class="comment">// 返回建造的KFC套餐</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
 <h3 id="ConcreteBuilder"><a href="#ConcreteBuilder" class="headerlink" title="ConcreteBuilder"></a>ConcreteBuilder</h3><p>具体建造者，继承 Builder，实现了不同的构建逻辑</p>
 <p><strong>套餐A：</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">A</span> <span class="keyword">extends</span> <span class="title">KFCBuilder</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">buildDrink</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        kfc.setDrink(<span class="string">"可乐"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">buildFood</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        kfc.setFood(<span class="string">"薯条"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">A</span> <span class="keyword">extends</span> <span class="title">KFCBuilder</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">buildDrink</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        kfc.setDrink(<span class="string">"可乐"</span>);  <span class="comment">// 套餐A的饮品</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">buildFood</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        kfc.setFood(<span class="string">"薯条"</span>);  <span class="comment">// 套餐A的食物</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
 <p><strong>套餐B：</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">B</span> <span class="keyword">extends</span> <span class="title">KFCBuilder</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">buildFood</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       kfc.setFood(<span class="string">"鸡肉卷"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">buildDrink</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        kfc.setDrink(<span class="string">"果汁"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">B</span> <span class="keyword">extends</span> <span class="title">KFCBuilder</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">buildFood</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       kfc.setFood(<span class="string">"鸡肉卷"</span>);   <span class="comment">// 套餐B的食物</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">buildDrink</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        kfc.setDrink(<span class="string">"果汁"</span>);  <span class="comment">// 套餐B的饮品</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
-<h3 id="Director"><a href="#Director" class="headerlink" title="Director"></a>Director</h3><p>包工头，构建一个使用 Builder 接口的对象。它主要是用于创建一个复杂的对象，它主要有三个作用：</p>
-<ul>
-<li><ol>
-<li><strong>隔离了客户与对象的生产过程</strong></li>
+<h3 id="Director"><a href="#Director" class="headerlink" title="Director"></a>Director</h3><p>包工头，构建一个使用 Builder 接口的对象。它主要是用于创建一个<strong>复杂的对象</strong>，它主要有三个作用：</p>
+<ol>
+<li><strong>隔离了客户与对象的生产过程</strong><ol start="2">
 <li><strong>负责控制产品对象的生产过程</strong></li>
 <li><strong>传什么给包工头，就生产什么种类的KFC</strong></li>
 </ol>
 </li>
-</ul>
+</ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">KFCWaiter</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> KFCBuilder kfcBuilder; <span class="comment">// 维护了一个抽象的 Builder,</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">KFCWaiter</span><span class="params">(KFCBuilder kfcBuilder)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.kfcBuilder = kfcBuilder;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> KFC <span class="title">construct</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//准备食物</span></span><br><span class="line">        kfcBuilder.buildFood();</span><br><span class="line">        <span class="comment">//准备饮料</span></span><br><span class="line">        kfcBuilder.buildDrink();</span><br><span class="line">        <span class="comment">//准备完毕，返回一个完整的套餐给客户</span></span><br><span class="line">        <span class="keyword">return</span> kfcBuilder.getKFC();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
@@ -413,7 +416,7 @@
 
 
 
-<h2 id="JDK中建造者模式使用例子，StringBuilder-Class"><a href="#JDK中建造者模式使用例子，StringBuilder-Class" class="headerlink" title="JDK中建造者模式使用例子，StringBuilder.Class"></a>JDK中建造者模式使用例子，StringBuilder.Class</h2><p><img src="/2019/09/14/JAVA/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F/C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5C72787654ac2b4e33b97777d94f61a3ee%5Cclipboard.png" alt="img"></p>
+<h2 id="JDK中建造者模式使用例子，StringBuilder-Class"><a href="#JDK中建造者模式使用例子，StringBuilder-Class" class="headerlink" title="JDK中建造者模式使用例子，StringBuilder.Class"></a>JDK中建造者模式使用例子，StringBuilder.Class</h2><p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20200204150116.png" alt></p>
 
       
     </div>
@@ -537,7 +540,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">51</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -548,7 +551,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -559,7 +562,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
