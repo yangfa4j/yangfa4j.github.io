@@ -79,20 +79,20 @@
 
 
 
-<meta name="description" content="注册服务中心 EurekaEureka 简介  ​    Eureka 服务注册中心（Eureka Server），提供服务的注册与发现，服务提供者把服务注册到服务中心，服务消费者通过服务中心使用服务，Eureka 相当于Spring 管理 Bean一样管理服务。 Eureka 使用，添加Eureka依赖​    首先我们需要创建一个普通的Spring Boot工程，命名为eureka-serve">
+<meta name="description" content="注册服务中心 EurekaEureka 简介  Eureka 服务注册中心（Eureka Server），提供服务的注册与发现，服务提供者把服务注册到服务中心，服务消费者通过服务中心使用服务，Eureka 相当于Spring 管理 Bean一样管理服务。 Eureka 使用，添加Eureka依赖首先我们需要创建一个普通的Spring Boot工程，命名为eureka-server，普通到什么程度呢">
 <meta name="keywords" content="SpringCloud">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Eureka 服务中心">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;03&#x2F;12&#x2F;SpringCloud&#x2F;Eureka%20%E6%9C%8D%E5%8A%A1%E4%B8%AD%E5%BF%83&#x2F;index.html">
 <meta property="og:site_name" content="个人技术博客">
-<meta property="og:description" content="注册服务中心 EurekaEureka 简介  ​    Eureka 服务注册中心（Eureka Server），提供服务的注册与发现，服务提供者把服务注册到服务中心，服务消费者通过服务中心使用服务，Eureka 相当于Spring 管理 Bean一样管理服务。 Eureka 使用，添加Eureka依赖​    首先我们需要创建一个普通的Spring Boot工程，命名为eureka-serve">
+<meta property="og:description" content="注册服务中心 EurekaEureka 简介  Eureka 服务注册中心（Eureka Server），提供服务的注册与发现，服务提供者把服务注册到服务中心，服务消费者通过服务中心使用服务，Eureka 相当于Spring 管理 Bean一样管理服务。 Eureka 使用，添加Eureka依赖首先我们需要创建一个普通的Spring Boot工程，命名为eureka-server，普通到什么程度呢">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200209153617.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200209153636.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200209154315.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200209154427.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200209154556.png">
-<meta property="og:updated_time" content="2020-02-09T10:03:48.176Z">
+<meta property="og:updated_time" content="2020-02-09T13:35:55.595Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200209153617.png">
 
@@ -340,7 +340,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  862
+                  861
                 </span>
               
 
@@ -379,8 +379,8 @@
       
         <h1 id="注册服务中心-Eureka"><a href="#注册服务中心-Eureka" class="headerlink" title="注册服务中心 Eureka"></a>注册服务中心 Eureka</h1><h2 id="Eureka-简介"><a href="#Eureka-简介" class="headerlink" title="Eureka 简介"></a>Eureka 简介</h2><p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20200209153617.png" alt></p>
 <p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20200209153636.png" alt></p>
-<p>​    Eureka 服务注册中心（Eureka Server），提供服务的注册与发现，服务提供者把服务注册到服务中心，服务消费者通过服务中心使用服务，<strong>Eureka 相当于Spring 管理 Bean一样管理服务。</strong></p>
-<h2 id="Eureka-使用，添加Eureka依赖"><a href="#Eureka-使用，添加Eureka依赖" class="headerlink" title="Eureka 使用，添加Eureka依赖"></a>Eureka 使用，添加Eureka依赖</h2><p>​    首先我们需要创建一个普通的Spring Boot工程，命名为eureka-server，普通到什么程度呢?就是一个starter都不需要添加</p>
+<p>Eureka 服务注册中心（Eureka Server），提供服务的注册与发现，服务提供者把服务注册到服务中心，服务消费者通过服务中心使用服务，<strong>Eureka 相当于Spring 管理 Bean一样管理服务。</strong></p>
+<h2 id="Eureka-使用，添加Eureka依赖"><a href="#Eureka-使用，添加Eureka依赖" class="headerlink" title="Eureka 使用，添加Eureka依赖"></a>Eureka 使用，添加Eureka依赖</h2><p>首先我们需要创建一个普通的Spring Boot工程，命名为eureka-server，普通到什么程度呢?就是一个starter都不需要添加</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- springCloud启动器 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- eureka-server 服务端 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-netflix-eureka-server<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">java.version</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">java.version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">spring-cloud.version</span>&gt;</span>Greenwich.SR2<span class="tag">&lt;/<span class="name">spring-cloud.version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependencyManagement</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-dependencies<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;spring-cloud.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">type</span>&gt;</span>pom<span class="tag">&lt;/<span class="name">type</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">scope</span>&gt;</span>import<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencyManagement</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 
@@ -390,7 +390,7 @@
 
 
 
-<h2 id="配置服务注册中YML"><a href="#配置服务注册中YML" class="headerlink" title="配置服务注册中YML"></a>配置服务注册中YML</h2><p>​    最后我们再做一点简单的配置就可以了，配置就写在Spring Boot的配置文件application.yml中，写法如下：</p>
+<h2 id="配置服务注册中YML"><a href="#配置服务注册中YML" class="headerlink" title="配置服务注册中YML"></a>配置服务注册中YML</h2><p>最后我们再做一点简单的配置就可以了，配置就写在Spring Boot的配置文件application.yml中，写法如下：</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">1111</span></span><br><span class="line"></span><br><span class="line"><span class="attr">eureka:</span></span><br><span class="line">  <span class="attr">instance:</span></span><br><span class="line">    <span class="attr">hostname:</span> <span class="string">localhost</span></span><br><span class="line">  <span class="attr">client:</span></span><br><span class="line">    <span class="attr">register-with-eureka:</span> <span class="literal">false</span>  <span class="comment"># 是否将自己注册到Eureka Server， 默认为true。 由于当前应用就是Eureka Server， 因此设为 false。</span></span><br><span class="line">    <span class="attr">fetch-registry:</span> <span class="literal">false</span>   <span class="comment"># 是否从Eureka Server获取注册信息，默认为true。 如果这是一个单点的 Eureka Server，不需要同步其他节点的数据，可以设为false。</span></span><br><span class="line">    <span class="attr">service-url:</span></span><br><span class="line">      <span class="attr">defaultZone:</span> <span class="string">http://$&#123;eureka.instance.hostname&#125;:$&#123;server.port&#125;/eureka/</span></span><br></pre></td></tr></table></figure>
 
 <p><strong>说明：</strong></p>
@@ -401,11 +401,12 @@
 <li>eureka.client.fetch-registry = false，表示不去检索其他的服务，因为服务注册中心本身的职责就是维护服务实例，它也不需要去检索其他服务</li>
 <li>eureka.client.register-with-eureka 与 eureka.client.fetch-registry 设置为true时，是对生产者与消费者设置，而不是服务中心     <strong>！！默认都为ture！！</strong></li>
 </ol>
-<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>​    OK，做完这一切之后，我们就可以启动这一个Spring Boot 服务，服务启动成功之后，在浏览器中输入:<a href="http://localhost:1111就能够看到如下页面" target="_blank" rel="noopener">http://localhost:1111就能够看到如下页面</a>:</p>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>OK，做完这一切之后，我们就可以启动这一个Spring Boot 服务，服务启动成功之后，在浏览器中输入:</p>
+<p><a href="http://localhost:1111" target="_blank" rel="noopener">http://localhost:1111</a> 就能够看到如下页面:</p>
 <p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20200209154315.png" alt></p>
 <p>看到上面这个页面之后，表示你的服务注册中心已经搭建好了。</p>
 <h2 id="Eureka中细节的完善"><a href="#Eureka中细节的完善" class="headerlink" title="Eureka中细节的完善"></a>Eureka中细节的完善</h2><h3 id="修改主机映射名"><a href="#修改主机映射名" class="headerlink" title="修改主机映射名"></a>修改主机映射名</h3><p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20200209154427.png" alt></p>
-<p>​    在服务yml配置中添加</p>
+<p>在服务yml配置中添加</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">eureka:</span></span><br><span class="line">  <span class="attr">instance:</span></span><br><span class="line">    <span class="attr">instance-id:</span>  <span class="string">xxxxxxxxxx</span>  <span class="comment">#一般是服务名称-端口号</span></span><br></pre></td></tr></table></figure>
 
 
@@ -415,7 +416,7 @@
 
 
 <h3 id="Eureka的自我保护机制"><a href="#Eureka的自我保护机制" class="headerlink" title="Eureka的自我保护机制"></a>Eureka的自我保护机制</h3><p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20200209154556.png" alt></p>
-<p>​    <strong>关闭自我保护机制，建议不要关闭！！！</strong></p>
+<p><strong>关闭自我保护机制，建议不要关闭！！！</strong></p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">eureka:</span></span><br><span class="line">  <span class="attr">server:</span></span><br><span class="line">    <span class="attr">enable-self-preservation:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
 
 
@@ -448,8 +449,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/05/JAVA/%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E6%B6%88%E8%B4%B9%E8%80%85%E6%A8%A1%E5%BC%8F/" rel="next" title="消费者模式">
-                <i class="fa fa-chevron-left"></i> 消费者模式
+              <a href="/2019/01/05/JAVA/%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E4%B8%80%E4%B8%AA%E7%94%9F%E4%BA%A7%E8%80%85%E4%B8%8E%E4%B8%80%E4%B8%AA%E6%B6%88%E8%B4%B9%E8%80%85/" rel="next" title="一个生产者与一个消费者">
+                <i class="fa fa-chevron-left"></i> 一个生产者与一个消费者
               </a>
             
           </div>
