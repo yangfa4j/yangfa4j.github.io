@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="SpringCloud," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Hystrix 熔断器 Hystrix 的作用就相当于家庭电路的保险丝，当出现任何异常的时候，他就会来来帮我们处理异常。  Hystrix 是一个用于处理分布式系统的延迟和容错的开源库，在分布式系统里，许多服务无法避免会调用失败，比如超时、异常等等，Hystrix 能够保证在一个服务出现问题的情况下，不会导致整体服务的失败，避免级联故障，以提高分布式系统的弹性。 那么当某个服务发生故障时，通过 H">
+<meta name="keywords" content="SpringCloud">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hystrix 熔断器">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;03&#x2F;19&#x2F;SpringCloud&#x2F;Hystrix%20%E7%86%94%E6%96%AD%E5%99%A8&#x2F;index.html">
+<meta property="og:site_name" content="个人技术博客">
+<meta property="og:description" content="Hystrix 熔断器 Hystrix 的作用就相当于家庭电路的保险丝，当出现任何异常的时候，他就会来来帮我们处理异常。  Hystrix 是一个用于处理分布式系统的延迟和容错的开源库，在分布式系统里，许多服务无法避免会调用失败，比如超时、异常等等，Hystrix 能够保证在一个服务出现问题的情况下，不会导致整体服务的失败，避免级联故障，以提高分布式系统的弹性。 那么当某个服务发生故障时，通过 H">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200210101927.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200210102520.png">
+<meta property="og:updated_time" content="2020-02-10T03:04:05.784Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200210101927.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/03/19/SpringCloud/Hystrix 熔断器/"/>
+
+
+
+
+
+  <title>Hystrix 熔断器 | 个人技术博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">个人技术博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">记录了一些与JAVA相关的技术文章</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/19/SpringCloud/Hystrix%20%E7%86%94%E6%96%AD%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="杨发">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/tx.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="个人技术博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Hystrix 熔断器</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-19T00:00:00+08:00">
+                2019-03-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SpringCloud/" itemprop="url" rel="index">
+                    <span itemprop="name">SpringCloud</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.4k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Hystrix-熔断器"><a href="#Hystrix-熔断器" class="headerlink" title="Hystrix 熔断器"></a>Hystrix 熔断器</h1><p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20200210101927.png" alt></p>
+<p>Hystrix 的作用就相当于家庭电路的保险丝，当出现任何异常的时候，他就会来来帮我们处理异常。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20200210102520.png" alt></p>
+<p>Hystrix 是一个用于处理分布式系统的延迟和容错的开源库，在分布式系统里，许多服务无法避免会调用失败，比如超时、异常等等，Hystrix 能够保证在一个服务出现问题的情况下，不会导致整体服务的失败，避免级联故障，以提高分布式系统的弹性。</p>
+<p><strong>那么当某个服务发生故障时，通过 Hystrix，会向调用方返回一个符合预期的、可处理的默认响应（也称备选响应，即fallBack），而不是长时间的等待或者直接返回一个异常信息。</strong></p>
+<h2 id="服务熔断和服务降级"><a href="#服务熔断和服务降级" class="headerlink" title="服务熔断和服务降级"></a>服务熔断和服务降级</h2><h3 id="服务熔断"><a href="#服务熔断" class="headerlink" title="服务熔断"></a>服务熔断</h3><p>服务熔断机制是应对雪崩效应的一种微服务链路保护机制。当扇出链路的某个微服务不可用或者响应时间太长，就会进行服务的降级，快速熔断该节点微服务的调用，返回默认的响应信息。当检测到该节点微服务调用响应正常后即可恢复。</p>
+<h3 id="服务降级"><a href="#服务降级" class="headerlink" title="服务降级"></a>服务降级</h3><p>上面提到服务的降级，什么意思呢？我打个比方：</p>
+<p>比如你去银行办理业务，本来有四个窗口都可以办理，现在3号窗口和4号窗口的办理人员有事要离开，那么自然地，用户就会跑去1号窗口或者2号窗口办理，所以1号和2号窗口就会承担更多的压力。</p>
+<p>3号窗口和4号窗口的人有事走了，不能让人还在这排队等着吧，否则就出现了上文说的雪崩了，所以会挂一个牌子：暂停服务。这个牌子好比上文提到的熔断，然后返回一个默认的信息，让用户知道。等3号和4号窗口的人回来了，就会把这个牌子拿走，这两个窗口又可以继续回复服务了。</p>
+<h2 id="Hystrix-熔断器的使用"><a href="#Hystrix-熔断器的使用" class="headerlink" title="Hystrix 熔断器的使用"></a>Hystrix 熔断器的使用</h2><p><strong>每一个接口必须加 @HystrixCommand 注解</strong>，标明如果接口出现错误，就会使用 Hystrix 熔断器来处理。</p>
+<h2 id="消费者添加hystrix依赖"><a href="#消费者添加hystrix依赖" class="headerlink" title="消费者添加hystrix依赖"></a>消费者添加hystrix依赖</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Hystrix 熔断器 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-netflix-hystrix<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="修改Boot应用入口"><a href="#修改Boot应用入口" class="headerlink" title="修改Boot应用入口"></a>修改Boot应用入口</h2><p><strong>消费者启动入口类，添加</strong>  <strong>@EnableCircuitBreaker</strong>，开启断路器功能</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@EnableCircuitBreaker</span>    <span class="comment">//开启断路器功能</span></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@EnableEurekaClient</span>   </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConsumerApplication</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SpringApplication.run(ConsumerApplication<span class="class">.<span class="keyword">class</span>, <span class="title">args</span>)</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="修改-Controller-层"><a href="#修改-Controller-层" class="headerlink" title="修改 Controller 层"></a>修改 Controller 层</h2><p><strong>添加</strong> <strong>@HystrixCommand</strong> <strong>注解</strong></p>
+<p>然后我们创建一个 HelloController 类，如下：</p>
+<p><strong>即是请求失败时，就会由 Hystrix 自动调用 error 方法</strong></p>
+<p><strong>通过 fallbackMethod 属性指定出现错误时调用的方法</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> RestTemplate restTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@HystrixCommand</span>(fallbackMethod = <span class="string">"error"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">hello</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        ResponseEntity&lt;String&gt; responseEntity = restTemplate.getForEntity(<span class="string">"http://HELLO-SERVICE/hello"</span>, String<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">        <span class="keyword">return</span> responseEntity.getBody();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">error</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"不好意思，暂时无法接通。。"</span>;  <span class="comment">// 可以自定义复杂的方法</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h2><p><strong>@HystrixCommand</strong> 注解是加在 Controller 层的接口方法上的，这会导致两个问题：</p>
+<ol>
+<li>如果接口方法很多，那么我是不是要在每个方法上都得加上该注解，而且，针对每个方法，我都要指定一个处理函数，这样会导致 Controller 变得越来越臃肿。</li>
+<li>这也不符合设计规范，理论上来说，Controller 层就是 Controller 层，我只管写接口即可。就像上一节介绍的 Feign，也是面向接口的，做均衡处理，我自己定义一个接口专门用来做均衡处理，在 Controller 层将该接口注入即可。那么 hystrix 是否也可以有类似的处理呢？</li>
+</ol>
+<p>答案是肯定的，这跟面向切面编程一个道理，Cotroller 你只管处理接口逻辑，当出了问题，OK，交给我 hystrix ，我 hystrix 不在你 Controller 这捣蛋，我去其他地方呆着，你有问题了，我再来处理。这才是正确的、合理的设计方式。</p>
+<h2 id="定义-Hystrix-处理类，绑定-Feign-接口"><a href="#定义-Hystrix-处理类，绑定-Feign-接口" class="headerlink" title="定义 Hystrix 处理类，绑定 Feign 接口"></a>定义 Hystrix 处理类，绑定 Feign 接口</h2><p>我们新建一个 hystrix 处理类：HelloServiceFallbackFactory，要实现</p>
+<p>FallbackFactory<HelloService> 接口，其中 <strong>HelloService 就是前面定义的 Feign 接口的名称</strong>。<strong>（与Feign接口完成了绑定）</strong></HelloService></p>
+<p>也就是说，把 hystrix 和 feign 绑定起来，因为都是客户端的东东。我通过 feign 去调用服务的时候，如果出问题了，就来执行我自定义的 hystrix 处理类中的方法，返回默认数据。代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">**</span><br><span class="line"> * 统一处理熔断</span><br><span class="line"> * HelloService 是Feign接口，所有访问都会走feign接口</span><br><span class="line"> * <span class="meta">@author</span> yangfa</span><br><span class="line"> */</span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloServiceFallbackFactory</span> <span class="keyword">implements</span> <span class="title">FallbackFactory</span>&lt;<span class="title">HelloService</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> HelloService <span class="title">create</span><span class="params">(Throwable throwable)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> HelloService() &#123;</span><br><span class="line"></span><br><span class="line">            <span class="comment">/**</span></span><br><span class="line"><span class="comment">             * 当HelloService服务的hello()方法出异常后的熔断处理方法</span></span><br><span class="line"><span class="comment">             * <span class="doctag">@return</span> 返回信息</span></span><br><span class="line"><span class="comment">             */</span></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> String <span class="title">hello</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="string">"不好意思，暂时无法接通。。"</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>OK，现在 hystrix 是绑定了 Feign 接口了，但是 Feign 接口中的某个方法如果出问题了，它怎么知道找谁去做熔断呢？</p>
+<h2 id="给-Feign-指定-hystrix"><a href="#给-Feign-指定-hystrix" class="headerlink" title="给 Feign 指定 hystrix"></a><strong>给 Feign 指定 hystrix</strong></h2><p>Feign 接口也需要绑定一下我们定义的 hystrix 处理类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FeignClient</span>( value = <span class="string">"hellospringCloudService"</span>, <span class="comment">//绑定生产者在yml中定义的服务名</span></span><br><span class="line">			  fallbackFactory = HelloServiceFallbackFactory<span class="class">.<span class="keyword">class</span>)  // 绑定 <span class="title">Hystrix</span> 处理类</span></span><br><span class="line"><span class="class"><span class="title">public</span> <span class="title">interface</span> <span class="title">HelloService</span> </span>&#123;</span><br><span class="line">    <span class="comment">//这里的RequestMapping里面的值 一定要跟 生产者中的方法路径对应</span></span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/test"</span>)</span><br><span class="line">    <span class="function">String <span class="title">hello</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="YML-中开启熔断"><a href="#YML-中开启熔断" class="headerlink" title="YML 中开启熔断"></a>YML 中开启熔断</h2><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 开启熔断</span></span><br><span class="line"><span class="attr">feign:</span></span><br><span class="line">  <span class="attr">hystrix:</span></span><br><span class="line">    <span class="attr">enabled:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SpringCloud/" rel="tag"># SpringCloud</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/18/SpringCloud/Feign%20%E6%8E%A5%E5%8F%A3%E5%A3%B0%E6%98%8E%E5%BC%8F%E6%9C%8D%E5%8A%A1%E8%B0%83%E7%94%A8/" rel="next" title="Feign 接口声明式服务调用">
+                <i class="fa fa-chevron-left"></i> Feign 接口声明式服务调用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/20/SpringCloud/hystrix%20dashboard%20%E7%9B%91%E6%8E%A7%E5%85%B6%E4%BB%96%E6%9C%8D%E5%8A%A1/" rel="prev" title="hystrix dashboard 监控其他服务">
+                hystrix dashboard 监控其他服务 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/tx.jpg"
+                alt="杨发" />
+            
+              <p class="site-author-name" itemprop="name">杨发</p>
+              <p class="site-description motion-element" itemprop="description">学习与工作总结</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">64</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/yangfa4j" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Hystrix-熔断器"><span class="nav-number">1.</span> <span class="nav-text">Hystrix 熔断器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#服务熔断和服务降级"><span class="nav-number">1.1.</span> <span class="nav-text">服务熔断和服务降级</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#服务熔断"><span class="nav-number">1.1.1.</span> <span class="nav-text">服务熔断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务降级"><span class="nav-number">1.1.2.</span> <span class="nav-text">服务降级</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hystrix-熔断器的使用"><span class="nav-number">1.2.</span> <span class="nav-text">Hystrix 熔断器的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#消费者添加hystrix依赖"><span class="nav-number">1.3.</span> <span class="nav-text">消费者添加hystrix依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改Boot应用入口"><span class="nav-number">1.4.</span> <span class="nav-text">修改Boot应用入口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改-Controller-层"><span class="nav-number">1.5.</span> <span class="nav-text">修改 Controller 层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思考"><span class="nav-number">1.6.</span> <span class="nav-text">思考</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定义-Hystrix-处理类，绑定-Feign-接口"><span class="nav-number">1.7.</span> <span class="nav-text">定义 Hystrix 处理类，绑定 Feign 接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#给-Feign-指定-hystrix"><span class="nav-number">1.8.</span> <span class="nav-text">给 Feign 指定 hystrix</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#YML-中开启熔断"><span class="nav-number">1.9.</span> <span class="nav-text">YML 中开启熔断</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">杨发</span>
+
+  
+</div>
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+-->
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

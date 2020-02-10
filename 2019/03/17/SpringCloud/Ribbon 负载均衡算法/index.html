@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="Ribbon 负载均衡算法​    Ribbon 默认是轮询算法（RoundRobinRule），即当有消费者请求时，会依次派给生产者，每个生产者仅接受一次请求。 ​    但是在 Ribbon 中，可以自定义负载均衡算法，用到 IRule 。 ​    Ribbon 中默认的7种负载均衡算法  切换负载均衡算法​    在配置 RestTemplate 类中添加  @LoadBalanced 注">
+<meta name="description" content="Ribbon 负载均衡算法Ribbon 默认是轮询算法（RoundRobinRule），即当有消费者请求时，会依次派给生产者，每个生产者仅接受一次请求。 但是在 Ribbon 中，可以自定义负载均衡算法，用到 IRule 。 Ribbon 中默认的7种负载均衡算法  切换负载均衡算法在配置 RestTemplate 类中添加  @LoadBalanced 注解，并且 加入 IRule 类 1234">
 <meta name="keywords" content="SpringCloud">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ribbon 负载均衡算法">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;03&#x2F;17&#x2F;SpringCloud&#x2F;Ribbon%20%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E7%AE%97%E6%B3%95&#x2F;index.html">
 <meta property="og:site_name" content="个人技术博客">
-<meta property="og:description" content="Ribbon 负载均衡算法​    Ribbon 默认是轮询算法（RoundRobinRule），即当有消费者请求时，会依次派给生产者，每个生产者仅接受一次请求。 ​    但是在 Ribbon 中，可以自定义负载均衡算法，用到 IRule 。 ​    Ribbon 中默认的7种负载均衡算法  切换负载均衡算法​    在配置 RestTemplate 类中添加  @LoadBalanced 注">
+<meta property="og:description" content="Ribbon 负载均衡算法Ribbon 默认是轮询算法（RoundRobinRule），即当有消费者请求时，会依次派给生产者，每个生产者仅接受一次请求。 但是在 Ribbon 中，可以自定义负载均衡算法，用到 IRule 。 Ribbon 中默认的7种负载均衡算法  切换负载均衡算法在配置 RestTemplate 类中添加  @LoadBalanced 注解，并且 加入 IRule 类 1234">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200209185324.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200209212512.png">
-<meta property="og:updated_time" content="2020-02-09T13:30:47.848Z">
+<meta property="og:updated_time" content="2020-02-09T13:40:26.022Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200209185324.png">
 
@@ -374,11 +374,11 @@
       
 
       
-        <h1 id="Ribbon-负载均衡算法"><a href="#Ribbon-负载均衡算法" class="headerlink" title="Ribbon 负载均衡算法"></a>Ribbon 负载均衡算法</h1><p>​    <strong>Ribbon 默认是轮询算法（RoundRobinRule）</strong>，即当有消费者请求时，会依次派给生产者，每个生产者仅接受一次请求。</p>
-<p>​    但是在 Ribbon 中，可以自定义负载均衡算法，用到 <strong>IRule</strong> 。</p>
-<p>​    Ribbon 中默认的7种负载均衡算法</p>
+        <h1 id="Ribbon-负载均衡算法"><a href="#Ribbon-负载均衡算法" class="headerlink" title="Ribbon 负载均衡算法"></a>Ribbon 负载均衡算法</h1><p><strong>Ribbon 默认是轮询算法（RoundRobinRule）</strong>，即当有消费者请求时，会依次派给生产者，每个生产者仅接受一次请求。</p>
+<p>但是在 Ribbon 中，可以自定义负载均衡算法，用到 <strong>IRule</strong> 。</p>
+<p>Ribbon 中默认的7种负载均衡算法</p>
 <p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20200209185324.png" alt></p>
-<h2 id="切换负载均衡算法"><a href="#切换负载均衡算法" class="headerlink" title="切换负载均衡算法"></a>切换负载均衡算法</h2><p>​    <strong>在配置 RestTemplate 类中添加</strong>  <strong>@LoadBalanced</strong> <strong>注解，并且 加入 IRule 类</strong></p>
+<h2 id="切换负载均衡算法"><a href="#切换负载均衡算法" class="headerlink" title="切换负载均衡算法"></a>切换负载均衡算法</h2><p><strong>在配置 RestTemplate 类中添加</strong>  <strong>@LoadBalanced</strong> <strong>注解，并且 加入 IRule 类</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BeanConfig</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@LoadBalanced</span>  <span class="comment">//使这个传递类访问时 开启负载均衡</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> RestTemplate <span class="title">getRestTemplate</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> RestTemplate();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line"> 	<span class="comment">// 手动定义随机算法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> IRule <span class="title">getRule</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span>  <span class="keyword">new</span> RandomRule();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
@@ -386,7 +386,7 @@
 <h2 id="自定义负载均衡算法"><a href="#自定义负载均衡算法" class="headerlink" title="自定义负载均衡算法"></a>自定义负载均衡算法</h2><p><strong>在主类添加</strong> <strong>@RibbonClient</strong> <strong>让消费者在启动的时候，就使用自定义的负载均衡算法</strong></p>
 <p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20200209212512.png" alt></p>
 <p>​    也就是不能放在SpringBoot能够扫描的包下面</p>
-<h3 id="负载均衡算法类"><a href="#负载均衡算法类" class="headerlink" title="负载均衡算法类"></a>负载均衡算法类</h3><p>​    在与启动类同层的目录下，建立rule包，创建MyRule类，避免被 SpringBoot 启动就扫描到。</p>
+<h3 id="负载均衡算法类"><a href="#负载均衡算法类" class="headerlink" title="负载均衡算法类"></a>负载均衡算法类</h3><p>在与启动类同层的目录下，建立rule包，创建MyRule类，避免被 SpringBoot 启动就扫描到。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyRule</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> IRule <span class="title">getRule</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> RandomRule();   <span class="comment">//默认轮询，自定义为随机</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
@@ -423,8 +423,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/16/SpringCloud/Ribbon%20%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" rel="next" title="Ribbon 客户端负载均衡">
-                <i class="fa fa-chevron-left"></i> Ribbon 客户端负载均衡
+              <a href="/2019/03/16/SpringCloud/Ribbon%20%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%9A%84%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" rel="next" title="Ribbon 客户端的负载均衡">
+                <i class="fa fa-chevron-left"></i> Ribbon 客户端的负载均衡
               </a>
             
           </div>
@@ -433,8 +433,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/06/05/JAVA/Mysql/%E7%B4%A2%E5%BC%95/" rel="prev" title="索引">
-                索引 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/03/18/SpringCloud/Feign%20%E6%8E%A5%E5%8F%A3%E5%A3%B0%E6%98%8E%E5%BC%8F%E6%9C%8D%E5%8A%A1%E8%B0%83%E7%94%A8/" rel="prev" title="Feign 接口声明式服务调用">
+                Feign 接口声明式服务调用 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -516,7 +516,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">58</span>
+                  <span class="site-state-item-count">64</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

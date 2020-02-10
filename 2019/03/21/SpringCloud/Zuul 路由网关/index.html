@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="SpringCloud," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Zuul 路由网关Zuul 包含了对请求的 路由 过滤 两个最主要的功能。 其中，路由功能负责将外部请求转发到具体的微服务实例上，是实现外部访问统一入口的基础。 而过滤功能则是负责对请求的处理过程进行干预，是实现请求校验、服务聚合等功能的基础。 Zuul 和 eureka 进行整合，将 zuul 自身注册为eureka服务治理下的应用，同时从 eureka 中获得其他微服务的消息，也即以后的访问微">
+<meta name="keywords" content="SpringCloud">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Zuul 路由网关">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;03&#x2F;21&#x2F;SpringCloud&#x2F;Zuul%20%E8%B7%AF%E7%94%B1%E7%BD%91%E5%85%B3&#x2F;index.html">
+<meta property="og:site_name" content="个人技术博客">
+<meta property="og:description" content="Zuul 路由网关Zuul 包含了对请求的 路由 过滤 两个最主要的功能。 其中，路由功能负责将外部请求转发到具体的微服务实例上，是实现外部访问统一入口的基础。 而过滤功能则是负责对请求的处理过程进行干预，是实现请求校验、服务聚合等功能的基础。 Zuul 和 eureka 进行整合，将 zuul 自身注册为eureka服务治理下的应用，同时从 eureka 中获得其他微服务的消息，也即以后的访问微">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-02-10T06:09:33.253Z">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/03/21/SpringCloud/Zuul 路由网关/"/>
+
+
+
+
+
+  <title>Zuul 路由网关 | 个人技术博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">个人技术博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">记录了一些与JAVA相关的技术文章</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/21/SpringCloud/Zuul%20%E8%B7%AF%E7%94%B1%E7%BD%91%E5%85%B3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="杨发">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/tx.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="个人技术博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Zuul 路由网关</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-21T00:00:00+08:00">
+                2019-03-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SpringCloud/" itemprop="url" rel="index">
+                    <span itemprop="name">SpringCloud</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  941
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Zuul-路由网关"><a href="#Zuul-路由网关" class="headerlink" title="Zuul 路由网关"></a>Zuul 路由网关</h1><p>Zuul 包含了对请求的 <strong>路由 过滤</strong> 两个最主要的功能。</p>
+<p>其中，路由功能负责将外部请求转发到具体的微服务实例上，是实现外部访问统一入口的基础。</p>
+<p>而过滤功能则是负责对请求的处理过程进行干预，是实现请求校验、服务聚合等功能的基础。</p>
+<p>Zuul 和 eureka 进行整合，将 zuul 自身注册为eureka服务治理下的应用，同时从 eureka 中获得其他微服务的消息，<strong>也即以后的访问微服务都是通过zuul跳转之后获得。</strong></p>
+<h2 id="Zuul的使用"><a href="#Zuul的使用" class="headerlink" title="Zuul的使用"></a>Zuul的使用</h2><p>我们自定义一个新的项目工程：microservice-zuul-gateway。</p>
+<h2 id="添加依赖"><a href="#添加依赖" class="headerlink" title="添加依赖"></a>添加依赖</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- zuul 依赖 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-netflix-zuul<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="修改Boot应用入口"><a href="#修改Boot应用入口" class="headerlink" title="修改Boot应用入口"></a>修改Boot应用入口</h2><p>在主启动类中需要添加：<strong>@EnableZuulProxy</strong> 注解，表示开启 zuul 代理。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@EnableZuulProxy</span> <span class="comment">//开启 zuul 代理</span></span><br><span class="line"><span class="meta">@EnableEurekaClient</span></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SpringcloudApplication</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SpringApplication.run(SpringcloudApplication<span class="class">.<span class="keyword">class</span>, <span class="title">args</span>)</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="配置YML"><a href="#配置YML" class="headerlink" title="配置YML"></a>配置YML</h2><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 服务端口号</span></span><br><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">6001</span></span><br><span class="line"></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">microservice-zuul-gateway</span>  <span class="comment"># 对外暴露的服务名称</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># zuul客户端注册进eureka服务列表里</span></span><br><span class="line"><span class="attr">eureka:</span></span><br><span class="line">  <span class="attr">client:</span></span><br><span class="line">    <span class="attr">service-url:</span></span><br><span class="line">      <span class="attr">defaultZone:</span> <span class="string">http://localhost:1111/eureka</span>  <span class="comment">#绑定Eureka 服务中心，将自己注册到服务中心</span></span><br><span class="line">    <span class="attr">healthcheck:</span></span><br><span class="line">      <span class="attr">enabled:</span> <span class="literal">true</span> </span><br><span class="line">  <span class="attr">instance:</span></span><br><span class="line">    <span class="attr">instance-id:</span> <span class="string">zuul网关服务-6001</span>  <span class="comment"># 人性化显示出服务的信息</span></span><br><span class="line">    <span class="attr">prefer-ip-address:</span> <span class="literal">true</span>    <span class="comment"># 访问路径可显示ip地址</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>我们首先直接访问一下订单服务，确保服务可用：<a href="http://localhost:8001/provider/order/get/1" target="_blank" rel="noopener">http://localhost:8001/provider/order/get/1</a></p>
+<p>然后我们通过 zuul来访问该订单服务：</p>
+<p><a href="http://localhost:6001/microservice-order/provider/order/get/1" target="_blank" rel="noopener">http://localhost:6001/microservice-order/provider/order/get/1</a> </p>
+<p>6001 端口就是 zuul 的服务端口，是通过 zuul 服务 去请求的服务， </p>
+<p>microservice-order 是订单服务的服务名。</p>
+<p>即 zuul 在 eureka 里找到了一个叫 microservice-order 的订单服务，然后去请求数据。所以说，<strong>zuul 是可以根据注册到 eureka 中的服务名称来访问服务的。</strong></p>
+<p>那么我们自然会想到，如果我把三个订单服务都启动起来，因为它们的服务名称都是 microservice-order，zuul 到底会将请求转发给哪个服务呢？</p>
+<p>启动下 8001、8002 和 8003，然后还是访问 <a href="http://localhost:6001/microservice-order/provider/order/get/1" target="_blank" rel="noopener">http://localhost:6001/microservice-order/provider/order/get/1</a> ，查看输出的信息，可以知道，zuul 中默认集成了轮询的规则，三个服务轮流调用。</p>
+<h2 id="自定义路由规则"><a href="#自定义路由规则" class="headerlink" title="自定义路由规则"></a>自定义路由规则</h2><p>如果我们不想像上面那样在 url 中直接暴露微服务名称，可以在配置文件中配一下路由规则。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 配置路由规则</span></span><br><span class="line"><span class="attr">zuul:</span></span><br><span class="line">  <span class="attr">routes:</span></span><br><span class="line">    <span class="comment"># 如下指定新的映射</span></span><br><span class="line">    <span class="attr">order:</span></span><br><span class="line">      <span class="attr">serviceId:</span> <span class="string">microservice-order</span> <span class="comment"># 服务提供者在YML中的名字</span></span><br><span class="line">      <span class="attr">path:</span> <span class="string">/order/**</span>  <span class="comment"># 自定义的路由规则，代替了上面的 serviceId</span></span><br></pre></td></tr></table></figure>
+
+<p>这样的话，在配置了路由规则之后，就可以使用： <a href="http://localhost:6001/order/provider/order/get/1" target="_blank" rel="noopener">http://localhost:6001/order/provider/order/get/1</a>   来访问订单服务了。</p>
+<p>但是这样的话，原来使用微服务名称的方式还是可以访问，所以我们可以禁用原来使用微服务名称的方式访问。如下</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 配置路由规则</span></span><br><span class="line"><span class="attr">zuul:</span></span><br><span class="line">  <span class="attr">ignored-services:</span> <span class="string">microservice-order</span> <span class="comment"># 不允许用微服务名访问了，如果禁用所有的，可以使用 "*"</span></span><br><span class="line">  <span class="attr">routes:</span></span><br><span class="line">    <span class="comment"># 如下指定新的映射</span></span><br><span class="line">    <span class="attr">order:</span></span><br><span class="line">      <span class="attr">serviceId:</span> <span class="string">microservice-order</span></span><br><span class="line">      <span class="attr">path:</span> <span class="string">/order/**</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>我们还可以给路由加一个统一的前缀：</strong></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 配置路由规则</span></span><br><span class="line"><span class="attr">zuul:</span></span><br><span class="line">  <span class="attr">ignored-services:</span> <span class="string">microservice-order</span> <span class="comment"># 不允许用微服务名访问了，如果禁用所有的，可以使用 "*"</span></span><br><span class="line">  <span class="attr">routes:</span></span><br><span class="line">    <span class="attr">prefix:</span> <span class="string">/zuul</span> <span class="comment"># 给路由加一个统一的前缀</span></span><br><span class="line">    <span class="comment"># 如下指定新的映射</span></span><br><span class="line">    <span class="attr">order:</span></span><br><span class="line">      <span class="attr">serviceId:</span> <span class="string">microservice-order</span></span><br><span class="line">      <span class="attr">path:</span> <span class="string">/order/**</span></span><br></pre></td></tr></table></figure>
+
+<p>这样的话，就可以使用：<a href="http://localhost:6001/zuul/order/provider/order/get/1" target="_blank" rel="noopener">http://localhost:6001/zuul/order/provider/order/get/1</a>   来访问订单服务了。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SpringCloud/" rel="tag"># SpringCloud</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/20/SpringCloud/Hystrix%20Dashboard%20%E7%9A%84%E4%BD%BF%E7%94%A8/" rel="next" title="Hystrix Dashboard的使用">
+                <i class="fa fa-chevron-left"></i> Hystrix Dashboard的使用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/22/SpringCloud/Config%20%E5%88%86%E5%B8%83%E5%BC%8F%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83/" rel="prev" title="Config 分布式配置中心">
+                Config 分布式配置中心 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/tx.jpg"
+                alt="杨发" />
+            
+              <p class="site-author-name" itemprop="name">杨发</p>
+              <p class="site-description motion-element" itemprop="description">学习与工作总结</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">64</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/yangfa4j" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Zuul-路由网关"><span class="nav-number">1.</span> <span class="nav-text">Zuul 路由网关</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Zuul的使用"><span class="nav-number">1.1.</span> <span class="nav-text">Zuul的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加依赖"><span class="nav-number">1.2.</span> <span class="nav-text">添加依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改Boot应用入口"><span class="nav-number">1.3.</span> <span class="nav-text">修改Boot应用入口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置YML"><span class="nav-number">1.4.</span> <span class="nav-text">配置YML</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试"><span class="nav-number">1.5.</span> <span class="nav-text">测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义路由规则"><span class="nav-number">1.6.</span> <span class="nav-text">自定义路由规则</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">杨发</span>
+
+  
+</div>
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+-->
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
