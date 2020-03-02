@@ -79,19 +79,19 @@
 
 
 
-<meta name="description" content="中介者模式 聊天室问题我们通过聊天室实例来演示中介者模式。 实例中，多个用户可以向聊天室发送消息，聊天室显示用户消息。 我们将创建两个类 ChatRoom 和 User。User 对象使用 ChatRoom 方法来分享他们的消息。 创建中介类123456public class ChatRoom &amp;#123;   public static void showMessage(User user,">
+<meta name="description" content="中介者模式 聊天室问题我们通过聊天室实例来演示中介者模式。 实例中，多个用户可以向聊天室发送消息，聊天室显示用户消息。 我们将创建两个类 ChatRoom 和 User。User 对象使用 ChatRoom 的方法来分享他们的消息。 创建中介类123456public class ChatRoom &amp;#123;   public static void showMessage(User user,">
 <meta name="keywords" content="一天学一个设计模式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="中介者模式">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;09&#x2F;26&#x2F;JAVA&#x2F;%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F&#x2F;%E4%B8%AD%E4%BB%8B%E8%80%85%E6%A8%A1%E5%BC%8F&#x2F;index.html">
 <meta property="og:site_name" content="个人技术博客">
-<meta property="og:description" content="中介者模式 聊天室问题我们通过聊天室实例来演示中介者模式。 实例中，多个用户可以向聊天室发送消息，聊天室显示用户消息。 我们将创建两个类 ChatRoom 和 User。User 对象使用 ChatRoom 方法来分享他们的消息。 创建中介类123456public class ChatRoom &amp;#123;   public static void showMessage(User user,">
+<meta property="og:description" content="中介者模式 聊天室问题我们通过聊天室实例来演示中介者模式。 实例中，多个用户可以向聊天室发送消息，聊天室显示用户消息。 我们将创建两个类 ChatRoom 和 User。User 对象使用 ChatRoom 的方法来分享他们的消息。 创建中介类123456public class ChatRoom &amp;#123;   public static void showMessage(User user,">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;09&#x2F;26&#x2F;JAVA&#x2F;%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F&#x2F;%E4%B8%AD%E4%BB%8B%E8%80%85%E6%A8%A1%E5%BC%8F&#x2F;C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5C28fa2d29b07d471faac0f0e91555a6f2%5Cclipboard.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;09&#x2F;26&#x2F;JAVA&#x2F;%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F&#x2F;%E4%B8%AD%E4%BB%8B%E8%80%85%E6%A8%A1%E5%BC%8F&#x2F;C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5Ca5f5d1755a2649ab9cb9de3e65b017b7%5Cclipboard.png">
-<meta property="og:updated_time" content="2020-02-03T05:50:56.000Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200301143020.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200301145900.png">
+<meta property="og:updated_time" content="2020-03-01T14:10:54.371Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;09&#x2F;26&#x2F;JAVA&#x2F;%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F&#x2F;%E4%B8%AD%E4%BB%8B%E8%80%85%E6%A8%A1%E5%BC%8F&#x2F;C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5C28fa2d29b07d471faac0f0e91555a6f2%5Cclipboard.png">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200301143020.png">
 
 
 
@@ -337,7 +337,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  177
+                  178
                 </span>
               
 
@@ -374,10 +374,10 @@
       
 
       
-        <h1 id="中介者模式"><a href="#中介者模式" class="headerlink" title="中介者模式"></a>中介者模式</h1><p><img src="/2019/09/26/JAVA/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E4%B8%AD%E4%BB%8B%E8%80%85%E6%A8%A1%E5%BC%8F/C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5C28fa2d29b07d471faac0f0e91555a6f2%5Cclipboard.png" alt="img"></p>
+        <h1 id="中介者模式"><a href="#中介者模式" class="headerlink" title="中介者模式"></a>中介者模式</h1><p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20200301143020.png" alt></p>
 <h2 id="聊天室问题"><a href="#聊天室问题" class="headerlink" title="聊天室问题"></a>聊天室问题</h2><p>我们通过聊天室实例来演示中介者模式。</p>
 <p>实例中，多个用户可以向聊天室发送消息，聊天室显示用户消息。</p>
-<p>我们将创建两个类 ChatRoom 和 User。User 对象使用 ChatRoom 方法来分享他们的消息。</p>
+<p>我们将创建两个类 ChatRoom 和 User。User 对象使用 ChatRoom 的方法来分享他们的消息。</p>
 <h3 id="创建中介类"><a href="#创建中介类" class="headerlink" title="创建中介类"></a>创建中介类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ChatRoom</span> </span>&#123;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">showMessage</span><span class="params">(User user, String message)</span></span>&#123;</span><br><span class="line">      System.out.println(<span class="keyword">new</span> Date().toString()</span><br><span class="line">         + <span class="string">" ["</span> + user.getName() +<span class="string">"] : "</span> + message);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
@@ -386,9 +386,9 @@
 
 
 
-<h3 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">      User robert = <span class="keyword">new</span> User(<span class="string">"Robert"</span>);</span><br><span class="line">      User john = <span class="keyword">new</span> User(<span class="string">"John"</span>);</span><br><span class="line"> </span><br><span class="line">      robert.sendMessage(<span class="string">"Hi! John!"</span>);</span><br><span class="line">      john.sendMessage(<span class="string">"Hello! Robert!"</span>);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">      User robert = <span class="keyword">new</span> User(<span class="string">"Robert"</span>);</span><br><span class="line">      User john = <span class="keyword">new</span> User(<span class="string">"John"</span>); </span><br><span class="line"> </span><br><span class="line">      robert.sendMessage(<span class="string">"Hi! John!"</span>);</span><br><span class="line">      john.sendMessage(<span class="string">"Hello! Robert!"</span>);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2019/09/26/JAVA/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E4%B8%AD%E4%BB%8B%E8%80%85%E6%A8%A1%E5%BC%8F/C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5Ca5f5d1755a2649ab9cb9de3e65b017b7%5Cclipboard.png" alt="img"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20200301145900.png" alt></p>
 
       
     </div>

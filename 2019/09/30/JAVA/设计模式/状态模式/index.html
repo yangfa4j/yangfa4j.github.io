@@ -79,21 +79,21 @@
 
 
 
-<meta name="description" content="状态模式​    React里面三大对象，不同的状态，不同的展现形式。  APP 抽奖问题 2、状态模式实际运用">
+<meta name="description" content="状态模式​    React里面三大对象，不同的状态，不同的展现形式。  APP 抽奖问题 状态模式实际运用">
 <meta name="keywords" content="一天学一个设计模式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="状态模式">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;09&#x2F;30&#x2F;JAVA&#x2F;%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F&#x2F;%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F&#x2F;index.html">
 <meta property="og:site_name" content="个人技术博客">
-<meta property="og:description" content="状态模式​    React里面三大对象，不同的状态，不同的展现形式。  APP 抽奖问题 2、状态模式实际运用">
+<meta property="og:description" content="状态模式​    React里面三大对象，不同的状态，不同的展现形式。  APP 抽奖问题 状态模式实际运用">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;09&#x2F;30&#x2F;JAVA&#x2F;%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F&#x2F;%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F&#x2F;C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5C3b66ae388973449ea7382ee2a580cad0%5Cclipboard.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;09&#x2F;30&#x2F;JAVA&#x2F;%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F&#x2F;%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F&#x2F;C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5C2b4161d4c83744eab536993cc202b5f8%5Cclipboard.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;09&#x2F;30&#x2F;JAVA&#x2F;%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F&#x2F;%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F&#x2F;C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5C257bcf5e3e2440e094d48375ba24f1e6%5Cclipboard.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;09&#x2F;30&#x2F;JAVA&#x2F;%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F&#x2F;%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F&#x2F;C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5C02a5333390f9484a9c2ee67ad7257807%5Cclipboard.png">
-<meta property="og:updated_time" content="2020-02-03T05:55:52.000Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200302141837.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200302141953.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200302142017.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200302142042.png">
+<meta property="og:updated_time" content="2020-03-02T06:21:32.492Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;09&#x2F;30&#x2F;JAVA&#x2F;%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F&#x2F;%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F&#x2F;C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5C3b66ae388973449ea7382ee2a580cad0%5Cclipboard.png">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200302141837.png">
 
 
 
@@ -339,7 +339,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  37
+                  36
                 </span>
               
 
@@ -377,11 +377,10 @@
 
       
         <h1 id="状态模式"><a href="#状态模式" class="headerlink" title="状态模式"></a>状态模式</h1><p>​    React里面三大对象，不同的状态，不同的展现形式。</p>
-<p><img src="/2019/09/30/JAVA/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F/C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5C3b66ae388973449ea7382ee2a580cad0%5Cclipboard.png" alt="img"></p>
-<h2 id="APP-抽奖问题"><a href="#APP-抽奖问题" class="headerlink" title="APP 抽奖问题"></a>APP 抽奖问题</h2><p><img src="/2019/09/30/JAVA/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F/C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5C2b4161d4c83744eab536993cc202b5f8%5Cclipboard.png" alt="img"></p>
-<p><strong>2、状态模式实际运用</strong></p>
-<p><img src="/2019/09/30/JAVA/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F/C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5C257bcf5e3e2440e094d48375ba24f1e6%5Cclipboard.png" alt="img"></p>
-<p><img src="/2019/09/30/JAVA/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F/C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5C02a5333390f9484a9c2ee67ad7257807%5Cclipboard.png" alt="img"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20200302141837.png" alt></p>
+<h2 id="APP-抽奖问题"><a href="#APP-抽奖问题" class="headerlink" title="APP 抽奖问题"></a>APP 抽奖问题</h2><p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20200302141953.png" alt></p>
+<h2 id="状态模式实际运用"><a href="#状态模式实际运用" class="headerlink" title="状态模式实际运用"></a>状态模式实际运用</h2><p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20200302142017.png" alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20200302142042.png" alt></p>
 
       
     </div>
@@ -570,7 +569,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#状态模式"><span class="nav-number">1.</span> <span class="nav-text">状态模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#APP-抽奖问题"><span class="nav-number">1.1.</span> <span class="nav-text">APP 抽奖问题</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#状态模式"><span class="nav-number">1.</span> <span class="nav-text">状态模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#APP-抽奖问题"><span class="nav-number">1.1.</span> <span class="nav-text">APP 抽奖问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#状态模式实际运用"><span class="nav-number">1.2.</span> <span class="nav-text">状态模式实际运用</span></a></li></ol></li></ol></div>
             
 
           </div>

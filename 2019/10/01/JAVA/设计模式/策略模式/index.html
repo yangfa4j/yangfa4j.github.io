@@ -79,20 +79,20 @@
 
 
 
-<meta name="description" content="策略模式​    面向接口编程，把类的行为抽离出来。  1、鸭子问题 策略模式在JDK源码中的运行">
+<meta name="description" content="策略模式​    面向接口编程，把类的行为抽离出来。  策略模式在JDK源码中的运行">
 <meta name="keywords" content="一天学一个设计模式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="策略模式">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;01&#x2F;JAVA&#x2F;%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F&#x2F;%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F&#x2F;index.html">
 <meta property="og:site_name" content="个人技术博客">
-<meta property="og:description" content="策略模式​    面向接口编程，把类的行为抽离出来。  1、鸭子问题 策略模式在JDK源码中的运行">
+<meta property="og:description" content="策略模式​    面向接口编程，把类的行为抽离出来。  策略模式在JDK源码中的运行">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;01&#x2F;JAVA&#x2F;%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F&#x2F;%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F&#x2F;C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5Cb1ac34f0c7e44cdf8e419af27a7b2cf8%5Cclipboard.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;01&#x2F;JAVA&#x2F;%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F&#x2F;%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F&#x2F;C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5C798b28080f754bdf99d844a60e89cfb7%5Cclipboard.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;01&#x2F;JAVA&#x2F;%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F&#x2F;%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F&#x2F;C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5C13518a76c5f94f52be0481b8158dcf1d%5Cclipboard.png">
-<meta property="og:updated_time" content="2020-02-03T05:55:02.000Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200302142256.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200302142345.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200302142405.png">
+<meta property="og:updated_time" content="2020-03-02T06:28:01.544Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;01&#x2F;JAVA&#x2F;%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F&#x2F;%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F&#x2F;C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5Cb1ac34f0c7e44cdf8e419af27a7b2cf8%5Cclipboard.png">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;yangfa4j&#x2F;BlogImages&#x2F;IMG-PIC&#x2F;20200302142256.png">
 
 
 
@@ -338,7 +338,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  36
+                  31
                 </span>
               
 
@@ -376,10 +376,9 @@
 
       
         <h1 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h1><p>​    面向接口编程，把类的行为抽离出来。</p>
-<p><img src="/2019/10/01/JAVA/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5Cb1ac34f0c7e44cdf8e419af27a7b2cf8%5Cclipboard.png" alt="img"></p>
-<p>1、鸭子问题</p>
-<h2 id="策略模式在JDK源码中的运行"><a href="#策略模式在JDK源码中的运行" class="headerlink" title="策略模式在JDK源码中的运行"></a>策略模式在JDK源码中的运行</h2><p><img src="/2019/10/01/JAVA/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5C798b28080f754bdf99d844a60e89cfb7%5Cclipboard.png" alt="img"></p>
-<p><img src="/2019/10/01/JAVA/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/C:%5CUsers%5CYF%5CAppData%5CLocal%5CYNote%5Cdata%5Cm15284860925@163.com%5C13518a76c5f94f52be0481b8158dcf1d%5Cclipboard.png" alt="img"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20200302142256.png" alt></p>
+<h2 id="策略模式在JDK源码中的运行"><a href="#策略模式在JDK源码中的运行" class="headerlink" title="策略模式在JDK源码中的运行"></a>策略模式在JDK源码中的运行</h2><p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20200302142345.png" alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/yangfa4j/BlogImages/IMG-PIC/20200302142405.png" alt></p>
 
       
     </div>
