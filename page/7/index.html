@@ -434,7 +434,7 @@ try
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/05/JAVA/%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E4%B8%80%E4%B8%AA%E7%94%9F%E4%BA%A7%E8%80%85%E4%B8%8E%E4%B8%80%E4%B8%AA%E6%B6%88%E8%B4%B9%E8%80%85/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/05/JAVA/%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E6%B6%88%E8%B4%B9%E8%80%85%E6%A8%A1%E5%BC%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="杨发">
@@ -453,7 +453,7 @@ try
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/01/05/JAVA/%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E4%B8%80%E4%B8%AA%E7%94%9F%E4%BA%A7%E8%80%85%E4%B8%8E%E4%B8%80%E4%B8%AA%E6%B6%88%E8%B4%B9%E8%80%85/" itemprop="url">一个生产者与一个消费者</a></h1>
+                <a class="post-title-link" href="/2019/01/05/JAVA/%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E6%B6%88%E8%B4%B9%E8%80%85%E6%A8%A1%E5%BC%8F/" itemprop="url">消费者模式</a></h1>
         
 
         <div class="post-meta">
@@ -519,7 +519,7 @@ try
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  664
+                  591
                 </span>
               
 
@@ -535,7 +535,7 @@ try
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  2
                 </span>
               
             </div>
@@ -558,15 +558,13 @@ try
       
         
           
-          需求​    两个线程，操作一个初始值为 0 的变量，生产一个，消费一个，这样交互循环30次，保证这个变量还是 0 。
-分析​    资源类的编写标准   高内聚  ，我们把需求具象话一个做蛋糕的点，在类中有生产蛋糕与购买蛋糕的互逆操作。
-
-try前加锁       lock
-try里操作     
+          需求​    车站有30张票，现在用3个窗口在进行卖票服务，现在用 ReentrantLock 与 synchronized  分别来实现。
+分析​    资源类的编写标准   高内聚  ，我们把票写出一个类，在类中有卖票的操作。
+​    由于是多线程（3个窗口去买票），我们需要使用多线程代码编写
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/01/05/JAVA/%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E4%B8%80%E4%B8%AA%E7%94%9F%E4%BA%A7%E8%80%85%E4%B8%8E%E4%B8%80%E4%B8%AA%E6%B6%88%E8%B4%B9%E8%80%85/#more" rel="contents">
+            <a class="btn" href="/2019/01/05/JAVA/%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E6%B6%88%E8%B4%B9%E8%80%85%E6%A8%A1%E5%BC%8F/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
